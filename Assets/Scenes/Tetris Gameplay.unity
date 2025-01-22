@@ -132,8 +132,10 @@ GameObject:
   m_Component:
   - component: {fileID: 120376036}
   - component: {fileID: 120376035}
+  - component: {fileID: 120376037}
+  - component: {fileID: 120376038}
   m_Layer: 0
-  m_Name: Grid
+  m_Name: Board
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -167,6 +169,60 @@ Transform:
   - {fileID: 1866393470}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+--- !u!114 &120376037
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 120376034}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 394dd7ebca67fea4e84010984961e77e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  BoardTilemap: {fileID: 1866393472}
+  BoardSize: {x: 10, y: 20}
+  SpawnPosition: {x: -1, y: 8, z: 0}
+  Tetrominoes:
+  - ShapeKey: 0
+    Tile: {fileID: 11400000, guid: aa44b5216a5f39e4881c5323564afe81, type: 2}
+  - ShapeKey: 1
+    Tile: {fileID: 11400000, guid: 66df2645ff909154b9c8f7c006a6af32, type: 2}
+  - ShapeKey: 2
+    Tile: {fileID: 11400000, guid: 8316c87896e7b6448a324d8a66e43174, type: 2}
+  - ShapeKey: 3
+    Tile: {fileID: 11400000, guid: f6c4109fd0d185b419e5e665b07c42f0, type: 2}
+  - ShapeKey: 4
+    Tile: {fileID: 11400000, guid: 89eae29ecf56ea14c8b3927213a00066, type: 2}
+  - ShapeKey: 5
+    Tile: {fileID: 11400000, guid: ae5c5dcd9d2744248ba2beb6b8dab80f, type: 2}
+  - ShapeKey: 6
+    Tile: {fileID: 11400000, guid: be0a34e2a842ae742b4fa8541a5f9fcf, type: 2}
+  ActiveTetromino: {fileID: 0}
+  Config:
+    StepDelay: 1
+    MoveDelay: 0.1
+    LockDelay: 0.5
+--- !u!114 &120376038
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 120376034}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 835a211149913264e88634ef8488e261, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Board: {fileID: 120376037}
+  Shape:
+    ShapeKey: 0
+    Tile: {fileID: 0}
+  Cells: []
+  Position: {x: 0, y: 0, z: 0}
+  RotationIndex: 0
 --- !u!1 &298508866
 GameObject:
   m_ObjectHideFlags: 0
@@ -371,7 +427,7 @@ GameObject:
   - component: {fileID: 1157272503}
   m_Layer: 0
   m_Name: Main Camera
-  m_TagString: Untagged
+  m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -469,7 +525,7 @@ Camera:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingPath: -1
-  m_TargetTexture: {fileID: 8400000, guid: 6e492ffc8eda3b0439220c8e1ef6168d, type: 2}
+  m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
   m_TargetEye: 3
   m_HDR: 1
@@ -660,7 +716,7 @@ GameObject:
   - component: {fileID: 1866393472}
   - component: {fileID: 1866393471}
   m_Layer: 0
-  m_Name: Tilemap
+  m_Name: BoardTilemap
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
