@@ -4,7 +4,7 @@ The following is a document describing the development environment we'll be work
 
 ## Unity
 
-Version: 2022.3.43f1
+Version: 2022.3.55f1
 
 > This is the version currently installed on all of the Grid Lab computers, and it throws an Admin prompt whenever you try to install another version. If the Grid Lab gets Unity 6 installed on everything AND Unity 6 is stable and easy, then I suppose we could change. I have no preference, Unity will catch itself on fire no matter what we do.
 
