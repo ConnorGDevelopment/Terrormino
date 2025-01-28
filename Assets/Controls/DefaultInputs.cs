@@ -28,51 +28,6 @@ public partial class @DefaultInputs: IInputActionCollection2, IDisposable
             ""id"": ""1bfac93f-c329-4ab9-a5fc-2f1a1ef8a76a"",
             ""actions"": [
                 {
-                    ""name"": ""Move Left"",
-                    ""type"": ""Button"",
-                    ""id"": ""911676f6-3b85-48b8-99df-e58e7caf1808"",
-                    ""expectedControlType"": """",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""Move Right"",
-                    ""type"": ""Button"",
-                    ""id"": ""b1e6729c-4996-4012-aee2-b90f2980caf8"",
-                    ""expectedControlType"": """",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""Move Down"",
-                    ""type"": ""Button"",
-                    ""id"": ""33ac0fdb-108d-40a9-82d4-ba54ff143c1d"",
-                    ""expectedControlType"": """",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""Rotate Clockwise"",
-                    ""type"": ""Button"",
-                    ""id"": ""c3c3fc9b-3adf-416d-91c9-12b9b2401609"",
-                    ""expectedControlType"": """",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""Rotate Counterclockwise"",
-                    ""type"": ""Button"",
-                    ""id"": ""7692b7cb-98df-443b-b495-debd75a37849"",
-                    ""expectedControlType"": """",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
                     ""name"": ""Drop"",
                     ""type"": ""Button"",
                     ""id"": ""024b1aac-4d0e-48b7-ade9-244c4e310daf"",
@@ -80,64 +35,27 @@ public partial class @DefaultInputs: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Move"",
+                    ""type"": ""PassThrough"",
+                    ""id"": ""9d9ec885-0b34-4165-b47c-14ab648a33c8"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Rotate"",
+                    ""type"": ""PassThrough"",
+                    ""id"": ""798f33bd-bdc8-46c9-847e-34a4411d1acf"",
+                    ""expectedControlType"": ""Axis"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
-                {
-                    ""name"": """",
-                    ""id"": ""5ddd792b-17ed-4b97-b17d-a19e128baa23"",
-                    ""path"": ""<Keyboard>/a"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": "";Keyboard&Mouse"",
-                    ""action"": ""Move Left"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""9cfd72e0-f0e8-4546-ae3a-79f6567b2dad"",
-                    ""path"": ""<Keyboard>/d"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": "";Keyboard&Mouse"",
-                    ""action"": ""Move Right"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""023017fc-9b56-4054-b6d1-db0f478e3357"",
-                    ""path"": ""<Keyboard>/s"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": "";Keyboard&Mouse"",
-                    ""action"": ""Move Down"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""85c863bc-bc4a-47bd-983e-72cce0c8df75"",
-                    ""path"": ""<Keyboard>/q"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": "";Keyboard&Mouse"",
-                    ""action"": ""Rotate Counterclockwise"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""d0c4309e-3928-44f3-8ddc-02b166ea6ead"",
-                    ""path"": ""<Keyboard>/e"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": "";Keyboard&Mouse"",
-                    ""action"": ""Rotate Clockwise"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
                 {
                     ""name"": """",
                     ""id"": ""2b57324c-8172-46d9-b480-29aa8f5bd90d"",
@@ -148,6 +66,149 @@ public partial class @DefaultInputs: IInputActionCollection2, IDisposable
                     ""action"": ""Drop"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""4558e4c6-2458-4dbf-ac20-954215e52df6"",
+                    ""path"": ""<XRController>{LeftHand}/{Primary2DAxisClick}"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";XR"",
+                    ""action"": ""Drop"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""1D Axis"",
+                    ""id"": ""cfb45ba0-cd34-4fa5-b587-a5d209ce9bf8"",
+                    ""path"": ""1DAxis"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Rotate"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""negative"",
+                    ""id"": ""407647fc-a1da-4470-9794-58eaa619c776"",
+                    ""path"": ""<Keyboard>/q"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Keyboard&Mouse"",
+                    ""action"": ""Rotate"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""positive"",
+                    ""id"": ""62a69a8f-2d4c-4984-968e-5a242e7fdde6"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Keyboard&Mouse"",
+                    ""action"": ""Rotate"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""1D Axis"",
+                    ""id"": ""32d88d3c-d1f0-4ee5-846f-3c506021881f"",
+                    ""path"": ""1DAxis"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Rotate"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""negative"",
+                    ""id"": ""bd3c70f5-7d4d-4ac1-a475-7178b4f949a5"",
+                    ""path"": ""<XRController>{RightHand}/{SecondaryButton}"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";XR"",
+                    ""action"": ""Rotate"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""positive"",
+                    ""id"": ""8431184e-2016-44ce-878d-9895cbc626ab"",
+                    ""path"": ""<XRController>{RightHand}/{PrimaryButton}"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";XR"",
+                    ""action"": ""Rotate"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""359dc52a-42de-4477-a24b-3eb75eb1dd9f"",
+                    ""path"": ""<XRController>{LeftHand}/{Primary2DAxis}"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";XR"",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""2D Vector"",
+                    ""id"": ""0a2b4139-341f-46b3-b3f5-18c673a9128b"",
+                    ""path"": ""2DVector"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""up"",
+                    ""id"": ""e860ae21-479d-4b74-aea4-73802003346e"",
+                    ""path"": """",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Keyboard&Mouse"",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""down"",
+                    ""id"": ""578615ca-6237-4b2e-835e-3e3ece7d5ac1"",
+                    ""path"": ""<Keyboard>/s"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Keyboard&Mouse"",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""left"",
+                    ""id"": ""7ed556e3-5619-420c-afaa-87b16001493e"",
+                    ""path"": ""<Keyboard>/a"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Keyboard&Mouse"",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""right"",
+                    ""id"": ""4da5db3b-245a-4651-96cb-2d43f119f080"",
+                    ""path"": ""<Keyboard>/d"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Keyboard&Mouse"",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
                 }
             ]
         }
@@ -217,12 +278,9 @@ public partial class @DefaultInputs: IInputActionCollection2, IDisposable
 }");
         // Tetris
         m_Tetris = asset.FindActionMap("Tetris", throwIfNotFound: true);
-        m_Tetris_MoveLeft = m_Tetris.FindAction("Move Left", throwIfNotFound: true);
-        m_Tetris_MoveRight = m_Tetris.FindAction("Move Right", throwIfNotFound: true);
-        m_Tetris_MoveDown = m_Tetris.FindAction("Move Down", throwIfNotFound: true);
-        m_Tetris_RotateClockwise = m_Tetris.FindAction("Rotate Clockwise", throwIfNotFound: true);
-        m_Tetris_RotateCounterclockwise = m_Tetris.FindAction("Rotate Counterclockwise", throwIfNotFound: true);
         m_Tetris_Drop = m_Tetris.FindAction("Drop", throwIfNotFound: true);
+        m_Tetris_Move = m_Tetris.FindAction("Move", throwIfNotFound: true);
+        m_Tetris_Rotate = m_Tetris.FindAction("Rotate", throwIfNotFound: true);
     }
 
     ~@DefaultInputs()
@@ -289,22 +347,16 @@ public partial class @DefaultInputs: IInputActionCollection2, IDisposable
     // Tetris
     private readonly InputActionMap m_Tetris;
     private List<ITetrisActions> m_TetrisActionsCallbackInterfaces = new List<ITetrisActions>();
-    private readonly InputAction m_Tetris_MoveLeft;
-    private readonly InputAction m_Tetris_MoveRight;
-    private readonly InputAction m_Tetris_MoveDown;
-    private readonly InputAction m_Tetris_RotateClockwise;
-    private readonly InputAction m_Tetris_RotateCounterclockwise;
     private readonly InputAction m_Tetris_Drop;
+    private readonly InputAction m_Tetris_Move;
+    private readonly InputAction m_Tetris_Rotate;
     public struct TetrisActions
     {
         private @DefaultInputs m_Wrapper;
         public TetrisActions(@DefaultInputs wrapper) { m_Wrapper = wrapper; }
-        public InputAction @MoveLeft => m_Wrapper.m_Tetris_MoveLeft;
-        public InputAction @MoveRight => m_Wrapper.m_Tetris_MoveRight;
-        public InputAction @MoveDown => m_Wrapper.m_Tetris_MoveDown;
-        public InputAction @RotateClockwise => m_Wrapper.m_Tetris_RotateClockwise;
-        public InputAction @RotateCounterclockwise => m_Wrapper.m_Tetris_RotateCounterclockwise;
         public InputAction @Drop => m_Wrapper.m_Tetris_Drop;
+        public InputAction @Move => m_Wrapper.m_Tetris_Move;
+        public InputAction @Rotate => m_Wrapper.m_Tetris_Rotate;
         public InputActionMap Get() { return m_Wrapper.m_Tetris; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -314,46 +366,28 @@ public partial class @DefaultInputs: IInputActionCollection2, IDisposable
         {
             if (instance == null || m_Wrapper.m_TetrisActionsCallbackInterfaces.Contains(instance)) return;
             m_Wrapper.m_TetrisActionsCallbackInterfaces.Add(instance);
-            @MoveLeft.started += instance.OnMoveLeft;
-            @MoveLeft.performed += instance.OnMoveLeft;
-            @MoveLeft.canceled += instance.OnMoveLeft;
-            @MoveRight.started += instance.OnMoveRight;
-            @MoveRight.performed += instance.OnMoveRight;
-            @MoveRight.canceled += instance.OnMoveRight;
-            @MoveDown.started += instance.OnMoveDown;
-            @MoveDown.performed += instance.OnMoveDown;
-            @MoveDown.canceled += instance.OnMoveDown;
-            @RotateClockwise.started += instance.OnRotateClockwise;
-            @RotateClockwise.performed += instance.OnRotateClockwise;
-            @RotateClockwise.canceled += instance.OnRotateClockwise;
-            @RotateCounterclockwise.started += instance.OnRotateCounterclockwise;
-            @RotateCounterclockwise.performed += instance.OnRotateCounterclockwise;
-            @RotateCounterclockwise.canceled += instance.OnRotateCounterclockwise;
             @Drop.started += instance.OnDrop;
             @Drop.performed += instance.OnDrop;
             @Drop.canceled += instance.OnDrop;
+            @Move.started += instance.OnMove;
+            @Move.performed += instance.OnMove;
+            @Move.canceled += instance.OnMove;
+            @Rotate.started += instance.OnRotate;
+            @Rotate.performed += instance.OnRotate;
+            @Rotate.canceled += instance.OnRotate;
         }
 
         private void UnregisterCallbacks(ITetrisActions instance)
         {
-            @MoveLeft.started -= instance.OnMoveLeft;
-            @MoveLeft.performed -= instance.OnMoveLeft;
-            @MoveLeft.canceled -= instance.OnMoveLeft;
-            @MoveRight.started -= instance.OnMoveRight;
-            @MoveRight.performed -= instance.OnMoveRight;
-            @MoveRight.canceled -= instance.OnMoveRight;
-            @MoveDown.started -= instance.OnMoveDown;
-            @MoveDown.performed -= instance.OnMoveDown;
-            @MoveDown.canceled -= instance.OnMoveDown;
-            @RotateClockwise.started -= instance.OnRotateClockwise;
-            @RotateClockwise.performed -= instance.OnRotateClockwise;
-            @RotateClockwise.canceled -= instance.OnRotateClockwise;
-            @RotateCounterclockwise.started -= instance.OnRotateCounterclockwise;
-            @RotateCounterclockwise.performed -= instance.OnRotateCounterclockwise;
-            @RotateCounterclockwise.canceled -= instance.OnRotateCounterclockwise;
             @Drop.started -= instance.OnDrop;
             @Drop.performed -= instance.OnDrop;
             @Drop.canceled -= instance.OnDrop;
+            @Move.started -= instance.OnMove;
+            @Move.performed -= instance.OnMove;
+            @Move.canceled -= instance.OnMove;
+            @Rotate.started -= instance.OnRotate;
+            @Rotate.performed -= instance.OnRotate;
+            @Rotate.canceled -= instance.OnRotate;
         }
 
         public void RemoveCallbacks(ITetrisActions instance)
@@ -418,11 +452,8 @@ public partial class @DefaultInputs: IInputActionCollection2, IDisposable
     }
     public interface ITetrisActions
     {
-        void OnMoveLeft(InputAction.CallbackContext context);
-        void OnMoveRight(InputAction.CallbackContext context);
-        void OnMoveDown(InputAction.CallbackContext context);
-        void OnRotateClockwise(InputAction.CallbackContext context);
-        void OnRotateCounterclockwise(InputAction.CallbackContext context);
         void OnDrop(InputAction.CallbackContext context);
+        void OnMove(InputAction.CallbackContext context);
+        void OnRotate(InputAction.CallbackContext context);
     }
 }
