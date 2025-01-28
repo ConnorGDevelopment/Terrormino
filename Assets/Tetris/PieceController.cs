@@ -10,7 +10,7 @@ namespace Tetris
     // Whereas MonoBehaviours is filled with a bunch of optional properties and methods we can use, DefaultInputs.ITetrisActions has required methods that we have to use
     // This makes sure we have handlers written for each action in the control scheme: MoveLeft, MoveRight, Drop, RotateCounterclockwise, RotateClockwise
 
-    public class Tetromino : MonoBehaviour, DefaultInputs.ITetrisActions
+    public class PieceController : MonoBehaviour, DefaultInputs.ITetrisActions
     {
         public Board Board;
         public Shape Shape;
@@ -169,10 +169,7 @@ namespace Tetris
 
         private void Drop()
         {
-            while (Move(Vector2Int.down))
-            {
-                continue;
-            }
+            Move(new(_moveInput.x, _moveInput.y));
 
             Lock();
         }
@@ -181,7 +178,7 @@ namespace Tetris
         {
             Board.Set(this);
             Board.ClearLines();
-            Board.SpawnTetromino();
+            Board.SpawnPiece();
         }
 
         public bool Move(Vector2Int translation)

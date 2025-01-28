@@ -26,7 +26,7 @@ namespace Tetris
         public Vector3Int SpawnPosition = new(-1, 8, 0);
 
         public Shape[] Tetrominoes;
-        public Tetromino ActiveTetromino;
+        public PieceController ActivePiece;
         public Config Config;
 
         public void Awake()
@@ -51,21 +51,21 @@ namespace Tetris
                 }
             }
 
-            ActiveTetromino = GetComponentInChildren<Tetromino>();
+            ActivePiece = GetComponentInChildren<PieceController>();
 
-            SpawnTetromino();
+            SpawnPiece();
         }
 
-        public void SpawnTetromino()
+        public void SpawnPiece()
         {
             int random = Random.Range(0, Tetrominoes.Length);
             Shape shape = Tetrominoes[random];
 
-            ActiveTetromino.Initialize(this, SpawnPosition, shape);
+            ActivePiece.Initialize(this, SpawnPosition, shape);
 
-            if (IsValidPosition(ActiveTetromino, SpawnPosition))
+            if (IsValidPosition(ActivePiece, SpawnPosition))
             {
-                Set(ActiveTetromino);
+                Set(ActivePiece);
             }
             else
             {
@@ -78,7 +78,7 @@ namespace Tetris
             BoardTilemap.ClearAllTiles();
         }
 
-        public void Set(Tetromino tetromino)
+        public void Set(PieceController tetromino)
         {
             for (int i = 0; i < tetromino.Cells.Length; i++)
             {
@@ -87,7 +87,7 @@ namespace Tetris
             }
         }
 
-        public void Clear(Tetromino tetromino)
+        public void Clear(PieceController tetromino)
         {
             for (int i = 0; i < tetromino.Cells.Length; i++)
             {
@@ -96,7 +96,7 @@ namespace Tetris
             }
         }
 
-        public bool IsValidPosition(Tetromino tetromino, Vector3Int position)
+        public bool IsValidPosition(PieceController tetromino, Vector3Int position)
         {
             RectInt bounds = BoardBounds;
 
