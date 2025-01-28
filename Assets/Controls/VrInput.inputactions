@@ -1,0 +1,94 @@
+{
+    "name": "VrInput",
+    "maps": [
+        {
+            "name": "VRController",
+            "id": "7ce41da8-ca20-4f44-8667-8893a43674bb",
+            "actions": [
+                {
+                    "name": "Tetris Rotate",
+                    "type": "Button",
+                    "id": "d5ba79dc-bcb7-45bd-9a85-5170ccceba28",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Tetris Place",
+                    "type": "Button",
+                    "id": "7231ec5d-e181-4133-8ab9-99f43ade64f5",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Tetris Change Block Position",
+                    "type": "Value",
+                    "id": "28728f7d-1481-4909-ab16-5b14f9082400",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "Flashlight Input",
+                    "type": "Button",
+                    "id": "a30307f7-baf1-4064-aa27-666e2aaf3bfe",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "dd0ba0c1-9a47-4c34-9358-25eb726487b0",
+                    "path": "<XRController>{RightHand}/{SecondaryButton}",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Tetris Rotate",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "f0c68e7d-efd6-4245-a609-8f2df2152753",
+                    "path": "<XRController>{RightHand}/{PrimaryButton}",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Tetris Place",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "5f50534e-2579-4a31-88a2-dbac6bf71f39",
+                    "path": "<XRController>{LeftHand}/{Primary2DAxis}",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Tetris Change Block Position",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "54a49d86-0d24-4816-a6c5-f41d22a1c773",
+                    "path": "<XRController>{RightHand}/{PrimaryButton}",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Flashlight Input",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
