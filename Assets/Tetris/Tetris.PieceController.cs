@@ -10,7 +10,7 @@ namespace Tetris
     // Whereas MonoBehaviours is filled with a bunch of optional properties and methods we can use, DefaultInputs.ITetrisActions has required methods that we have to use
     // This makes sure we have handlers written for each action in the control scheme: MoveLeft, MoveRight, Drop, RotateCounterclockwise, RotateClockwise
 
-    public class PieceController : MonoBehaviour, DefaultInputs.ITetrisActions
+    public class PieceController : MonoBehaviour
     {
         public Board Board;
         public Shape Shape;
@@ -32,7 +32,7 @@ namespace Tetris
             {
                 Controls = new DefaultInputs();
                 // We can make Unity handle hooking up all our OnSomething handlers, because we've promised they're all there by implementing DefaultInputs.ITetrisActions
-                Controls.Tetris.SetCallbacks(this);
+                //Controls.Tetris.SetCallbacks(this);
             }
             Controls.Tetris.Enable();
         }
