@@ -11,8 +11,9 @@ namespace Tetris
         public float LockDelay;
     }
 
+    // Is a weird artifact from original version, basically makes sure other scripts run first like the ActivePieceController
     [DefaultExecutionOrder(-1)]
-    public class Board : MonoBehaviour
+    public partial class Board : MonoBehaviour
     {
         public Tilemap BoardTilemap;
         public Vector2Int BoardSize = new(10, 20);
@@ -26,7 +27,7 @@ namespace Tetris
         public Vector3Int SpawnPosition = new(-1, 8, 0);
 
         public Shape[] Tetrominoes;
-        public PieceController ActivePiece;
+        public ActivePieceController ActivePiece;
         public Config Config;
 
         public void Awake()
@@ -51,21 +52,32 @@ namespace Tetris
                 }
             }
 
-            ActivePiece = GetComponentInChildren<PieceController>();
+            if (GetComponentInChildren<ActivePieceController>())
+            {
+                ActivePiece = GetComponentInChildren<ActivePieceController>();
+            }
+            else
+            {
+                Debug.Log("The Piece Controller is not attached to a child object");
+            }
+
 
             SpawnPiece();
         }
 
         public void SpawnPiece()
         {
+            // Currently picks randomly from all potential shapes, could use weighting
             int random = Random.Range(0, Tetrominoes.Length);
             Shape shape = Tetrominoes[random];
 
+            // Pass to the PieceController component
             ActivePiece.Initialize(this, SpawnPosition, shape);
 
+            // If the stack is too high that the new piece can't be legally spawned, game ends
             if (IsValidPosition(ActivePiece, SpawnPosition))
             {
-                Set(ActivePiece);
+                PaintTiles(ActivePiece);
             }
             else
             {
@@ -78,7 +90,7 @@ namespace Tetris
             BoardTilemap.ClearAllTiles();
         }
 
-        public void Set(PieceController tetromino)
+        public void PaintTiles(ActivePieceController tetromino)
         {
             for (int i = 0; i < tetromino.Cells.Length; i++)
             {
@@ -86,8 +98,7 @@ namespace Tetris
                 BoardTilemap.SetTile(tilePosition, tetromino.Shape.Tile);
             }
         }
-
-        public void Clear(PieceController tetromino)
+        public void UnpaintTiles(ActivePieceController tetromino)
         {
             for (int i = 0; i < tetromino.Cells.Length; i++)
             {
@@ -96,7 +107,7 @@ namespace Tetris
             }
         }
 
-        public bool IsValidPosition(PieceController tetromino, Vector3Int position)
+        public bool IsValidPosition(ActivePieceController tetromino, Vector3Int position)
         {
             RectInt bounds = BoardBounds;
 
@@ -116,31 +127,8 @@ namespace Tetris
                 }
             }
 
-            // This only gets called if "return false" wasn't called above
             return true;
         }
-
-        public void ClearLines()
-        {
-            RectInt bounds = BoardBounds;
-            int row = bounds.yMin;
-
-            // Clear from bottom to top
-            while (row < bounds.yMax)
-            {
-                // Only advance to the next row if the current is not cleared
-                // because the tiles above will fall down when a row is cleared
-                if (IsLineFull(row))
-                {
-                    LineClear(row);
-                }
-                else
-                {
-                    row++;
-                }
-            }
-        }
-
         public bool IsLineFull(int row)
         {
             RectInt bounds = BoardBounds;
@@ -159,31 +147,46 @@ namespace Tetris
             return true;
         }
 
-        public void LineClear(int row)
+        public void ClearLines()
         {
             RectInt bounds = BoardBounds;
+            int row = bounds.yMin;
 
-            // Clear all tiles in the row
-            for (int col = bounds.xMin; col < bounds.xMax; col++)
-            {
-                Vector3Int position = new Vector3Int(col, row, 0);
-                BoardTilemap.SetTile(position, null);
-            }
-
-            // Shift every row above down one
+            // Clear from bottom to top
             while (row < bounds.yMax)
             {
-                for (int col = bounds.xMin; col < bounds.xMax; col++)
+                // Only advance to the next row if the current is not cleared
+                // because the tiles above will fall down when a row is cleared
+                if (IsLineFull(row))
                 {
-                    Vector3Int position = new Vector3Int(col, row + 1, 0);
-                    TileBase above = BoardTilemap.GetTile(position);
+                    // Clear all tiles in the row
+                    for (int col = bounds.xMin; col < bounds.xMax; col++)
+                    {
+                        Vector3Int position = new Vector3Int(col, row, 0);
+                        BoardTilemap.SetTile(position, null);
+                    }
 
-                    position = new Vector3Int(col, row, 0);
-                    BoardTilemap.SetTile(position, above);
+                    // Shift every row above down one
+                    while (row < bounds.yMax)
+                    {
+                        for (int col = bounds.xMin; col < bounds.xMax; col++)
+                        {
+                            Vector3Int position = new Vector3Int(col, row + 1, 0);
+                            TileBase above = BoardTilemap.GetTile(position);
+
+                            position = new Vector3Int(col, row, 0);
+                            BoardTilemap.SetTile(position, above);
+                        }
+
+                        row++;
+                    }
                 }
-
-                row++;
+                else
+                {
+                    row++;
+                }
             }
         }
+
     }
 }
