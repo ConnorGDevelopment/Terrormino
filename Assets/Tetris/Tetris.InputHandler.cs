@@ -4,20 +4,37 @@ using UnityEngine.XR.Interaction.Toolkit;
 
 namespace Tetris
 {
-    public partial class Board
+    public class InputHandler : MonoBehaviour
     {
+        // These should be hooked into the grab interactable on either side
+        // Handlers basically check if their side is grabbed before passing the inputs
+        public bool IsDpadSideGrabbed;
+        public bool IsButtonSideGrabbed;
+
+        public ActivePieceController ActivePiece;
+
+        public void Start()
+        {
+            if (ActivePiece == null)
+            {
+                if (GameObject.Find("Board").TryGetComponent(out ActivePieceController activePiece))
+                {
+                    ActivePiece = activePiece;
+                }
+                else
+                {
+                    Debug.Log("The Tetris Input Handler could not locate the the ActivePieceController Board");
+                }
+            }
+        }
+
         public static int RoundToNearestNonZero(float val)
         {
             // Round any positive value to 1, any negative value to -1
             return val > 0 ? 1 : val < 0 ? -1 : 0;
         }
 
-        // These should be hooked into the grab interactable on either side
-        // Handlers basically check if their side is grabbed before passing the inputs
-        public bool IsDpadSideGrabbed;
-        public bool IsButtonSideGrabbed;
-
-        public void OnDpadSideGrabbed(SelectEnterEvent ctx)
+        public void OnDpadSideGrabbed(SelectEnterEventArgs ctx)
         {
             IsDpadSideGrabbed = true;
         }
@@ -26,7 +43,7 @@ namespace Tetris
             IsDpadSideGrabbed = false;
         }
 
-        public void OnButtonSideGrabbed(SelectEnterEvent ctx)
+        public void OnButtonSideGrabbed(SelectEnterEventArgs ctx)
         {
             IsButtonSideGrabbed = true;
         }
@@ -61,4 +78,3 @@ namespace Tetris
         }
     }
 }
-

@@ -115,4 +115,12 @@ namespace Tetris
             WallKicks = ShapeVecs.WallKicks[ShapeKey];
         }
     }
+
+    [System.Serializable]
+    public struct Config
+    {
+        public float StepDelay;
+        public float MoveDelay;
+        public float LockDelay;
+    }
 }

@@ -3,17 +3,7 @@ using UnityEngine.Tilemaps;
 
 namespace Tetris
 {
-    [System.Serializable]
-    public struct Config
-    {
-        public float StepDelay;
-        public float MoveDelay;
-        public float LockDelay;
-    }
-
-    // Is a weird artifact from original version, basically makes sure other scripts run first like the ActivePieceController
-    [DefaultExecutionOrder(-1)]
-    public partial class Board : MonoBehaviour
+    public class Board : MonoBehaviour
     {
         public Tilemap BoardTilemap;
         public Vector2Int BoardSize = new(10, 20);
@@ -58,7 +48,7 @@ namespace Tetris
             }
             else
             {
-                Debug.Log("The Piece Controller is not attached to a child object");
+                Debug.Log("The PieceController is not attached to a child object");
             }
 
 
@@ -187,6 +177,5 @@ namespace Tetris
                 }
             }
         }
-
     }
 }
