@@ -86,6 +86,17 @@
                     "action": "Flashlight Input",
                     "isComposite": false,
                     "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "05d03170-7c08-415f-aee8-f7d2634765ef",
+                    "path": "<XRController>{LeftHand}/{PrimaryButton}",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Flashlight Input",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         }

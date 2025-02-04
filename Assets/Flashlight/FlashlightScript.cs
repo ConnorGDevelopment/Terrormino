@@ -7,15 +7,14 @@ using UnityEngine.XR.Interaction.Toolkit;
 
 public class FlashlightScript : MonoBehaviour
 {
-    [SerializeField] private GameObject FlashlightLight; // Assign your flashlight GameObject in the Inspector
+    [SerializeField] private GameObject FlashLightLight; // Assign your flashlight GameObject in the Inspector
     private bool FlashlightActive = false;
 
 
-    private UnityEngine.XR.InputDevice _device_leftController;
-    private UnityEngine.XR.InputDevice _device_rightController;
 
-    private Vector3 _inputVelocity_leftController;
-    private Vector3 _inputVelocity_rightController;
+    private InputData _inputData;
+
+    private float timer = 10f;
 
 
 
@@ -23,36 +22,62 @@ public class FlashlightScript : MonoBehaviour
     void Start()
     {
 
-
-        _device_leftController = InputDevices.GetDeviceAtXRNode(XRNode.LeftHand);
-        _device_rightController = InputDevices.GetDeviceAtXRNode(XRNode.RightHand);
+        _inputData = GetComponent<InputData>();
+       
 
         // Ensure the flashlight starts off
-        FlashlightLight.SetActive(false);
+        FlashLightLight.SetActive(false);
     }
     void Update()
     {
-        getInput();
 
-        Debug.Log(_inputVelocity_leftController.ToString());
-        Debug.Log (_inputVelocity_rightController.ToString());
+        timer = timer - Time.deltaTime;
+
+        if (timer < 0)
+        {
+            FlashLightLight.SetActive(false);
+        }
+
+
+        
+        if(_inputData._leftController.TryGetFeatureValue(UnityEngine.XR.CommonUsages.deviceVelocity, out Vector3 leftVelocity))
+        {
+            Debug.Log(leftVelocity.magnitude.ToString());
+            if (leftVelocity.magnitude > 1)
+            {
+                timer = 10f;
+            }
+        }
+
+        if (_inputData._leftController.TryGetFeatureValue(UnityEngine.XR.CommonUsages.deviceVelocity, out Vector3 rightVelocity))
+
+        {
+            Debug.Log(rightVelocity.magnitude.ToString());
+
+            if(rightVelocity.magnitude > 1)
+            {
+                timer = 10f;
+            }
+        }
+
+
+
 
     }
 
-    public void getInput()
-    {
-        _device_leftController.TryGetFeatureValue(UnityEngine.XR.CommonUsages.deviceVelocity, out _inputVelocity_leftController);
-        _device_rightController.TryGetFeatureValue(UnityEngine.XR.CommonUsages.deviceVelocity, out _inputVelocity_rightController);
-    }
+   
 
     public void FlashLightButton(InputAction.CallbackContext context)
     {
         // Check if the button is pressed 
         if (context.performed)
         {
+            
+            
             FlashlightActive = !FlashlightActive; // Toggle the flashlight state
-            FlashlightLight.SetActive(FlashlightActive); // Enable or disable the light
+            FlashLightLight.SetActive(FlashlightActive); // Enable or disable the light
             Debug.Log($"Flashlight toggled: {FlashlightActive}");
+            
         }
     }
 }

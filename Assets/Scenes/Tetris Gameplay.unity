@@ -122,6 +122,23 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &14915148 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3396666281392991556, guid: 623cadfc32875d342964e5530dd414db, type: 3}
+  m_PrefabInstance: {fileID: 3766630466015018582}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &14915160
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 14915148}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e8193c4ecc32bc4e822fd59b6b8934e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &120376034
 GameObject:
   m_ObjectHideFlags: 0
@@ -1014,7 +1031,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 7da68fce7cab46141a0baeb6aee3ee88, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2.282
+      value: 1.827
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 7da68fce7cab46141a0baeb6aee3ee88, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1477,7 +1494,6 @@ GameObject:
   - component: {fileID: 908085073}
   - component: {fileID: 908085072}
   - component: {fileID: 908085071}
-  - component: {fileID: 908085076}
   m_Layer: 0
   m_Name: Right Controller
   m_TagString: Untagged
@@ -2123,36 +2139,6 @@ MonoBehaviour:
       m_Flags: 0
     m_Reference: {fileID: -6447266317303757838, guid: c348712bda248c246b8c49b3db54643f, type: 3}
   m_ButtonPressPoint: 0.5
---- !u!114 &908085076
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 908085069}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Actions: {fileID: -944628639613478452, guid: 3168bff7c958dca478b271afb8e2b85e, type: 3}
-  m_NotificationBehavior: 0
-  m_UIInputModule: {fileID: 0}
-  m_DeviceLostEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_DeviceRegainedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ControlsChangedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ActionEvents: []
-  m_NeverAutoSwitchControlSchemes: 0
-  m_DefaultControlScheme: 
-  m_DefaultActionMap: VRController
-  m_SplitScreenIndex: -1
-  m_Camera: {fileID: 0}
 --- !u!1 &1014602834
 GameObject:
   m_ObjectHideFlags: 0
@@ -2263,7 +2249,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1157272506}
   - component: {fileID: 1157272505}
-  - component: {fileID: 1157272504}
   - component: {fileID: 1157272503}
   m_Layer: 0
   m_Name: Main Camera
@@ -2316,14 +2301,6 @@ MonoBehaviour:
     m_MipBias: 0
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
---- !u!81 &1157272504
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1157272502}
-  m_Enabled: 1
 --- !u!20 &1157272505
 Camera:
   m_ObjectHideFlags: 0
@@ -2404,7 +2381,6 @@ GameObject:
   - component: {fileID: 1291687975}
   - component: {fileID: 1291687974}
   - component: {fileID: 1291687973}
-  - component: {fileID: 1291687978}
   m_Layer: 0
   m_Name: Left Controller
   m_TagString: Untagged
@@ -3050,36 +3026,6 @@ MonoBehaviour:
       m_Flags: 0
     m_Reference: {fileID: -1636515391019944688, guid: c348712bda248c246b8c49b3db54643f, type: 3}
   m_ButtonPressPoint: 0.5
---- !u!114 &1291687978
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1291687971}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Actions: {fileID: -944628639613478452, guid: 3168bff7c958dca478b271afb8e2b85e, type: 3}
-  m_NotificationBehavior: 0
-  m_UIInputModule: {fileID: 0}
-  m_DeviceLostEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_DeviceRegainedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ControlsChangedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ActionEvents: []
-  m_NeverAutoSwitchControlSchemes: 0
-  m_DefaultControlScheme: 
-  m_DefaultActionMap: VRController
-  m_SplitScreenIndex: -1
-  m_Camera: {fileID: 0}
 --- !u!1 &1487931747
 GameObject:
   m_ObjectHideFlags: 0
@@ -6066,7 +6012,7 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2054332144}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1001 &8858030421030792183
+--- !u!1001 &3766630466015018582
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -6074,343 +6020,62 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1380906359648088428, guid: 50ee17b9924053f4f8613094409fe96c, type: 3}
-      propertyPath: m_Range
-      value: 18
-      objectReference: {fileID: 0}
-    - target: {fileID: 1380906359648088428, guid: 50ee17b9924053f4f8613094409fe96c, type: 3}
-      propertyPath: m_Cookie
-      value: 
-      objectReference: {fileID: 2800000, guid: a48a2e7ef9898bd4e848a9ec4be9a647, type: 3}
-    - target: {fileID: 1380906359648088428, guid: 50ee17b9924053f4f8613094409fe96c, type: 3}
-      propertyPath: m_DrawHalo
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2343647663149642645, guid: 50ee17b9924053f4f8613094409fe96c, type: 3}
+    - target: {fileID: 2623541740237862910, guid: 623cadfc32875d342964e5530dd414db, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.9009693
+      value: 1.8175086
       objectReference: {fileID: 0}
-    - target: {fileID: 2343647663149642645, guid: 50ee17b9924053f4f8613094409fe96c, type: 3}
+    - target: {fileID: 2623541740237862910, guid: 623cadfc32875d342964e5530dd414db, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.394148
+      value: 3.39
       objectReference: {fileID: 0}
-    - target: {fileID: 2343647663149642645, guid: 50ee17b9924053f4f8613094409fe96c, type: 3}
+    - target: {fileID: 2623541740237862910, guid: 623cadfc32875d342964e5530dd414db, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -55.61246
+      value: -54.685905
       objectReference: {fileID: 0}
-    - target: {fileID: 2343647663149642645, guid: 50ee17b9924053f4f8613094409fe96c, type: 3}
+    - target: {fileID: 2623541740237862910, guid: 623cadfc32875d342964e5530dd414db, type: 3}
       propertyPath: m_LocalRotation.w
-      value: -0.6896465
+      value: -0.6908573
       objectReference: {fileID: 0}
-    - target: {fileID: 2343647663149642645, guid: 50ee17b9924053f4f8613094409fe96c, type: 3}
+    - target: {fileID: 2623541740237862910, guid: 623cadfc32875d342964e5530dd414db, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.0499524
+      value: 0.029309826
       objectReference: {fileID: 0}
-    - target: {fileID: 2343647663149642645, guid: 50ee17b9924053f4f8613094409fe96c, type: 3}
+    - target: {fileID: 2623541740237862910, guid: 623cadfc32875d342964e5530dd414db, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.05218997
+      value: 0.032430556
       objectReference: {fileID: 0}
-    - target: {fileID: 2343647663149642645, guid: 50ee17b9924053f4f8613094409fe96c, type: 3}
+    - target: {fileID: 2623541740237862910, guid: 623cadfc32875d342964e5530dd414db, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.7205336
+      value: -0.72166854
       objectReference: {fileID: 0}
-    - target: {fileID: 2343647663149642645, guid: 50ee17b9924053f4f8613094409fe96c, type: 3}
+    - target: {fileID: 2623541740237862910, guid: 623cadfc32875d342964e5530dd414db, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: 0.362
       objectReference: {fileID: 0}
-    - target: {fileID: 2343647663149642645, guid: 50ee17b9924053f4f8613094409fe96c, type: 3}
+    - target: {fileID: 2623541740237862910, guid: 623cadfc32875d342964e5530dd414db, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: -368.278
+      value: -4.998
       objectReference: {fileID: 0}
-    - target: {fileID: 2343647663149642645, guid: 50ee17b9924053f4f8613094409fe96c, type: 3}
+    - target: {fileID: 2623541740237862910, guid: 623cadfc32875d342964e5530dd414db, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 92.483
       objectReference: {fileID: 0}
-    - target: {fileID: 3623978132207352527, guid: 50ee17b9924053f4f8613094409fe96c, type: 3}
-      propertyPath: m_Name
-      value: Spot Light
-      objectReference: {fileID: 0}
-    - target: {fileID: 5445953044522926641, guid: 50ee17b9924053f4f8613094409fe96c, type: 3}
+    - target: {fileID: 3396666281392991556, guid: 623cadfc32875d342964e5530dd414db, type: 3}
       propertyPath: m_Name
       value: Flashlight
+      objectReference: {fileID: 0}
+    - target: {fileID: 7914198392826042650, guid: 623cadfc32875d342964e5530dd414db, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 5445953044522926641, guid: 50ee17b9924053f4f8613094409fe96c, type: 3}
+    - targetCorrespondingSourceObject: {fileID: 3396666281392991556, guid: 623cadfc32875d342964e5530dd414db, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 8858030421030792187}
-    - targetCorrespondingSourceObject: {fileID: 5445953044522926641, guid: 50ee17b9924053f4f8613094409fe96c, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 8858030421030792186}
-    - targetCorrespondingSourceObject: {fileID: 5445953044522926641, guid: 50ee17b9924053f4f8613094409fe96c, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 8858030421030792189}
-    - targetCorrespondingSourceObject: {fileID: 5445953044522926641, guid: 50ee17b9924053f4f8613094409fe96c, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 8858030421030792188}
-  m_SourcePrefab: {fileID: 100100000, guid: 50ee17b9924053f4f8613094409fe96c, type: 3}
---- !u!1 &8858030421030792184 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5445953044522926641, guid: 50ee17b9924053f4f8613094409fe96c, type: 3}
-  m_PrefabInstance: {fileID: 8858030421030792183}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &8858030421030792185 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3623978132207352527, guid: 50ee17b9924053f4f8613094409fe96c, type: 3}
-  m_PrefabInstance: {fileID: 8858030421030792183}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &8858030421030792186
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8858030421030792184}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Actions: {fileID: -944628639613478452, guid: 3168bff7c958dca478b271afb8e2b85e, type: 3}
-  m_NotificationBehavior: 2
-  m_UIInputModule: {fileID: 0}
-  m_DeviceLostEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_DeviceRegainedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ControlsChangedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ActionEvents:
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: d5ba79dc-bcb7-45bd-9a85-5170ccceba28
-    m_ActionName: VRController/Tetris Rotate
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 7231ec5d-e181-4133-8ab9-99f43ade64f5
-    m_ActionName: VRController/Tetris Place
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 28728f7d-1481-4909-ab16-5b14f9082400
-    m_ActionName: VRController/Tetris Change Block Position
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 8858030421030792187}
-        m_TargetAssemblyTypeName: FlashlightScript, Assembly-CSharp
-        m_MethodName: FlashLightButton
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_ActionId: a30307f7-baf1-4064-aa27-666e2aaf3bfe
-    m_ActionName: VRController/Flashlight Input
-  m_NeverAutoSwitchControlSchemes: 0
-  m_DefaultControlScheme: 
-  m_DefaultActionMap: VRController
-  m_SplitScreenIndex: -1
-  m_Camera: {fileID: 0}
---- !u!114 &8858030421030792187
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8858030421030792184}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 70e60c4bf1bdbaf43b2abf782f0183a8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  FlashlightLight: {fileID: 8858030421030792185}
---- !u!114 &8858030421030792188
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8858030421030792184}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0ad34abafad169848a38072baa96cdb2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_InteractionManager: {fileID: 669044181}
-  m_Colliders: []
-  m_InteractionLayerMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_InteractionLayers:
-    m_Bits: 1
-  m_DistanceCalculationMode: 1
-  m_SelectMode: 0
-  m_FocusMode: 1
-  m_CustomReticle: {fileID: 0}
-  m_AllowGazeInteraction: 0
-  m_AllowGazeSelect: 0
-  m_OverrideGazeTimeToSelect: 0
-  m_GazeTimeToSelect: 0.5
-  m_OverrideTimeToAutoDeselectGaze: 0
-  m_TimeToAutoDeselectGaze: 3
-  m_AllowGazeAssistance: 0
-  m_FirstHoverEntered:
-    m_PersistentCalls:
-      m_Calls: []
-  m_LastHoverExited:
-    m_PersistentCalls:
-      m_Calls: []
-  m_HoverEntered:
-    m_PersistentCalls:
-      m_Calls: []
-  m_HoverExited:
-    m_PersistentCalls:
-      m_Calls: []
-  m_FirstSelectEntered:
-    m_PersistentCalls:
-      m_Calls: []
-  m_LastSelectExited:
-    m_PersistentCalls:
-      m_Calls: []
-  m_SelectEntered:
-    m_PersistentCalls:
-      m_Calls: []
-  m_SelectExited:
-    m_PersistentCalls:
-      m_Calls: []
-  m_FirstFocusEntered:
-    m_PersistentCalls:
-      m_Calls: []
-  m_LastFocusExited:
-    m_PersistentCalls:
-      m_Calls: []
-  m_FocusEntered:
-    m_PersistentCalls:
-      m_Calls: []
-  m_FocusExited:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Activated:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Deactivated:
-    m_PersistentCalls:
-      m_Calls: []
-  m_StartingHoverFilters: []
-  m_StartingSelectFilters: []
-  m_StartingInteractionStrengthFilters: []
-  m_OnFirstHoverEntered:
-    m_PersistentCalls:
-      m_Calls: []
-  m_OnLastHoverExited:
-    m_PersistentCalls:
-      m_Calls: []
-  m_OnHoverEntered:
-    m_PersistentCalls:
-      m_Calls: []
-  m_OnHoverExited:
-    m_PersistentCalls:
-      m_Calls: []
-  m_OnSelectEntered:
-    m_PersistentCalls:
-      m_Calls: []
-  m_OnSelectExited:
-    m_PersistentCalls:
-      m_Calls: []
-  m_OnSelectCanceled:
-    m_PersistentCalls:
-      m_Calls: []
-  m_OnActivate:
-    m_PersistentCalls:
-      m_Calls: []
-  m_OnDeactivate:
-    m_PersistentCalls:
-      m_Calls: []
-  m_AttachTransform: {fileID: 0}
-  m_SecondaryAttachTransform: {fileID: 0}
-  m_UseDynamicAttach: 0
-  m_MatchAttachPosition: 1
-  m_MatchAttachRotation: 1
-  m_SnapToColliderVolume: 1
-  m_ReinitializeDynamicAttachEverySingleGrab: 1
-  m_AttachEaseInTime: 0.15
-  m_MovementType: 2
-  m_VelocityDamping: 1
-  m_VelocityScale: 1
-  m_AngularVelocityDamping: 1
-  m_AngularVelocityScale: 1
-  m_TrackPosition: 1
-  m_SmoothPosition: 0
-  m_SmoothPositionAmount: 8
-  m_TightenPosition: 0.1
-  m_TrackRotation: 1
-  m_SmoothRotation: 0
-  m_SmoothRotationAmount: 8
-  m_TightenRotation: 0.1
-  m_TrackScale: 1
-  m_SmoothScale: 0
-  m_SmoothScaleAmount: 8
-  m_TightenScale: 0.1
-  m_ThrowOnDetach: 1
-  m_ThrowSmoothingDuration: 0.25
-  m_ThrowSmoothingCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 1
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  m_ThrowVelocityScale: 1.5
-  m_ThrowAngularVelocityScale: 1
-  m_ForceGravityOnDetach: 0
-  m_RetainTransformParent: 1
-  m_AttachPointCompatibilityMode: 0
-  m_StartingSingleGrabTransformers: []
-  m_StartingMultipleGrabTransformers: []
-  m_AddDefaultGrabTransformers: 1
---- !u!54 &8858030421030792189
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8858030421030792184}
-  serializedVersion: 4
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_CenterOfMass: {x: 0, y: 0, z: 0}
-  m_InertiaTensor: {x: 1, y: 1, z: 1}
-  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ImplicitCom: 1
-  m_ImplicitTensor: 1
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
+      addedObject: {fileID: 14915160}
+  m_SourcePrefab: {fileID: 100100000, guid: 623cadfc32875d342964e5530dd414db, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -6424,8 +6089,8 @@ SceneRoots:
   - {fileID: 1487931750}
   - {fileID: 669044182}
   - {fileID: 365126029}
-  - {fileID: 8858030421030792183}
   - {fileID: 815733457}
   - {fileID: 1048765272}
   - {fileID: 1713461723}
   - {fileID: 841920376}
+  - {fileID: 3766630466015018582}
