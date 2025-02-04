@@ -6,6 +6,10 @@ namespace Tetris
     public class Board : MonoBehaviour
     {
         public Tilemap BoardTilemap;
+        public Shape[] Tetrominoes;
+        public ActivePieceController ActivePiece;
+        public Config Config;
+
         public Vector2Int BoardSize = new(10, 20);
         public RectInt BoardBounds
         {
@@ -16,9 +20,7 @@ namespace Tetris
         }
         public Vector3Int SpawnPosition = new(-1, 8, 0);
 
-        public Shape[] Tetrominoes;
-        public ActivePieceController ActivePiece;
-        public Config Config;
+        
 
         public void Awake()
         {

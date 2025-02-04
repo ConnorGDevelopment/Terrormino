@@ -28,8 +28,8 @@ namespace Tetris
 
         public void Start()
         {
-            Move.AddListener(OnMove);
-            Rotate.AddListener(OnRotate);
+            Move.AddListener(HandleMove);
+            Rotate.AddListener(HandleRotate);
         }
 
         public void Initialize(Board board, Vector3Int position, Shape shape)
@@ -71,7 +71,7 @@ namespace Tetris
         {
             _stepTime = Time.time + Board.Config.StepDelay;
 
-            OnMove(Vector2Int.down);
+            HandleMove(Vector2Int.down);
 
             if (_lockTime >= Board.Config.LockDelay)
             {
@@ -86,7 +86,7 @@ namespace Tetris
             Board.SpawnPiece();
         }
 
-        public void OnMove(Vector2Int moveInput)
+        public void HandleMove(Vector2Int moveInput)
         {
             Vector3Int newPosition = Position;
 
@@ -101,7 +101,7 @@ namespace Tetris
             }
         }
 
-        public void OnRotate(int rotateInput)
+        public void HandleRotate(int rotateInput)
         {
             // Stores original rotation as fallback
             int originalRotation = RotationIndex;

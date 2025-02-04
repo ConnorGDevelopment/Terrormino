@@ -4,8 +4,9 @@ using UnityEngine.XR.Interaction.Toolkit;
 
 namespace Tetris
 {
-    public class InputHandler : MonoBehaviour
+    public class InputHandler : MonoBehaviour, DefaultInputs.ITetrisActions
     {
+        private DefaultInputs _tetrisActions;
         // These should be hooked into the grab interactable on either side
         // Handlers basically check if their side is grabbed before passing the inputs
         public bool IsDpadSideGrabbed;
@@ -53,7 +54,7 @@ namespace Tetris
         }
 
         // ctx.action.WasPerformedThisFrame() checks if the input given is new or stale
-        public void HandleMove(InputAction.CallbackContext ctx)
+        public void OnMove(InputAction.CallbackContext ctx)
         {
             if (ctx.action.WasPerformedThisFrame() && IsDpadSideGrabbed)
             {
@@ -66,15 +67,20 @@ namespace Tetris
                                 )
                             ));
             }
-            // TODO: Handle fast drop via holding down input
         }
 
-        public void HandleRotate(InputAction.CallbackContext ctx)
+        public void OnRotate(InputAction.CallbackContext ctx)
         {
             if (ctx.action.WasPerformedThisFrame() && IsButtonSideGrabbed)
             {
                 ActivePiece.Rotate.Invoke(RoundToNearestNonZero(ctx.ReadValue<float>()));
             }
+        }
+
+        public void OnDrop(InputAction.CallbackContext context)
+        {
+            // TODO: Implement OnDrop
+            Debug.Log("OnDrop Not Actually Implemented");
         }
     }
 }
