@@ -15,7 +15,7 @@ public class FlashlightScript : MonoBehaviour
     private bool inHand = false;
     private InputData _inputData;
 
-    private float _pastTime = 0.5f;
+    private float _pastTime = 0.25f;
     private float _battery = 10f;
 
     private Vector3 PastLeftVelocity = Vector3.zero;
@@ -46,44 +46,72 @@ public class FlashlightScript : MonoBehaviour
 
         _pastTime -= Time.deltaTime;
 
-        // Store past velocity every 0.5s
-        if (_pastTime <= 0)
-        {
-            if (_inputData._leftController.TryGetFeatureValue(UnityEngine.XR.CommonUsages.deviceVelocity, out Vector3 currentLeftVelocity))
-            {
-                PastLeftVelocity = currentLeftVelocity;
-            }
-
-            if (_inputData._rightController.TryGetFeatureValue(UnityEngine.XR.CommonUsages.deviceVelocity, out Vector3 currentRightVelocity))
-            {
-                PastRightVelocity = currentRightVelocity;
-            }
-
-            _pastTime = 0.5f; // Reset the timer
-        }
+       
 
         // Measure change in left controller velocity
-        if (_inputData._leftController.TryGetFeatureValue(UnityEngine.XR.CommonUsages.deviceVelocity, out Vector3 leftVelocity))
+        if (_pastTime <= 0)
         {
-            float LeftMagnitudeChange = Mathf.Abs(leftVelocity.magnitude - PastLeftVelocity.magnitude);
-            Debug.Log($"Left Magnitude Change: {LeftMagnitudeChange}");
-
-            if (LeftMagnitudeChange > 0.5f) // Sensitivity threshold
+            if (_inputData._leftController.TryGetFeatureValue(UnityEngine.XR.CommonUsages.deviceVelocity, out Vector3 leftVelocity))
             {
-                _battery = 10f;
+                float pastMagnitude = PastLeftVelocity.magnitude;
+                float currentMagnitude = leftVelocity.magnitude;
+
+                if (pastMagnitude > 0) //checking to make sure we arent dividing by 0
+                {
+                    float LeftPercentageIncrease = Mathf.Abs((currentMagnitude - pastMagnitude) / pastMagnitude) * 100f; //Math for checking the percentage increase between past magnitude and current magnitude
+                    Debug.Log(LeftPercentageIncrease);
+
+                    if (LeftPercentageIncrease > 50f) //checking to see if the current magnitude increased by 50%
+                    {
+                        _battery = 10f;
+                        Debug.Log("Left charged the battery");
+                    }
+                }
             }
-        }
 
-        // Measure change in right controller velocity
-        if (_inputData._rightController.TryGetFeatureValue(UnityEngine.XR.CommonUsages.deviceVelocity, out Vector3 rightVelocity))
-        {
-            float RightMagnitudeChange = Mathf.Abs(rightVelocity.magnitude - PastRightVelocity.magnitude);
-            //Debug.Log($"Right Magnitude Change: {RightMagnitudeChange}");
-
-            if (RightMagnitudeChange > 0.5f)
+            // Measure change in right controller velocity
+            if (_inputData._rightController.TryGetFeatureValue(UnityEngine.XR.CommonUsages.deviceVelocity, out Vector3 rightVelocity))
             {
-                _battery = 10f;
+
+                float pastMagnitude = PastRightVelocity.magnitude;
+                float currentMagnitude = rightVelocity.magnitude;
+
+                if (pastMagnitude > 0) //checking to make sure we arent dividing by 0
+                {
+                    float RightPercentageIncrease = Mathf.Abs((currentMagnitude - pastMagnitude) / pastMagnitude) * 100f;   //Math for checking the percentage increase between past magnitude and current magnitude
+                    Debug.Log(RightPercentageIncrease);
+
+
+                    if (RightPercentageIncrease > 50f) //checking to see if the current right magnitude increased by 50%
+                    {
+                        _battery = 10f;
+                        Debug.Log("Right charged the battery");
+                    }
+
+
+                }
             }
+
+
+
+            // Store past velocity every 0.5s
+            if (_pastTime <= 0)
+            {
+                if (_inputData._leftController.TryGetFeatureValue(UnityEngine.XR.CommonUsages.deviceVelocity, out Vector3 currentLeftVelocity))
+                {
+                    PastLeftVelocity = currentLeftVelocity;
+                }
+
+                if (_inputData._rightController.TryGetFeatureValue(UnityEngine.XR.CommonUsages.deviceVelocity, out Vector3 currentRightVelocity))
+                {
+                    PastRightVelocity = currentRightVelocity;
+                }
+
+
+            }
+
+
+            _pastTime = 0.25f; // Reset the timer
         }
     }
 
