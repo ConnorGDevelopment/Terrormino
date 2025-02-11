@@ -36,12 +36,12 @@ public class InputData : MonoBehaviour
 
         if (!_leftController.isValid)
         {
-            InitializeInputDevice(InputDeviceCharacteristics.Controller | InputDeviceCharacteristics.Right, ref _leftController);
+            InitializeInputDevice(InputDeviceCharacteristics.Controller | InputDeviceCharacteristics.Left, ref _leftController);
         }
 
         if (!_HMD.isValid)
         {
-            InitializeInputDevice(InputDeviceCharacteristics.Controller | InputDeviceCharacteristics.Right, ref _HMD);
+            InitializeInputDevice(InputDeviceCharacteristics.HeadMounted, ref _HMD);
         }
 
 

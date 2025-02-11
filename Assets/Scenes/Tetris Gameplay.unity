@@ -127,18 +127,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 3396666281392991556, guid: 623cadfc32875d342964e5530dd414db, type: 3}
   m_PrefabInstance: {fileID: 3766630466015018582}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &14915160
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 14915148}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5e8193c4ecc32bc4e822fd59b6b8934e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &14915163 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7914198392826042650, guid: 623cadfc32875d342964e5530dd414db, type: 3}
@@ -148,6 +136,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 70e60c4bf1bdbaf43b2abf782f0183a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &14915169
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 14915148}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e8193c4ecc32bc4e822fd59b6b8934e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &120376034
@@ -6135,13 +6135,17 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7914198392826042650, guid: 623cadfc32875d342964e5530dd414db, type: 3}
+      propertyPath: _inputData
+      value: 
+      objectReference: {fileID: 14915169}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 3396666281392991556, guid: 623cadfc32875d342964e5530dd414db, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 14915160}
+      addedObject: {fileID: 14915169}
   m_SourcePrefab: {fileID: 100100000, guid: 623cadfc32875d342964e5530dd414db, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
