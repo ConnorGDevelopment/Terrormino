@@ -15,15 +15,21 @@ public class FlashlightScript : MonoBehaviour
     private bool inHand = false;
     [SerializeField] private InputData _inputData;
 
-    private float _pastTime = 0.25f;
-    private float _battery = 10f;
+    private float _pastTime = 0.25f;   //Measuring the velocity of the controller every 0.25 seconds
+    private float _battery = 10f;     //battery life
 
 
-    private float smoothingFactor = 0.2f;
+    private float smoothingFactor = 0.2f; //helping with noise from the controllers
 
 
-    private Vector3 PastLeftVelocity = Vector3.zero;
+    private Vector3 PastLeftVelocity = Vector3.zero;  //tracking the past velocity for measuring % change to current velocity
     private Vector3 PastRightVelocity = Vector3.zero;
+
+
+    [SerializeField] private GameObject LightBox;
+
+
+
 
 
     // Start is called before the first frame update
@@ -41,12 +47,16 @@ public class FlashlightScript : MonoBehaviour
 
         // Ensure the flashlight starts off
         FlashLightLight.SetActive(false);
+
+
+
     }
     void Update()
     {
         if (inHand)  // Flashlight battery drains when held
         {
             _battery -= Time.deltaTime;
+            
         }
 
         if (_battery < 0) // Battery dies
@@ -68,13 +78,13 @@ public class FlashlightScript : MonoBehaviour
             float currentRightMagnitude = rightVelocity.magnitude;
             PastRightVelocity = Vector3.Lerp(PastRightVelocity, rightVelocity, smoothingFactor);
 
-            if (pastRightMagnitude > 0.1f) //checking to make sure we arent dividing by 0
+            if (pastRightMagnitude > 0.1f) //checking to make sure we arent dividing by an insignificant amount to filter out noise
             {
                 float RightPercentageIncrease = Mathf.Abs((currentRightMagnitude - pastRightMagnitude) / pastRightMagnitude) * 100f;   //Math for checking the percentage increase between past magnitude and current magnitude
-                Debug.Log(RightPercentageIncrease);
+                //Debug.Log(RightPercentageIncrease);
 
 
-                if (RightPercentageIncrease >= 175f && currentRightMagnitude > 0.5f) //checking to see if the current right magnitude increased by 50%
+                if (RightPercentageIncrease >= 175f && currentRightMagnitude > 0.6f) //checking to see if the current right magnitude increased by 50%
                 {
                     _battery = 10f;
                     Debug.Log("Right charged the battery");
@@ -96,13 +106,13 @@ public class FlashlightScript : MonoBehaviour
             float currentLeftMagnitude = leftVelocity.magnitude;
             PastLeftVelocity = Vector3.Lerp(PastLeftVelocity, leftVelocity, smoothingFactor);
 
-            if (pastLeftMagnitude > 0.1f) //checking to make sure we arent dividing by 0 and filtering out noise
+            if (pastLeftMagnitude > 0.1f) //checking to make sure we arent dividing by an insignificant amount and filtering out noise
             {
                 float LeftPercentageIncrease = Mathf.Abs((currentLeftMagnitude - pastLeftMagnitude) / pastLeftMagnitude) * 100f;   //Math for checking the percentage increase between past magnitude and current magnitude
-                Debug.Log(LeftPercentageIncrease);
+                //Debug.Log(LeftPercentageIncrease);
 
 
-                if (LeftPercentageIncrease >= 175f && currentLeftMagnitude > 0.5f) //checking to see if the current right magnitude increased by 50%
+                if (LeftPercentageIncrease >= 175f && currentLeftMagnitude > 0.6f) //checking to see if the current right magnitude increased by 50%
                 {
                     _battery = 10f;
                     Debug.Log("Left charged the battery");
@@ -183,4 +193,9 @@ public class FlashlightScript : MonoBehaviour
             
         }
     }
+
+
+    
+
+
 }
