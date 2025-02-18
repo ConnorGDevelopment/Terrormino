@@ -36,15 +36,25 @@ public class FlashlightTrigger : MonoBehaviour
             if (other.tag == "Enemy")
             {
                 LightOnEnemy = true;
-                if (SpookEnemy == true)
-                {
-                    Debug.Log("RAAAAAAAAAHHHH");
-                    LightTimer = 3f;
-                    SpookEnemy = false;
-
-
-                }
                 
+            }
+        }
+    }
+
+
+
+
+    private void OnTriggerStay(Collider other)
+    {
+        if(_flashlightscript.FlashlightActive == true)
+        {
+            if (SpookEnemy == true)
+            {
+                Debug.Log("RAAAAAAAAAHHHH");
+                LightTimer = 3f;
+                SpookEnemy = false;
+
+
             }
         }
     }
@@ -58,6 +68,7 @@ public class FlashlightTrigger : MonoBehaviour
             if(other.tag == "Enemy")
             {
                 LightOnEnemy = false;
+                SpookEnemy = false;
             }
         }
     }

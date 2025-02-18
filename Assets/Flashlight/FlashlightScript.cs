@@ -52,7 +52,7 @@ public class FlashlightScript : MonoBehaviour
     }
     void Update()
     {
-        if (inHand)  // Flashlight battery drains when held
+        if (inHand && FlashlightActive == true)  // Flashlight battery drains when held
         {
             _battery -= Time.deltaTime;
             
@@ -167,7 +167,7 @@ public class FlashlightScript : MonoBehaviour
                 //Debug.Log(RightPercentageIncrease);
 
 
-                if (RightPercentageIncrease >= 175f && currentRightMagnitude > 0.6f) //checking to see if the current right magnitude increased by 50%
+                if (RightPercentageIncrease >= 225f && currentRightMagnitude > 0.7f && inHand) //checking to see if the current right magnitude increased by 50%
                 {
                     _battery = 10f;
                     Debug.Log("Right charged the battery");
@@ -197,7 +197,7 @@ public class FlashlightScript : MonoBehaviour
                 //Debug.Log(LeftPercentageIncrease);
 
 
-                if (LeftPercentageIncrease >= 175f && currentLeftMagnitude > 0.6f) //checking to see if the current right magnitude increased by 50%
+                if (LeftPercentageIncrease >= 225f && currentLeftMagnitude > 0.7f && inHand) //checking to see if the current right magnitude increased by 50%
                 {
                     _battery = 10f;
                     Debug.Log("Left charged the battery");
