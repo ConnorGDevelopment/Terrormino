@@ -1,0 +1,71 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2841131373596262681
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5176357389311116115}
+  - component: {fileID: 8553461592281189561}
+  - component: {fileID: 879977645664883135}
+  m_Layer: 0
+  m_Name: LightInteractor
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5176357389311116115
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2841131373596262681}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0.012093028, y: -0.0033364291, z: 0.05831798, w: -0.9982193}
+  m_LocalPosition: {x: 4.507739, y: 4.549578, z: -38.586773}
+  m_LocalScale: {x: 14.292782, y: 10.972096, z: 16.542494}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 1.406, y: 0.301, z: -6.683}
+--- !u!136 &8553461592281189561
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2841131373596262681}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 2.6969378
+  m_Height: 13.484694
+  m_Direction: 1
+  m_Center: {x: -0.111712, y: 5.8216186, z: 2.3137925}
+--- !u!114 &879977645664883135
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2841131373596262681}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1f2fd9559ab0c943ba2e51c0e8ccd5a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flashlightscript: {fileID: 7914198392826042650, guid: 623cadfc32875d342964e5530dd414db, type: 3}
