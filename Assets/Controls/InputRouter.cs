@@ -4,54 +4,53 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
+using UnityEngine.XR.Interaction.Toolkit;
 
 namespace TerrorminoControls
 {
     [Serializable]
     public class InputRoute
     {
-        public InputActionReference m_inputAction;
+        public InputActionReference ActionRef;
         public List<UnityEvent<object>> Outputs = new();
     }
 
     public class InputRouter : MonoBehaviour
     {
-        public GameObject watchGrabTarget;
-        public bool IsGrabbed { get; private set; }
+        public InputActionMap ActionMap;
+        public bool IsGrabbed = false;
 
-        public UnityEvent GrabStateChanged;
+        public List<InputRoute> Routes = new();
 
-        public void ToggleGrab(bool grabbed)
+        public void OnSelectEnter(SelectEnterEventArgs _)
         {
-            IsGrabbed = grabbed;
-            GrabStateChanged.Invoke();
+            IsGrabbed = true;
         }
-
-        public List<InputRoute> routes = new();
-        public InputActionMap m_actionMap;
-
-        public void Start()
+        public void OnSelectExit(SelectExitEventArgs _)
         {
-            DebugHelpers.CheckIfSetInInspector(gameObject, watchGrabTarget, "Watch Grab Target");
+            IsGrabbed = false;
         }
 
         public void Update()
         {
-            // Prefilter this to only care about actions that are featured on a route
-            foreach (var action in m_actionMap)
+            if (IsGrabbed)
             {
-                if (action.WasPerformedThisFrame())
-                {
-                    var matchedOutputs = routes.FindAll((route) => route.m_inputAction.action == action).SelectMany((route) => route.Outputs);
-
-                    foreach (var output in matchedOutputs)
-                    {
-                        output.Invoke(action.ReadValueAsObject());
-                    }
-                }
+                // Take list of routes and get the list of actions we actually care about
+                Routes.Select(route => route.ActionRef.action)
+               .ToList()
+               .ForEach(action =>
+               {
+                   // Check if each of those action was performed the frame
+                   if (action.WasPerformedThisFrame())
+                   {
+                       // Filter routes by the action we're currently checking
+                       Routes.FindAll(route => route.ActionRef.action == action)
+                           .ToList()
+                           // For each route, invoke each output with action value
+                           .ForEach(route => route.Outputs.ForEach(output => output.Invoke(action.ReadValueAsObject())));
+                   }
+               });
             }
-
         }
-
     }
 }
