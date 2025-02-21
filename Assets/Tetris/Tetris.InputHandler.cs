@@ -4,7 +4,7 @@ using UnityEngine.XR.Interaction.Toolkit;
 
 namespace Tetris
 {
-    public class InputHandler : MonoBehaviour, DefaultInputs.ITetrisActions
+    public class InputHandler : MonoBehaviour
     {
         private DefaultInputs _tetrisActions;
         // These should be hooked into the grab interactable on either side
@@ -26,6 +26,7 @@ namespace Tetris
                 {
                     Debug.Log("The Tetris Input Handler could not locate the the ActivePieceController Board");
                 }
+                ActivePiece = DebugHelpers.TryFindComponent<ActivePieceController>(GameObject.Find("Board"));
             }
         }
 
