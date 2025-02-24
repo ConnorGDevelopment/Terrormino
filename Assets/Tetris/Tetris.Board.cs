@@ -9,7 +9,6 @@ namespace Tetris
         public Shape[] Tetrominoes;
         public ActivePieceController ActivePiece;
         public Config Config;
-
         public Vector2Int BoardSize = new(10, 20);
         public RectInt BoardBounds
         {
@@ -19,8 +18,6 @@ namespace Tetris
             }
         }
         public Vector3Int SpawnPosition = new(-1, 8, 0);
-
-        
 
         public void Awake()
         {
@@ -32,27 +29,8 @@ namespace Tetris
 
         public void Start()
         {
-            if (BoardTilemap == null)
-            {
-                if (GameObject.Find("BoardTilemap").TryGetComponent(out Tilemap tetrisBoard))
-                {
-                    BoardTilemap = tetrisBoard;
-                }
-                else
-                {
-                    Debug.Log("The Tetris Board was not set in the Inspector and could not be found in Scene");
-                }
-            }
-
-            if (GetComponentInChildren<ActivePieceController>())
-            {
-                ActivePiece = GetComponentInChildren<ActivePieceController>();
-            }
-            else
-            {
-                Debug.Log("The PieceController is not attached to a child object");
-            }
-
+            BoardTilemap = Helpers.Debug.TryFindComponentOnGameObjectByName<Tilemap>("BoardTilemap");
+            ActivePiece = Helpers.Debug.TryFindComponent<ActivePieceController>(gameObject);
 
             SpawnPiece();
         }

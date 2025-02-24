@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
@@ -12,44 +11,76 @@ namespace TerrorminoControls
     public class InputRoute
     {
         public InputActionReference ActionRef;
-        public List<UnityEvent<object>> Outputs = new();
+        public List<UnityEvent<InputAction>> Outputs = new();
     }
 
     public class InputRouter : MonoBehaviour
     {
-        public InputActionMap ActionMap;
-        public bool IsGrabbed = false;
-
+        public InputActionAsset ActionMap;
         public List<InputRoute> Routes = new();
+        private List<InputActionReference> _aggregatedActionRefs
+        {
+            get
+            {
+                List<InputActionReference> aggregatedActionRefs = new();
 
+                Routes.ForEach(route =>
+                {
+                    if (!aggregatedActionRefs.Exists(actionRef => actionRef.action.id == route.ActionRef.action.id))
+                    {
+                        aggregatedActionRefs.Add(route.ActionRef);
+                    }
+                });
+
+                return aggregatedActionRefs;
+            }
+        }
+        private Dictionary<Guid, List<UnityEvent<InputAction>>> _aggregatedOutputs
+        {
+            get
+            {
+                // This flattens the Routes property
+                // Uses each action's unique id as key and has list of all outputs attached to that action
+                Dictionary<Guid, List<UnityEvent<InputAction>>> aggregatedRoutes = new();
+
+                Routes.ForEach(route =>
+                {
+                    // Typical add these values to the list if there is a key, otherwise add new key
+                    if (aggregatedRoutes.ContainsKey(route.ActionRef.action.id))
+                    {
+                        aggregatedRoutes[route.ActionRef.action.id].AddRange(route.Outputs);
+                    }
+                    else
+                    {
+                        aggregatedRoutes.Add(route.ActionRef.action.id, route.Outputs);
+                    }
+                });
+
+                return aggregatedRoutes;
+            }
+        }
+
+        private bool _isGrabbed = false;
         public void OnSelectEnter(SelectEnterEventArgs _)
         {
-            IsGrabbed = true;
+            _isGrabbed = true;
         }
         public void OnSelectExit(SelectExitEventArgs _)
         {
-            IsGrabbed = false;
+            _isGrabbed = false;
         }
 
         public void Update()
         {
-            if (IsGrabbed)
+            if (_isGrabbed)
             {
-                // Take list of routes and get the list of actions we actually care about
-                Routes.Select(route => route.ActionRef.action)
-               .ToList()
-               .ForEach(action =>
-               {
-                   // Check if each of those action was performed the frame
-                   if (action.WasPerformedThisFrame())
-                   {
-                       // Filter routes by the action we're currently checking
-                       Routes.FindAll(route => route.ActionRef.action == action)
-                           .ToList()
-                           // For each route, invoke each output with action value
-                           .ForEach(route => route.Outputs.ForEach(output => output.Invoke(action.ReadValueAsObject())));
-                   }
-               });
+                _aggregatedActionRefs.ForEach(actionRef =>
+                {
+                    if (actionRef.action.WasPerformedThisFrame())
+                    {
+                        _aggregatedOutputs[actionRef.action.id].ForEach(output => output.Invoke(actionRef.action));
+                    }
+                });
             }
         }
     }

@@ -63,7 +63,7 @@
                     "name": "Eye Gaze Is Tracked",
                     "type": "Button",
                     "id": "ea26ba43-844b-4585-817a-2f124b571813",
-                    "expectedControlType": "Button",
+                    "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
@@ -73,6 +73,15 @@
                     "type": "Value",
                     "id": "73053154-2fbc-4d78-9cac-000282b64f79",
                     "expectedControlType": "Integer",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "Mouse",
+                    "type": "Value",
+                    "id": "56b5b549-b6db-416c-bb4b-fa82d087abd0",
+                    "expectedControlType": "Vector2",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
@@ -320,6 +329,17 @@
                     "action": "Eye Gaze Is Tracked",
                     "isComposite": false,
                     "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "d799fbd0-81ab-4052-b9e0-66b35a3de77a",
+                    "path": "<Mouse>/delta",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Mouse",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         },
@@ -809,6 +829,17 @@
                 },
                 {
                     "name": "",
+                    "id": "ce7b503b-82a6-4af2-8c3f-5cb93b94286e",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard Mouse",
+                    "action": "Select",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "26a81f88-abfe-471d-a18b-a10ca8065a22",
                     "path": "<XRController>{LeftHand}/{Grip}",
                     "interactions": "",
@@ -1062,7 +1093,7 @@
                     "name": "Is Tracked",
                     "type": "Button",
                     "id": "a705ffe4-b2c8-4b78-847f-25257d4e30af",
-                    "expectedControlType": "Button",
+                    "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
@@ -1507,6 +1538,17 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Generic XR Controller",
+                    "action": "Select",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "6ea20d23-845f-45eb-8100-7a633f9841c9",
+                    "path": "<Mouse>/rightButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard Mouse",
                     "action": "Select",
                     "isComposite": false,
                     "isPartOfComposite": false

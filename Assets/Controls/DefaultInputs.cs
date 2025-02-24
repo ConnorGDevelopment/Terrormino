@@ -85,7 +85,7 @@ public partial class @DefaultInputs: IInputActionCollection2, IDisposable
                     ""name"": ""Eye Gaze Is Tracked"",
                     ""type"": ""Button"",
                     ""id"": ""ea26ba43-844b-4585-817a-2f124b571813"",
-                    ""expectedControlType"": ""Button"",
+                    ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
@@ -95,6 +95,15 @@ public partial class @DefaultInputs: IInputActionCollection2, IDisposable
                     ""type"": ""Value"",
                     ""id"": ""73053154-2fbc-4d78-9cac-000282b64f79"",
                     ""expectedControlType"": ""Integer"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Mouse"",
+                    ""type"": ""Value"",
+                    ""id"": ""56b5b549-b6db-416c-bb4b-fa82d087abd0"",
+                    ""expectedControlType"": ""Vector2"",
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
@@ -342,6 +351,17 @@ public partial class @DefaultInputs: IInputActionCollection2, IDisposable
                     ""action"": ""Eye Gaze Is Tracked"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""d799fbd0-81ab-4052-b9e0-66b35a3de77a"",
+                    ""path"": ""<Mouse>/delta"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Mouse"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -831,6 +851,17 @@ public partial class @DefaultInputs: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""ce7b503b-82a6-4af2-8c3f-5cb93b94286e"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Keyboard Mouse"",
+                    ""action"": ""Select"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""26a81f88-abfe-471d-a18b-a10ca8065a22"",
                     ""path"": ""<XRController>{LeftHand}/{Grip}"",
                     ""interactions"": """",
@@ -1084,7 +1115,7 @@ public partial class @DefaultInputs: IInputActionCollection2, IDisposable
                     ""name"": ""Is Tracked"",
                     ""type"": ""Button"",
                     ""id"": ""a705ffe4-b2c8-4b78-847f-25257d4e30af"",
-                    ""expectedControlType"": ""Button"",
+                    ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
@@ -1535,6 +1566,17 @@ public partial class @DefaultInputs: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""6ea20d23-845f-45eb-8100-7a633f9841c9"",
+                    ""path"": ""<Mouse>/rightButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Keyboard Mouse"",
+                    ""action"": ""Select"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""fc01aa61-d324-48a7-863a-5d9fe360fccc"",
                     ""path"": ""<XRController>{RightHand}/{Grip}"",
                     ""interactions"": """",
@@ -1816,6 +1858,7 @@ public partial class @DefaultInputs: IInputActionCollection2, IDisposable
         m_Head_EyeGazeRotation = m_Head.FindAction("Eye Gaze Rotation", throwIfNotFound: true);
         m_Head_EyeGazeIsTracked = m_Head.FindAction("Eye Gaze Is Tracked", throwIfNotFound: true);
         m_Head_EyeGazeTrackingState = m_Head.FindAction("Eye Gaze Tracking State", throwIfNotFound: true);
+        m_Head_Mouse = m_Head.FindAction("Mouse", throwIfNotFound: true);
         // LeftHand
         m_LeftHand = asset.FindActionMap("LeftHand", throwIfNotFound: true);
         m_LeftHand_Directionals = m_LeftHand.FindAction("Directionals", throwIfNotFound: true);
@@ -1947,6 +1990,7 @@ public partial class @DefaultInputs: IInputActionCollection2, IDisposable
     private readonly InputAction m_Head_EyeGazeRotation;
     private readonly InputAction m_Head_EyeGazeIsTracked;
     private readonly InputAction m_Head_EyeGazeTrackingState;
+    private readonly InputAction m_Head_Mouse;
     public struct HeadActions
     {
         private @DefaultInputs m_Wrapper;
@@ -1959,6 +2003,7 @@ public partial class @DefaultInputs: IInputActionCollection2, IDisposable
         public InputAction @EyeGazeRotation => m_Wrapper.m_Head_EyeGazeRotation;
         public InputAction @EyeGazeIsTracked => m_Wrapper.m_Head_EyeGazeIsTracked;
         public InputAction @EyeGazeTrackingState => m_Wrapper.m_Head_EyeGazeTrackingState;
+        public InputAction @Mouse => m_Wrapper.m_Head_Mouse;
         public InputActionMap Get() { return m_Wrapper.m_Head; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1992,6 +2037,9 @@ public partial class @DefaultInputs: IInputActionCollection2, IDisposable
             @EyeGazeTrackingState.started += instance.OnEyeGazeTrackingState;
             @EyeGazeTrackingState.performed += instance.OnEyeGazeTrackingState;
             @EyeGazeTrackingState.canceled += instance.OnEyeGazeTrackingState;
+            @Mouse.started += instance.OnMouse;
+            @Mouse.performed += instance.OnMouse;
+            @Mouse.canceled += instance.OnMouse;
         }
 
         private void UnregisterCallbacks(IHeadActions instance)
@@ -2020,6 +2068,9 @@ public partial class @DefaultInputs: IInputActionCollection2, IDisposable
             @EyeGazeTrackingState.started -= instance.OnEyeGazeTrackingState;
             @EyeGazeTrackingState.performed -= instance.OnEyeGazeTrackingState;
             @EyeGazeTrackingState.canceled -= instance.OnEyeGazeTrackingState;
+            @Mouse.started -= instance.OnMouse;
+            @Mouse.performed -= instance.OnMouse;
+            @Mouse.canceled -= instance.OnMouse;
         }
 
         public void RemoveCallbacks(IHeadActions instance)
@@ -2549,6 +2600,7 @@ public partial class @DefaultInputs: IInputActionCollection2, IDisposable
         void OnEyeGazeRotation(InputAction.CallbackContext context);
         void OnEyeGazeIsTracked(InputAction.CallbackContext context);
         void OnEyeGazeTrackingState(InputAction.CallbackContext context);
+        void OnMouse(InputAction.CallbackContext context);
     }
     public interface ILeftHandActions
     {

@@ -12,9 +12,11 @@ public class MouseLook : MonoBehaviour
     public bool LockedCursor = true;
 
 
+    public InputActionReference MousePositionActionRef;
+
     public void Start()
     {
-        if (PlayerInput.currentControlScheme == "Keyboard&Mouse")
+        if (PlayerInput.currentControlScheme == "Keyboard Mouse")
         {
             // Lock and Hide the Cursor
             Cursor.visible = false;
@@ -25,11 +27,13 @@ public class MouseLook : MonoBehaviour
 
     void Update()
     {
-        if (PlayerInput.currentControlScheme == "Keyboard&Mouse")
+        if (PlayerInput.currentControlScheme == "Keyboard Mouse")
         {
             // Collect Mouse Input
-            float inputX = Input.GetAxis("Mouse X") * MouseSensitivity;
-            float inputY = Input.GetAxis("Mouse Y") * MouseSensitivity;
+            //float inputX = Input.GetAxis("Mouse X") * MouseSensitivity;
+            //float inputY = Input.GetAxis("Mouse Y") * MouseSensitivity;
+            float inputX = MousePositionActionRef.action.ReadValue<Vector2>().x;
+            float inputY = MousePositionActionRef.action.ReadValue<Vector2>().y;
 
             // Rotate the Camera around its local X axis
             CameraVerticalRotation -= inputY;
