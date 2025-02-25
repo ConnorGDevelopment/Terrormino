@@ -9,6 +9,7 @@ using UnityEngine.XR.Interaction.Toolkit;
 public class FlashlightScript : MonoBehaviour
 {
     [SerializeField] private GameObject FlashLightLight; //flashlight
+    [SerializeField] private GameObject LightInteractor;
     public bool FlashlightActive = false;
 
 
@@ -48,6 +49,10 @@ public class FlashlightScript : MonoBehaviour
         FlashLightLight.SetActive(false);
 
 
+        //Setting the light interactor to be off
+        LightInteractor.SetActive(false);
+
+
 
     }
     void Update()
@@ -60,6 +65,7 @@ public class FlashlightScript : MonoBehaviour
 
         if (_battery < 0) // Battery dies
         {
+            LightInteractor.SetActive(false);
             FlashLightLight.SetActive(false);
             FlashlightActive = false;
         }
@@ -141,6 +147,8 @@ public class FlashlightScript : MonoBehaviour
             
                 FlashlightActive = !FlashlightActive; // Toggle the flashlight state
                 FlashLightLight.SetActive(FlashlightActive); // Enable or disable the light
+                LightInteractor.SetActive(true);
+
                 Debug.Log($"Flashlight toggled: {FlashlightActive}");
             
             

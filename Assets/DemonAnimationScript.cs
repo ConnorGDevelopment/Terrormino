@@ -6,9 +6,9 @@ public class DemonAnimationScript : MonoBehaviour
 {
     // Start is called before the first frame update
 
-    [SerializeField] FlashlightTrigger _flashlightTrigger;
+    [SerializeField] private FlashlightTrigger _flashlightTrigger;
 
-    [SerializeField] Animator _animator;
+    [SerializeField] private Animator _animator;
 
 
 
