@@ -138,12 +138,11 @@ public class FlashlightScript : MonoBehaviour
         // Check if the button is pressed 
         if (context.performed && inHand)
         {
-            //if(inHand)
-            //{
+            
                 FlashlightActive = !FlashlightActive; // Toggle the flashlight state
                 FlashLightLight.SetActive(FlashlightActive); // Enable or disable the light
                 Debug.Log($"Flashlight toggled: {FlashlightActive}");
-            //}
+            
             
             
         }
@@ -161,7 +160,7 @@ public class FlashlightScript : MonoBehaviour
             float currentRightMagnitude = rightVelocity.magnitude;
             PastRightVelocity = Vector3.Lerp(PastRightVelocity, rightVelocity, smoothingFactor);
 
-            if (pastRightMagnitude > 0.1f) //checking to make sure we arent dividing by an insignificant amount to filter out noise
+            if (pastRightMagnitude > 0.2f) //checking to make sure we arent dividing by an insignificant amount to filter out noise
             {
                 float RightPercentageIncrease = Mathf.Abs((currentRightMagnitude - pastRightMagnitude) / pastRightMagnitude) * 100f;   //Math for checking the percentage increase between past magnitude and current magnitude
                 //Debug.Log(RightPercentageIncrease);
@@ -191,7 +190,7 @@ public class FlashlightScript : MonoBehaviour
             float currentLeftMagnitude = leftVelocity.magnitude;
             PastLeftVelocity = Vector3.Lerp(PastLeftVelocity, leftVelocity, smoothingFactor);
 
-            if (pastLeftMagnitude > 0.1f) //checking to make sure we arent dividing by an insignificant amount and filtering out noise
+            if (pastLeftMagnitude > 0.2f) //checking to make sure we arent dividing by an insignificant amount and filtering out noise
             {
                 float LeftPercentageIncrease = Mathf.Abs((currentLeftMagnitude - pastLeftMagnitude) / pastLeftMagnitude) * 100f;   //Math for checking the percentage increase between past magnitude and current magnitude
                 //Debug.Log(LeftPercentageIncrease);
