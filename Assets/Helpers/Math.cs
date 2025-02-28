@@ -19,5 +19,20 @@ namespace Helpers
                 return 0;
             }
         }
+
+
+        // If value is greater than max, cap it at max
+        // If value is less than min, cap it at min
+        public static int Wrap(int input, int min, int max)
+        {
+            if (input < min)
+            {
+                return max - (min - input) % (max - min);
+            }
+            else
+            {
+                return min + (input - min) % (max - min);
+            }
+        }
     }
 }

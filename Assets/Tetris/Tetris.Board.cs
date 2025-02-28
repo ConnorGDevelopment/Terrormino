@@ -45,7 +45,7 @@ namespace Tetris
             ActivePiece.Initialize(this, SpawnPosition, shape);
 
             // If the stack is too high that the new piece can't be legally spawned, game ends
-            if (IsValidPosition(ActivePiece, SpawnPosition))
+            if (IsValidPosition(ActivePiece.Cells, SpawnPosition))
             {
                 PaintTiles(ActivePiece);
             }
@@ -77,14 +77,15 @@ namespace Tetris
             }
         }
 
-        public bool IsValidPosition(ActivePieceController tetromino, Vector3Int position)
+
+        public bool IsValidPosition(Vector3Int[] cells, Vector3Int position)
         {
             RectInt bounds = BoardBounds;
 
             // Validate each cell position
-            for (int i = 0; i < tetromino.Cells.Length; i++)
+            for (int i = 0; i < cells.Length; i++)
             {
-                Vector3Int tilePosition = tetromino.Cells[i] + position;
+                Vector3Int tilePosition = cells[i] + position;
 
                 if (!bounds.Contains(new(tilePosition.x, tilePosition.y)))
                 {
@@ -99,6 +100,7 @@ namespace Tetris
 
             return true;
         }
+
         public bool IsLineFull(int row)
         {
             RectInt bounds = BoardBounds;

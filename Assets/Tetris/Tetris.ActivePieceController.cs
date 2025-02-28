@@ -1,15 +1,10 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.InputSystem;
 
 namespace Tetris
 {
-    // Unity is set to generate a C# file for our DefaultInputs ActionMap
-    // In addition to implementing the MonoBehaviour interface, we're also implement the DefaultInputs.ITetrisActions
-    // DefaultInputs.ITetrisActions corresponds to the Tetris control scheme
-    //      Using "I" as a prefix is standard for interfaces, because you'll usually make one that corresponds with a class, in this case "TetrisActions"
-    // Whereas MonoBehaviours is filled with a bunch of optional properties and methods we can use, DefaultInputs.ITetrisActions has required methods that we have to use
-    // This makes sure we have handlers written for each action in the control scheme: MoveLeft, MoveRight, Drop, RotateCounterclockwise, RotateClockwise
-
     public partial class ActivePieceController : MonoBehaviour
     {
         public Board Board;
@@ -18,18 +13,133 @@ namespace Tetris
         public Vector3Int Position;
         public int RotationIndex;
 
-        private float _stepTime;
+        public float _stepTime;
         // TODO: Reimplement repeated movement handling, potentially use hold action on action map
-        //private float _moveTime;
-        private float _lockTime;
+        private float _moveTime;
+        public float _lockTime;
 
-        public UnityEvent<Vector2Int> Move;
-        public UnityEvent<int> Rotate;
+        public UnityEvent<InputAction> Move = new();
+        public UnityEvent<InputAction> Rotate = new();
+
+        public void CommitPlayerTransform(Vector3Int position, Vector3Int[] cells)
+        {
+            Cells = cells;
+            Position = position;
+            _moveTime = Time.time;
+            _lockTime = 0f;
+        }
+
+        public void OnMove(InputAction inputAction)
+        {
+            Vector2Int moveInput = new(
+                Helpers.Math.RoundNearestNonZeroInt(inputAction.ReadValue<Vector2>().x),
+                Helpers.Math.RoundNearestNonZeroInt(inputAction.ReadValue<Vector2>().y)
+            );
+
+            var newPosition = ValidateMove(moveInput, Cells);
+
+            if (newPosition != null)
+            {
+                CommitPlayerTransform((Vector3Int)newPosition, Cells);
+            }
+        }
+        public void OnRotate(InputAction inputAction)
+        {
+            int rotateInput = Helpers.Math.RoundNearestNonZeroInt(inputAction.ReadValue<float>());
+
+            Vector3Int[] newCells = GenerateRotationCells(Helpers.Math.Wrap(RotationIndex + rotateInput, 0, 4));
+
+            var newPosition = ValidateRotate(rotateInput, newCells);
+
+            if (newPosition != null)
+            {
+                CommitPlayerTransform((Vector3Int)newPosition, newCells);
+            }
+        }
+
+
+        private Vector3Int? ValidateMove(Vector2Int moveInput, Vector3Int[] cells)
+        {
+            Vector3Int newPosition = Position;
+
+            newPosition.x += moveInput.x;
+            newPosition.y += moveInput.y;
+
+            // Return the newPosition if valid, otherwise just pass back original
+            // Removes the weird bool check in original and avoids a null return
+            return Board.IsValidPosition(cells, newPosition) ? newPosition : null;
+        }
+        private Vector3Int? ValidateRotate(int rotateInput, Vector3Int[] cells)
+        {
+            // See Wall Kick: https://tetris.wiki/Super_Rotation_System#Wall_Kicks
+            // Fetches an index to a presaved transformation of the shape vector
+
+            int wallKickIndex = Helpers.Math.Wrap(
+                // Add input to existing and multiply by 2, if rotateInput is negative then subtract 1
+                // The array for wall kicks basically has 2 vector arrays for each orientation, clockwise and counterclockwise
+                ((rotateInput + RotationIndex) * 2) - (rotateInput < 0 ? 1 : 0),
+                0,
+                Shape.WallKicks.GetLength(0)
+            );
+
+            for (int i = 0; i < Shape.WallKicks.GetLength(1); i++)
+            {
+                Vector2Int wallKickMoveInput = Shape.WallKicks[wallKickIndex, i];
+
+                if (ValidateMove(wallKickMoveInput, cells) != null)
+                {
+                    return new(
+                        Position.x + wallKickMoveInput.x,
+                        Position.y + wallKickMoveInput.y,
+                        Position.z
+                    );
+                }
+            }
+
+            return null;
+        }
+        private Vector3Int[] GenerateRotationCells(int rotateInput)
+        {
+            // Makes an non-reference copy of the array
+            Vector3Int[] newCells = new List<Vector3Int>(Cells).ToArray();
+
+            float[] matrix = ShapeVecs.RotationMatrix;
+
+            for (int i = 0; i < newCells.Length; i++)
+            {
+                Vector3 cell = newCells[i];
+
+                int x;
+                int y;
+
+                switch (Shape.ShapeKey)
+                {
+                    case ShapeKeys.I:
+                    case ShapeKeys.O:
+                        // "I" and "O" are rotated from an offset center point
+                        cell.x -= 0.5f;
+                        cell.y -= 0.5f;
+                        x = Mathf.CeilToInt((cell.x * matrix[0] * rotateInput) + (cell.y * matrix[1] * rotateInput));
+                        y = Mathf.CeilToInt((cell.x * matrix[2] * rotateInput) + (cell.y * matrix[3] * rotateInput));
+                        break;
+                    default:
+                        x = Mathf.RoundToInt((cell.x * matrix[0] * rotateInput) + (cell.y * matrix[1] * rotateInput));
+                        y = Mathf.RoundToInt((cell.x * matrix[2] * rotateInput) + (cell.y * matrix[3] * rotateInput));
+                        break;
+                }
+
+                newCells[i] = new Vector3Int(x, y, 0);
+            }
+
+            return newCells;
+        }
 
         public void Start()
         {
-            Move.AddListener(HandleMove);
-            Rotate.AddListener(HandleRotate);
+            Helpers.Debug.CheckIfSetInInspector(gameObject, Board, "Board");
+
+            Move.AddListener(OnMove);
+            Rotate.AddListener(OnRotate);
         }
 
         public void Initialize(Board board, Vector3Int position, Shape shape)
@@ -71,7 +181,11 @@ namespace Tetris
         {
             _stepTime = Time.time + Board.Config.StepDelay;
 
-            HandleMove(Vector2Int.down);
+            var newPosition = ValidateMove(Vector2Int.down, Cells);
+            if (newPosition != null)
+            {
+                Position = (Vector3Int)newPosition;
+            }
 
             if (_lockTime >= Board.Config.LockDelay)
             {
@@ -84,120 +198,6 @@ namespace Tetris
             Board.PaintTiles(this);
             Board.ClearLines();
             Board.SpawnPiece();
-        }
-
-        public void HandleMove(Vector2Int moveInput)
-        {
-            Vector3Int newPosition = Position;
-
-            newPosition.x += moveInput.x;
-            newPosition.y += moveInput.y;
-
-            if (Board.IsValidPosition(this, newPosition))
-            {
-                Position = newPosition;
-                //_moveTime = Time.time + Board.Config.MoveDelay;
-                _lockTime = 0f;
-            }
-        }
-
-        public void HandleRotate(int rotateInput)
-        {
-            // Stores original rotation as fallback
-            int originalRotation = RotationIndex;
-
-            // Use predefined matrix to do rotations
-            RotationIndex = Wrap(RotationIndex + rotateInput, 0, 4);
-            ApplyRotationMatrix(rotateInput);
-
-            // If the rotation + wall kick fails, revert the rotation
-            if (!TestWallKicks(RotationIndex, rotateInput))
-            {
-                RotationIndex = originalRotation;
-                ApplyRotationMatrix(-rotateInput);
-            }
-        }
-
-        private void ApplyRotationMatrix(int direction)
-        {
-            float[] matrix = ShapeVecs.RotationMatrix;
-
-            for (int i = 0; i < Cells.Length; i++)
-            {
-                Vector3 cell = Cells[i];
-
-                int x, y;
-
-                switch (Shape.ShapeKey)
-                {
-                    case ShapeKeys.I:
-                    case ShapeKeys.O:
-                        // "I" and "O" are rotated from an offset center point
-                        cell.x -= 0.5f;
-                        cell.y -= 0.5f;
-                        x = Mathf.CeilToInt((cell.x * matrix[0] * direction) + (cell.y * matrix[1] * direction));
-                        y = Mathf.CeilToInt((cell.x * matrix[2] * direction) + (cell.y * matrix[3] * direction));
-                        break;
-                    default:
-                        x = Mathf.RoundToInt((cell.x * matrix[0] * direction) + (cell.y * matrix[1] * direction));
-                        y = Mathf.RoundToInt((cell.x * matrix[2] * direction) + (cell.y * matrix[3] * direction));
-                        break;
-                }
-
-                Cells[i] = new Vector3Int(x, y, 0);
-            }
-        }
-
-        // If value is greater than max, cap it at max
-        // If value is less than min, cap it at min
-        private static int Wrap(int input, int min, int max)
-        {
-            if (input < min)
-            {
-                return max - (min - input) % (max - min);
-            }
-            else
-            {
-                return min + (input - min) % (max - min);
-            }
-        }
-
-        // See Wall Kick: https://tetris.wiki/Super_Rotation_System#Wall_Kicks
-        // Fetches an index to a presaved transformation of the shape vector
-        private int GetWallKickIndex(int rotationIndex, int rotationDirection)
-        {
-            int wallKickIndex = rotationIndex * 2;
-
-            if (rotationDirection < 0)
-            {
-                wallKickIndex--;
-            }
-
-            return Wrap(wallKickIndex, 0, Shape.WallKicks.GetLength(0));
-        }
-        private bool TestWallKicks(int rotationIndex, int direction)
-        {
-            int wallKickIndex = GetWallKickIndex(rotationIndex, direction);
-
-            for (int i = 0; i < Shape.WallKicks.GetLength(1); i++)
-            {
-                Vector2Int wallKickTranslation = Shape.WallKicks[wallKickIndex, i];
-
-                Vector3Int newPosition = Position;
-
-                newPosition.x += wallKickTranslation.x;
-                newPosition.y += wallKickTranslation.y;
-
-                if (Board.IsValidPosition(this, newPosition))
-                {
-                    Position = newPosition;
-                    //_moveTime = Time.time + Board.Config.MoveDelay;
-                    _lockTime = 0f;
-                    return true;
-                }
-            }
-
-            return false;
         }
     }
 }
