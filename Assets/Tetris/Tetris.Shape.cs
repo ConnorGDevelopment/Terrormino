@@ -94,21 +94,6 @@ namespace Tetris
         public Vector2Int[] Cells { get; private set; }
         public Vector2Int[,] WallKicks { get; private set; }
 
-        public Vector3Int[] GetCellsAsVec3
-        {
-            get
-            {
-                Vector3Int[] vector3Ints = new Vector3Int[Cells.Length];
-
-                for (int i = 0; i < Cells.Length; i++)
-                {
-                    vector3Ints[i] = new Vector3Int(Cells[i].x, Cells[i].y, 0);
-                }
-
-                return vector3Ints;
-            }
-        }
-
         public void Initialize()
         {
             Cells = ShapeVecs.Cells[ShapeKey];

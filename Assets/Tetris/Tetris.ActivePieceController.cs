@@ -5,7 +5,7 @@ using UnityEngine.InputSystem;
 
 namespace Tetris
 {
-    public partial class ActivePieceController : MonoBehaviour
+    public class ActivePieceController : MonoBehaviour
     {
         public Board Board;
         public Shape Shape;
@@ -36,7 +36,7 @@ namespace Tetris
                 Helpers.Math.RoundNearestNonZeroInt(inputAction.ReadValue<Vector2>().y)
             );
 
-            var newPosition = ValidateMove(moveInput, Cells);
+            var newPosition = TryMove(moveInput, Cells);
 
             if (newPosition != null)
             {
@@ -49,7 +49,7 @@ namespace Tetris
 
             Vector3Int[] newCells = GenerateRotationCells(Helpers.Math.Wrap(RotationIndex + rotateInput, 0, 4));
 
-            var newPosition = ValidateRotate(rotateInput, newCells);
+            var newPosition = TryRotate(rotateInput, newCells);
 
             if (newPosition != null)
             {
@@ -58,7 +58,7 @@ namespace Tetris
         }
 
 
-        private Vector3Int? ValidateMove(Vector2Int moveInput, Vector3Int[] cells)
+        private Vector3Int? TryMove(Vector2Int moveInput, Vector3Int[] cells)
         {
             Vector3Int newPosition = Position;
 
@@ -69,7 +69,7 @@ namespace Tetris
             // Removes the weird bool check in original and avoids a null return
             return Board.IsValidPosition(cells, newPosition) ? newPosition : null;
         }
-        private Vector3Int? ValidateRotate(int rotateInput, Vector3Int[] cells)
+        private Vector3Int? TryRotate(int rotateInput, Vector3Int[] cells)
         {
             // See Wall Kick: https://tetris.wiki/Super_Rotation_System#Wall_Kicks
             // Fetches an index to a presaved transformation of the shape vector
@@ -82,17 +82,14 @@ namespace Tetris
                 Shape.WallKicks.GetLength(0)
             );
 
+            
             for (int i = 0; i < Shape.WallKicks.GetLength(1); i++)
             {
                 Vector2Int wallKickMoveInput = Shape.WallKicks[wallKickIndex, i];
 
-                if (ValidateMove(wallKickMoveInput, cells) != null)
+                if (TryMove(wallKickMoveInput, cells) != null)
                 {
-                    return new(
-                        Position.x + wallKickMoveInput.x,
-                        Position.y + wallKickMoveInput.y,
-                        Position.z
-                    );
+                    return TryMove(wallKickMoveInput, cells);
                 }
             }
 

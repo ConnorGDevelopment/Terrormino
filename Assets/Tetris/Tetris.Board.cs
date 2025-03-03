@@ -80,8 +80,6 @@ namespace Tetris
 
         public bool IsValidPosition(Vector3Int[] cells, Vector3Int position)
         {
-            RectInt bounds = BoardBounds;
-
             // Validate each cell position
             for (int i = 0; i < cells.Length; i++)
             {
