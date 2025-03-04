@@ -5,32 +5,53 @@ using UnityEngine;
 public class DemonBehavior : MonoBehaviour
 {
 
-    [SerializeField] private GameObject Demon;
+    [SerializeField] private Material _hook;
+    [SerializeField] private Material _hookBase;
+    [SerializeField] private Material _mainBody;
+    [SerializeField] private Material _cube;
 
-    [SerializeField] private List<GameObject> DemonStartPositionList = new List<GameObject>();
+    //[SerializeField] private GameObject Demon;
 
+    [SerializeField] private FlashlightTrigger _flashlightTrigger;
 
+    private bool _isDissolving = false;
 
+    private float _dissolveValue = 0f;
 
-    // Start is called before the first frame update
-    //void Start()
-    //{
-    //    StartCoroutine(DemonLogic());
-    //}
-
-    //// Update is called once per frame
-    //void Update()
-    //{
+    void Start()
+    {
         
-    //}
+    }
 
 
-    //IEnumerator DemonLogic()
-    //{
-    //    Instantiate(Demon);
+    void Update()
+    {
+        
+        if (_flashlightTrigger.SpookEnemy == true)
+        {
+            _isDissolving = true;
+            Debug.Log("should be dissolved");
+
+            if (_isDissolving == true)
+            {
+                _dissolveValue += Time.deltaTime * 0.5f;
+
+                _hook.SetFloat("Clipping_value", _dissolveValue);
+                _hookBase.SetFloat("Clipping_value", _dissolveValue);
+                _mainBody.SetFloat("Clipping_value", _dissolveValue);
+                _cube.SetFloat("Clipping_value", _dissolveValue);
+
+            }
+            
+
+        }
+
+    }
 
 
-    //}
+
+
+
 
 
 

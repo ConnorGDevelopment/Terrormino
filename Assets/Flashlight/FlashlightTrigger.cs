@@ -12,15 +12,7 @@ public class FlashlightTrigger : MonoBehaviour
     private bool LightOnEnemy = false;
     public bool SpookEnemy = false;
 
-    //public UnityEvent LightOnEnemyChanged = new UnityEvent();
-    //public void ToggleLightOnEnemy() { 
-    //    LightOnEnemy = !LightOnEnemy;
-    //}
 
-    //public void Start()
-    //{
-    //    LightOnEnemyChanged.AddListener(ToggleLightOnEnemy);
-    //}
 
     private void Update()
     {
