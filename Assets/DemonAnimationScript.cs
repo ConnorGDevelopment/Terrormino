@@ -23,6 +23,8 @@ public class DemonAnimationScript : MonoBehaviour
         if (_flashlightTrigger.SpookEnemy == true)
         {
             _animator.SetBool("SpookEnemy", true);
+
+
         }
     }
 }
