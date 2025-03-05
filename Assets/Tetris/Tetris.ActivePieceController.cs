@@ -5,7 +5,11 @@ using UnityEngine.InputSystem;
 
 namespace Tetris
 {
+<<<<<<< HEAD
     public partial class ActivePieceController : MonoBehaviour
+=======
+    public class ActivePieceController : MonoBehaviour
+>>>>>>> parent of 635a200 (Revert "Merge pull request #5 from ConnorGDevelopment/tetris-input-handler")
     {
         public Board Board;
         public Shape Shape;
@@ -36,7 +40,11 @@ namespace Tetris
                 Helpers.Math.RoundNearestNonZeroInt(inputAction.ReadValue<Vector2>().y)
             );
 
+<<<<<<< HEAD
             var newPosition = ValidateMove(moveInput, Cells);
+=======
+            var newPosition = TryMove(moveInput, Cells);
+>>>>>>> parent of 635a200 (Revert "Merge pull request #5 from ConnorGDevelopment/tetris-input-handler")
 
             if (newPosition != null)
             {
@@ -49,7 +57,11 @@ namespace Tetris
 
             Vector3Int[] newCells = GenerateRotationCells(Helpers.Math.Wrap(RotationIndex + rotateInput, 0, 4));
 
+<<<<<<< HEAD
             var newPosition = ValidateRotate(rotateInput, newCells);
+=======
+            var newPosition = TryRotate(rotateInput, newCells);
+>>>>>>> parent of 635a200 (Revert "Merge pull request #5 from ConnorGDevelopment/tetris-input-handler")
 
             if (newPosition != null)
             {
@@ -58,7 +70,11 @@ namespace Tetris
         }
 
 
+<<<<<<< HEAD
         private Vector3Int? ValidateMove(Vector2Int moveInput, Vector3Int[] cells)
+=======
+        private Vector3Int? TryMove(Vector2Int moveInput, Vector3Int[] cells)
+>>>>>>> parent of 635a200 (Revert "Merge pull request #5 from ConnorGDevelopment/tetris-input-handler")
         {
             Vector3Int newPosition = Position;
 
@@ -69,7 +85,11 @@ namespace Tetris
             // Removes the weird bool check in original and avoids a null return
             return Board.IsValidPosition(cells, newPosition) ? newPosition : null;
         }
+<<<<<<< HEAD
         private Vector3Int? ValidateRotate(int rotateInput, Vector3Int[] cells)
+=======
+        private Vector3Int? TryRotate(int rotateInput, Vector3Int[] cells)
+>>>>>>> parent of 635a200 (Revert "Merge pull request #5 from ConnorGDevelopment/tetris-input-handler")
         {
             // See Wall Kick: https://tetris.wiki/Super_Rotation_System#Wall_Kicks
             // Fetches an index to a presaved transformation of the shape vector
@@ -82,10 +102,15 @@ namespace Tetris
                 Shape.WallKicks.GetLength(0)
             );
 
+<<<<<<< HEAD
+=======
+            
+>>>>>>> parent of 635a200 (Revert "Merge pull request #5 from ConnorGDevelopment/tetris-input-handler")
             for (int i = 0; i < Shape.WallKicks.GetLength(1); i++)
             {
                 Vector2Int wallKickMoveInput = Shape.WallKicks[wallKickIndex, i];
 
+<<<<<<< HEAD
                 if (ValidateMove(wallKickMoveInput, cells) != null)
                 {
                     return new(
@@ -93,6 +118,11 @@ namespace Tetris
                         Position.y + wallKickMoveInput.y,
                         Position.z
                     );
+=======
+                if (TryMove(wallKickMoveInput, cells) != null)
+                {
+                    return TryMove(wallKickMoveInput, cells);
+>>>>>>> parent of 635a200 (Revert "Merge pull request #5 from ConnorGDevelopment/tetris-input-handler")
                 }
             }
 
