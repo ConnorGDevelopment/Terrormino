@@ -7,6 +7,8 @@ public class FlashlightTrigger : MonoBehaviour
 {
     [SerializeField] private FlashlightScript _flashlightscript;
 
+    [SerializeField] private Animator _animator;
+
     public float LightTimer = 3f;
 
     private bool LightOnEnemy = false;
@@ -51,6 +53,7 @@ public class FlashlightTrigger : MonoBehaviour
             if (SpookEnemy == true)
             {
                 Debug.Log("RAAAAAAAAAHHHH");
+                _animator.SetBool("SpookEnemy", true);
                 LightTimer = 3f;
                 SpookEnemy = false;
 
