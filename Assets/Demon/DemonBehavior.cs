@@ -11,12 +11,14 @@ public class DemonBehavior : MonoBehaviour
 
     private bool _isDissolving = false;
     private float _dissolveValue = 0f;
-    
+
+
+    private int _shaderRef = Shader.PropertyToID("_Clipping_value");
 
     void Start()
     {
-        
 
+        // TODO: create a way for the shaders to reset themselves without hard coding it in
 
     }
 
@@ -34,13 +36,13 @@ public class DemonBehavior : MonoBehaviour
             _dissolveValue += Time.deltaTime * 1f;
             _dissolveValue = Mathf.Clamp01(_dissolveValue); // Keep between 0 and 1
 
-            _hook.SetFloat("_Clipping_value", _dissolveValue);
-            _hookBase.SetFloat("_Clipping_value", _dissolveValue);
-            _mainBody.SetFloat("_Clipping_value", _dissolveValue);
-            _cube.SetFloat("_Clipping_value", _dissolveValue);
+            _hook.SetFloat(_shaderRef, _dissolveValue);
+            _hookBase.SetFloat(_shaderRef, _dissolveValue);
+            _mainBody.SetFloat(_shaderRef, _dissolveValue);
+            _cube.SetFloat(_shaderRef, _dissolveValue);
 
             Debug.Log($"Dissolve Value: {_dissolveValue}");
-            Debug.Log($"Hook Material: {_hook.GetFloat("_Clipping_value")}");
+            Debug.Log($"Hook Material: {_hook.GetFloat(_shaderRef)}");
 
 
 
