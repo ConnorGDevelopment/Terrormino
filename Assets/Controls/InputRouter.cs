@@ -16,25 +16,7 @@ namespace TerrorminoControls
 
     public class InputRouter : MonoBehaviour
     {
-        public InputActionAsset ActionMap;
         public List<InputRoute> Routes = new();
-        private List<InputActionReference> _aggregatedActionRefs
-        {
-            get
-            {
-                List<InputActionReference> aggregatedActionRefs = new();
-
-                Routes.ForEach(route =>
-                {
-                    if (!aggregatedActionRefs.Exists(actionRef => actionRef.action.id == route.ActionRef.action.id))
-                    {
-                        aggregatedActionRefs.Add(route.ActionRef);
-                    }
-                });
-
-                return aggregatedActionRefs;
-            }
-        }
         private Dictionary<Guid, List<UnityEvent<InputAction>>> _aggregatedOutputs
         {
             get
@@ -60,28 +42,64 @@ namespace TerrorminoControls
             }
         }
 
-        private bool _isGrabbed = false;
-        public void OnSelectEnter(SelectEnterEventArgs _)
+
+        // When the GameObject is grabbed, the thing that grabbed it adds its ActionMap (based on the Select Action AKA Grab) to this list
+        // This is because we only want to route inputs of actions of a grabbing controller
+        private readonly List<InputActionMap> _grabbedActionMaps = new();
+        public void OnSelectEnter(SelectEnterEventArgs context)
         {
-            _isGrabbed = true;
+            if (context.interactorObject.transform.gameObject.TryGetComponent(out ActionBasedController controller))
+            {
+                _grabbedActionMaps.Add(controller.selectAction.action.actionMap);
+            }
+
+
+            _grabbedActionMaps.ForEach(actionMap => Debug.Log(actionMap.name));
         }
-        public void OnSelectExit(SelectExitEventArgs _)
+        public void OnSelectExit(SelectExitEventArgs context)
         {
-            _isGrabbed = false;
+            if (context.interactorObject.transform.gameObject.TryGetComponent(out ActionBasedController controller))
+            {
+                _grabbedActionMaps.Remove(controller.selectAction.action.actionMap);
+            }
+
+            _grabbedActionMaps.ForEach(actionMap => Debug.Log(actionMap.name));
+        }
+
+        private List<InputAction> _enabledActions
+        {
+            // Generates a list of InputActions by cross referencing the ActionMaps added by grabbing object and the InputActions of added routes
+            get
+            {
+                List<InputAction> enabledActions = new();
+
+                _grabbedActionMaps.ForEach(actionMap =>
+                {
+                    foreach (var guid in _aggregatedOutputs.Keys)
+                    {
+                        var match = actionMap.FindAction(guid);
+                        if (match != null)
+                        {
+                            enabledActions.Add(match);
+                        }
+                    }
+                });
+
+                return enabledActions;
+            }
         }
 
         public void Update()
         {
-            if (_isGrabbed)
+            // Each frame, go through the list of enabled registed inputs and check if they were performed, if yes then pass to the events
+            _enabledActions.ForEach(action =>
             {
-                _aggregatedActionRefs.ForEach(actionRef =>
+                if (action.WasPerformedThisFrame())
                 {
-                    if (actionRef.action.WasPerformedThisFrame())
-                    {
-                        _aggregatedOutputs[actionRef.action.id].ForEach(output => output.Invoke(actionRef.action));
-                    }
-                });
-            }
+                    _aggregatedOutputs[action.id].ForEach(output => output.Invoke(action));
+                }
+            });
+
         }
     }
 }

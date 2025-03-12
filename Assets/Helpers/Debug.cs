@@ -2,6 +2,7 @@ using UnityEngine;
 
 namespace Helpers
 {
+    // This class is setup so we can basically copy and paste it into every project we work on
     public static class Debug
     {
         // This is function uses a generic type parameter, named T
@@ -62,6 +63,15 @@ namespace Helpers
                 UnityEngine.Debug.Log($"{name} in {gameObject} not set in Inspector");
             }
         }
+
+        public static T TryFindComponentInChildren<T>(GameObject sourceObject) where T : Behaviour
+        {
+            T matchedComponent = sourceObject.GetComponentInChildren<T>();
+            if (matchedComponent == null)
+            {
+                UnityEngine.Debug.Log($"Could not find {typeof(T).Name} in Children of {sourceObject.name}");
+            }
+            return matchedComponent;
+        }
     }
 }
-// This class is setup so we can basically copy and paste it into every project we work on

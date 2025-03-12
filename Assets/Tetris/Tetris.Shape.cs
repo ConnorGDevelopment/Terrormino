@@ -99,12 +99,26 @@ namespace Tetris
             Cells = ShapeVecs.Cells[ShapeKey];
             WallKicks = ShapeVecs.WallKicks[ShapeKey];
         }
+        public Vector3Int[] GetCellsAsVec3
+        {
+            get
+            {
+                Vector3Int[] vector3Ints = new Vector3Int[Cells.Length];
+
+                for (int i = 0; i < Cells.Length; i++)
+                {
+                    vector3Ints[i] = new Vector3Int(Cells[i].x, Cells[i].y, 0);
+                }
+
+                return vector3Ints;
+            }
+        }
     }
 
     [System.Serializable]
     public struct Config
     {
-        public float StepDelay;
+        public float GravityDelay;
         public float MoveDelay;
         public float LockDelay;
     }

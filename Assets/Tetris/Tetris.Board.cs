@@ -27,6 +27,7 @@ namespace Tetris
             }
         }
 
+
         public void Start()
         {
             BoardTilemap = Helpers.Debug.TryFindComponentOnGameObjectByName<Tilemap>("BoardTilemap");
@@ -34,6 +35,7 @@ namespace Tetris
 
             SpawnPiece();
         }
+
 
         public void SpawnPiece()
         {
@@ -85,17 +87,17 @@ namespace Tetris
             {
                 Vector3Int tilePosition = cells[i] + position;
 
-                if (!bounds.Contains(new(tilePosition.x, tilePosition.y)))
+                if (!BoardBounds.Contains(new(tilePosition.x, tilePosition.y)))
                 {
                     return false;
                 }
+
 
                 if (BoardTilemap.HasTile(tilePosition))
                 {
                     return false;
                 }
             }
-
             return true;
         }
 

@@ -13,7 +13,7 @@ namespace Tetris
         public Vector3Int Position;
         public int RotationIndex;
 
-        public float _stepTime;
+        public float _gravityTime;
         // TODO: Reimplement repeated movement handling, potentially use hold action on action map
         private float _moveTime;
         public float _lockTime;
@@ -36,16 +36,33 @@ namespace Tetris
                 Helpers.Math.RoundNearestNonZeroInt(inputAction.ReadValue<Vector2>().y)
             );
 
+            Board.UnpaintTiles(this);
             var newPosition = TryMove(moveInput, Cells);
 
             if (newPosition != null)
             {
                 CommitPlayerTransform((Vector3Int)newPosition, Cells);
             }
+            Board.PaintTiles(this);
         }
+        public void OnMove(Vector2Int moveInput)
+        {
+            Board.UnpaintTiles(this);
+            var newPosition = TryMove(moveInput, Cells);
+
+            if (newPosition != null)
+            {
+                CommitPlayerTransform((Vector3Int)newPosition, Cells);
+            }
+            Board.PaintTiles(this);
+        }
+
+
         public void OnRotate(InputAction inputAction)
         {
             int rotateInput = Helpers.Math.RoundNearestNonZeroInt(inputAction.ReadValue<float>());
+
+            Board.UnpaintTiles(this);
 
             Vector3Int[] newCells = GenerateRotationCells(Helpers.Math.Wrap(RotationIndex + rotateInput, 0, 4));
 
@@ -53,8 +70,10 @@ namespace Tetris
 
             if (newPosition != null)
             {
+                Debug.Log(rotateInput);
                 CommitPlayerTransform((Vector3Int)newPosition, newCells);
             }
+            Board.PaintTiles(this);
         }
 
 
@@ -65,10 +84,12 @@ namespace Tetris
             newPosition.x += moveInput.x;
             newPosition.y += moveInput.y;
 
+            Debug.Log(newPosition);
             // Return the newPosition if valid, otherwise just pass back original
             // Removes the weird bool check in original and avoids a null return
             return Board.IsValidPosition(cells, newPosition) ? newPosition : null;
         }
+
         private Vector3Int? TryRotate(int rotateInput, Vector3Int[] cells)
         {
             // See Wall Kick: https://tetris.wiki/Super_Rotation_System#Wall_Kicks
@@ -82,7 +103,7 @@ namespace Tetris
                 Shape.WallKicks.GetLength(0)
             );
 
-            
+
             for (int i = 0; i < Shape.WallKicks.GetLength(1); i++)
             {
                 Vector2Int wallKickMoveInput = Shape.WallKicks[wallKickIndex, i];
@@ -147,7 +168,7 @@ namespace Tetris
 
             RotationIndex = 0;
 
-            _stepTime = Time.time + Board.Config.StepDelay;
+            _gravityTime = Time.time + Board.Config.GravityDelay;
             //_moveTime = Time.time + Board.Config.MoveDelay;
             _lockTime = 0f;
 
@@ -166,28 +187,21 @@ namespace Tetris
             // Timer before piece can no longer be moved
             _lockTime += Time.deltaTime;
 
-            if (Time.time > _stepTime)
+            if (Time.time > _gravityTime)
             {
-                Step();
+                _gravityTime = Time.time + Board.Config.GravityDelay;
+
+                OnMove(Vector2Int.down);
+
+                if (_lockTime >= Board.Config.LockDelay)
+                {
+                    LockMovement();
+                }
             }
 
             Board.PaintTiles(this);
-        }
 
-        private void Step()
-        {
-            _stepTime = Time.time + Board.Config.StepDelay;
 
-            var newPosition = ValidateMove(Vector2Int.down, Cells);
-            if (newPosition != null)
-            {
-                Position = (Vector3Int)newPosition;
-            }
-
-            if (_lockTime >= Board.Config.LockDelay)
-            {
-                LockMovement();
-            }
         }
 
         private void LockMovement()
