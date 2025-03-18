@@ -7,7 +7,7 @@ public class DemonBehavior : MonoBehaviour
     [SerializeField] private Material _mainBody;
     [SerializeField] private Material _cube;
 
-    [SerializeField] private FlashlightTrigger _flashlightTrigger;
+    [SerializeField] private Flashlight.Trigger _flashlightTrigger;
 
     private bool _isDissolving = false;
     private float _dissolveValue = 0f;
@@ -50,9 +50,9 @@ public class DemonBehavior : MonoBehaviour
 
             if (_dissolveValue >= 1f)
             {
-                    _isDissolving = false; // Stop dissolving once complete
+                _isDissolving = false; // Stop dissolving once complete
             }
-            
+
         }
     }
 }
