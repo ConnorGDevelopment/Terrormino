@@ -3,18 +3,13 @@ using UnityEngine.Tilemaps;
 
 namespace Tetris
 {
-    [System.Serializable]
-    public struct Config
-    {
-        public float StepDelay;
-        public float MoveDelay;
-        public float LockDelay;
-    }
-
     [DefaultExecutionOrder(-1)]
     public class Board : MonoBehaviour
     {
         public Tilemap BoardTilemap;
+        public Shape[] Tetrominoes;
+        public ActivePieceController ActivePiece;
+        public Config Config;
         public Vector2Int BoardSize = new(10, 20);
         public RectInt BoardBounds
         {
@@ -25,10 +20,6 @@ namespace Tetris
         }
         public Vector3Int SpawnPosition = new(-1, 8, 0);
 
-        public Shape[] Tetrominoes;
-        public Tetromino ActiveTetromino;
-        public Config Config;
-
         public void Awake()
         {
             for (int i = 0; i < Tetrominoes.Length; i++)
@@ -37,35 +28,29 @@ namespace Tetris
             }
         }
 
+
         public void Start()
         {
-            if (BoardTilemap == null)
-            {
-                if (GameObject.Find("BoardTilemap").TryGetComponent(out Tilemap tetrisBoard))
-                {
-                    BoardTilemap = tetrisBoard;
-                }
-                else
-                {
-                    Debug.Log("The Tetris Board was not set in the Inspector and could not be found in Scene");
-                }
-            }
+            BoardTilemap = Helpers.Debug.TryFindComponentOnGameObjectByName<Tilemap>("BoardTilemap");
+            ActivePiece = Helpers.Debug.TryFindComponent<ActivePieceController>(gameObject);
 
-            ActiveTetromino = GetComponentInChildren<Tetromino>();
-
-            SpawnTetromino();
+            SpawnPiece();
         }
 
-        public void SpawnTetromino()
+
+        public void SpawnPiece()
         {
+            // Currently picks randomly from all potential shapes, could use weighting
             int random = Random.Range(0, Tetrominoes.Length);
             Shape shape = Tetrominoes[random];
 
-            ActiveTetromino.Initialize(this, SpawnPosition, shape);
+            // Pass to the PieceController component
+            ActivePiece.Initialize(this, SpawnPosition, shape);
 
-            if (IsValidPosition(ActiveTetromino, SpawnPosition))
+            // If the stack is too high that the new piece can't be legally spawned, game ends
+            if (IsValidPosition(ActivePiece.Cells, SpawnPosition))
             {
-                Set(ActiveTetromino);
+                PaintTiles(ActivePiece);
             }
             else
             {
@@ -78,7 +63,7 @@ namespace Tetris
             BoardTilemap.ClearAllTiles();
         }
 
-        public void Set(Tetromino tetromino)
+        public void PaintTiles(ActivePieceController tetromino)
         {
             for (int i = 0; i < tetromino.Cells.Length; i++)
             {
@@ -86,8 +71,7 @@ namespace Tetris
                 BoardTilemap.SetTile(tilePosition, tetromino.Shape.Tile);
             }
         }
-
-        public void Clear(Tetromino tetromino)
+        public void UnpaintTiles(ActivePieceController tetromino)
         {
             for (int i = 0; i < tetromino.Cells.Length; i++)
             {
@@ -96,49 +80,26 @@ namespace Tetris
             }
         }
 
-        public bool IsValidPosition(Tetromino tetromino, Vector3Int position)
+
+        public bool IsValidPosition(Vector3Int[] cells, Vector3Int position)
         {
-            RectInt bounds = BoardBounds;
-
             // Validate each cell position
-            for (int i = 0; i < tetromino.Cells.Length; i++)
+            for (int i = 0; i < cells.Length; i++)
             {
-                Vector3Int tilePosition = tetromino.Cells[i] + position;
+                Vector3Int tilePosition = cells[i] + position;
 
-                if (!bounds.Contains(new(tilePosition.x, tilePosition.y)))
+                if (!BoardBounds.Contains(new(tilePosition.x, tilePosition.y)))
                 {
                     return false;
                 }
+
 
                 if (BoardTilemap.HasTile(tilePosition))
                 {
                     return false;
                 }
             }
-
-            // This only gets called if "return false" wasn't called above
             return true;
-        }
-
-        public void ClearLines()
-        {
-            RectInt bounds = BoardBounds;
-            int row = bounds.yMin;
-
-            // Clear from bottom to top
-            while (row < bounds.yMax)
-            {
-                // Only advance to the next row if the current is not cleared
-                // because the tiles above will fall down when a row is cleared
-                if (IsLineFull(row))
-                {
-                    LineClear(row);
-                }
-                else
-                {
-                    row++;
-                }
-            }
         }
 
         public bool IsLineFull(int row)
@@ -159,30 +120,44 @@ namespace Tetris
             return true;
         }
 
-        public void LineClear(int row)
+        public void ClearLines()
         {
             RectInt bounds = BoardBounds;
+            int row = bounds.yMin;
 
-            // Clear all tiles in the row
-            for (int col = bounds.xMin; col < bounds.xMax; col++)
-            {
-                Vector3Int position = new Vector3Int(col, row, 0);
-                BoardTilemap.SetTile(position, null);
-            }
-
-            // Shift every row above down one
+            // Clear from bottom to top
             while (row < bounds.yMax)
             {
-                for (int col = bounds.xMin; col < bounds.xMax; col++)
+                // Only advance to the next row if the current is not cleared
+                // because the tiles above will fall down when a row is cleared
+                if (IsLineFull(row))
                 {
-                    Vector3Int position = new Vector3Int(col, row + 1, 0);
-                    TileBase above = BoardTilemap.GetTile(position);
+                    // Clear all tiles in the row
+                    for (int col = bounds.xMin; col < bounds.xMax; col++)
+                    {
+                        Vector3Int position = new Vector3Int(col, row, 0);
+                        BoardTilemap.SetTile(position, null);
+                    }
 
-                    position = new Vector3Int(col, row, 0);
-                    BoardTilemap.SetTile(position, above);
+                    // Shift every row above down one
+                    while (row < bounds.yMax)
+                    {
+                        for (int col = bounds.xMin; col < bounds.xMax; col++)
+                        {
+                            Vector3Int position = new Vector3Int(col, row + 1, 0);
+                            TileBase above = BoardTilemap.GetTile(position);
+
+                            position = new Vector3Int(col, row, 0);
+                            BoardTilemap.SetTile(position, above);
+                        }
+
+                        row++;
+                    }
                 }
-
-                row++;
+                else
+                {
+                    row++;
+                }
             }
         }
     }
