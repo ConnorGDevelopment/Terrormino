@@ -1,16 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class FlashlightTrigger : MonoBehaviour
 {
     [SerializeField] private FlashlightScript _flashlightscript;
 
-    private float LightTimer = 3f;
+    [SerializeField] private Animator _animator;
+
+    public float LightTimer = 3f;
 
     private bool LightOnEnemy = false;
-    private bool SpookEnemy = false;
-
+    public bool SpookEnemy = false;
 
 
 
@@ -51,6 +53,7 @@ public class FlashlightTrigger : MonoBehaviour
             if (SpookEnemy == true)
             {
                 Debug.Log("RAAAAAAAAAHHHH");
+                _animator.SetBool("SpookEnemy", true);
                 LightTimer = 3f;
                 SpookEnemy = false;
 
@@ -69,6 +72,7 @@ public class FlashlightTrigger : MonoBehaviour
             {
                 LightOnEnemy = false;
                 SpookEnemy = false;
+                LightTimer = 3f;
             }
         }
     }

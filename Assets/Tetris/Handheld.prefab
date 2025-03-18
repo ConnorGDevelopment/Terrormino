@@ -252,7 +252,7 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 1a1fbc6d58bcb7e4ba66192003f29975, type: 2}
     - target: {fileID: 919132149155446097, guid: 7da68fce7cab46141a0baeb6aee3ee88, type: 3}
       propertyPath: m_Name
-      value: Handheld 1
+      value: Handheld
       objectReference: {fileID: 0}
     - target: {fileID: 3188042459459427148, guid: 7da68fce7cab46141a0baeb6aee3ee88, type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -554,7 +554,7 @@ MonoBehaviour:
         m_Calls:
         - m_Target: {fileID: 0}
           m_TargetAssemblyTypeName: Tetris.ActivePieceController, Assembly-CSharp
-          m_MethodName: OnMove
+          m_MethodName: 
           m_Mode: 0
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -570,7 +570,7 @@ MonoBehaviour:
         m_Calls:
         - m_Target: {fileID: 0}
           m_TargetAssemblyTypeName: Tetris.ActivePieceController, Assembly-CSharp
-          m_MethodName: OnRotate
+          m_MethodName: 
           m_Mode: 0
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
