@@ -94,6 +94,11 @@ namespace Tetris
         public Vector2Int[] Cells { get; private set; }
         public Vector2Int[,] WallKicks { get; private set; }
 
+        public void Initialize()
+        {
+            Cells = ShapeVecs.Cells[ShapeKey];
+            WallKicks = ShapeVecs.WallKicks[ShapeKey];
+        }
         public Vector3Int[] GetCellsAsVec3
         {
             get
@@ -108,11 +113,13 @@ namespace Tetris
                 return vector3Ints;
             }
         }
+    }
 
-        public void Initialize()
-        {
-            Cells = ShapeVecs.Cells[ShapeKey];
-            WallKicks = ShapeVecs.WallKicks[ShapeKey];
-        }
+    [System.Serializable]
+    public struct Config
+    {
+        public float GravityDelay;
+        public float MoveDelay;
+        public float LockDelay;
     }
 }
