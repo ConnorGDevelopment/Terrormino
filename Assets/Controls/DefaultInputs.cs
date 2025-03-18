@@ -371,9 +371,9 @@ public partial class @DefaultInputs: IInputActionCollection2, IDisposable
             ""actions"": [
                 {
                     ""name"": ""Directionals"",
-                    ""type"": ""PassThrough"",
+                    ""type"": ""Button"",
                     ""id"": ""4b82c470-4e11-4323-9392-54b225379a87"",
-                    ""expectedControlType"": ""Vector2"",
+                    ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
@@ -1086,9 +1086,9 @@ public partial class @DefaultInputs: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": ""Face Buttons"",
-                    ""type"": ""PassThrough"",
+                    ""type"": ""Button"",
                     ""id"": ""80a3ffcb-fb1c-4dbf-8c39-52c2d7a303b3"",
-                    ""expectedControlType"": ""Axis"",
+                    ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false

@@ -3,6 +3,7 @@ using UnityEngine.Tilemaps;
 
 namespace Tetris
 {
+    [DefaultExecutionOrder(-1)]
     public class Board : MonoBehaviour
     {
         public Tilemap BoardTilemap;

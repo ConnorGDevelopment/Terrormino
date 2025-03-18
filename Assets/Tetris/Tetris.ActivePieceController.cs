@@ -64,13 +64,12 @@ namespace Tetris
 
             Board.UnpaintTiles(this);
 
-            Vector3Int[] newCells = GenerateRotationCells(Helpers.Math.Wrap(RotationIndex + rotateInput, 0, 4));
+            Vector3Int[] newCells = GenerateRotationCells(rotateInput);
 
             var newPosition = TryRotate(rotateInput, newCells);
 
             if (newPosition != null)
             {
-                Debug.Log(rotateInput);
                 CommitPlayerTransform((Vector3Int)newPosition, newCells);
             }
             Board.PaintTiles(this);
@@ -84,7 +83,6 @@ namespace Tetris
             newPosition.x += moveInput.x;
             newPosition.y += moveInput.y;
 
-            Debug.Log(newPosition);
             // Return the newPosition if valid, otherwise just pass back original
             // Removes the weird bool check in original and avoids a null return
             return Board.IsValidPosition(cells, newPosition) ? newPosition : null;
