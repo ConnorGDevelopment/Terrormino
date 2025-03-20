@@ -1846,8 +1846,8 @@ public partial class @DefaultInputs: IInputActionCollection2, IDisposable
                     ""isOR"": false
                 },
                 {
-                    ""devicePath"": ""<Keyboard>"",
-                    ""isOptional"": true,
+                    ""devicePath"": ""<OpenXRHmd>"",
+                    ""isOptional"": false,
                     ""isOR"": false
                 }
             ]
