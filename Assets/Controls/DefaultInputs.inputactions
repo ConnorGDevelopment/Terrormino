@@ -873,6 +873,17 @@
                 },
                 {
                     "name": "",
+                    "id": "8db8d42f-5d34-469f-810a-629ee0fb1041",
+                    "path": "<Keyboard>/z",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard Mouse",
+                    "action": "Activate",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "adbb373f-96e2-4acb-ba9b-7189935fb15e",
                     "path": "<XRController>{LeftHand}/{Trigger}",
                     "interactions": "",
@@ -1582,6 +1593,17 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Generic XR Controller",
+                    "action": "Activate",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "08247018-e822-4403-8e59-eadbb5032a9d",
+                    "path": "<Keyboard>/x",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard Mouse",
                     "action": "Activate",
                     "isComposite": false,
                     "isPartOfComposite": false

@@ -4,9 +4,9 @@ namespace Flashlight
 {
     public class Trigger : MonoBehaviour
     {
-        [SerializeField] private Shake _flashlightscript;
+        public Shake _flashlightscript;
 
-        [SerializeField] private Animator _animator;
+        public Animator _animator;
 
         public float LightTimer = 3f;
 

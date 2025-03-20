@@ -7,12 +7,12 @@ namespace Flashlight
 {
     public class Shake : MonoBehaviour
     {
-        [SerializeField] private GameObject _lightSource; // GameObject with Light Source
-        [SerializeField] private GameObject _lightInteractor;
+        public Light _lightSource; // GameObject with Light Source
+        public Collider _lightInteractor;
         public bool FlashlightActive = false;
 
         private bool _isGrabbed = false;
-        [SerializeField] private InputData _inputData;
+        public InputData _inputData;
 
         private float _lastTimestamp = 0.25f;   // Measuring the velocity of the controller every 0.25 seconds
         private float _batteryLife = 10f;
@@ -25,8 +25,7 @@ namespace Flashlight
         void Start()
         {
             _inputData = Helpers.Debug.TryFindComponent<InputData>(gameObject);
-            _lightSource.SetActive(false);
-            _lightInteractor.SetActive(false);
+            _lightSource.enabled = false;
         }
         void Update()
         {
@@ -37,8 +36,8 @@ namespace Flashlight
 
             if (_batteryLife < 0) // Battery dies
             {
-                _lightInteractor.SetActive(false);
-                _lightSource.SetActive(false);
+                _lightInteractor.enabled = false;
+                _lightSource.enabled = false;
                 FlashlightActive = false;
             }
             _lastTimestamp -= Time.deltaTime;
@@ -77,8 +76,8 @@ namespace Flashlight
         public void OnTogglePower(InputAction inputAction)
         {
             FlashlightActive = !FlashlightActive;
-            _lightSource.SetActive(FlashlightActive);
-            _lightInteractor.SetActive(true);
+            _lightSource.enabled = !_lightSource.enabled;
+            _lightInteractor.enabled = !_lightInteractor.enabled;
             Debug.Log($"Flashlight toggled: {FlashlightActive}");
         }
 

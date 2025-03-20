@@ -2,12 +2,12 @@ using UnityEngine;
 
 public class DemonBehavior : MonoBehaviour
 {
-    [SerializeField] private Material _hook;
-    [SerializeField] private Material _hookBase;
-    [SerializeField] private Material _mainBody;
-    [SerializeField] private Material _cube;
+    public Material _hook;
+    public Material _hookBase;
+    public Material _mainBody;
+    public Material _cube;
 
-    [SerializeField] private Flashlight.Trigger _flashlightTrigger;
+    public Flashlight.Trigger _flashlightTrigger;
 
     private bool _isDissolving = false;
     private float _dissolveValue = 0f;
