@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 
 // Pulled from SnakeEyes
+[System.Diagnostics.CodeAnalysis.SuppressMessage("Major Bug", "S3903:Types should be defined in named namespaces", Justification = "Standalone")]
 public class MouseLook : MonoBehaviour
 {
     public Transform PlayerPosition;

@@ -895,6 +895,17 @@ public partial class @DefaultInputs: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""8db8d42f-5d34-469f-810a-629ee0fb1041"",
+                    ""path"": ""<Keyboard>/z"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Keyboard Mouse"",
+                    ""action"": ""Activate"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""adbb373f-96e2-4acb-ba9b-7189935fb15e"",
                     ""path"": ""<XRController>{LeftHand}/{Trigger}"",
                     ""interactions"": """",
@@ -1610,6 +1621,17 @@ public partial class @DefaultInputs: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""08247018-e822-4403-8e59-eadbb5032a9d"",
+                    ""path"": ""<Keyboard>/x"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Keyboard Mouse"",
+                    ""action"": ""Activate"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""8b17f55f-d318-4751-be3b-80ac4da0289a"",
                     ""path"": ""<XRController>{RightHand}/{Trigger}"",
                     ""interactions"": """",
@@ -1824,8 +1846,8 @@ public partial class @DefaultInputs: IInputActionCollection2, IDisposable
                     ""isOR"": false
                 },
                 {
-                    ""devicePath"": ""<Keyboard>"",
-                    ""isOptional"": true,
+                    ""devicePath"": ""<OpenXRHmd>"",
+                    ""isOptional"": false,
                     ""isOR"": false
                 }
             ]
