@@ -27,7 +27,7 @@
                     "name": "Is Tracked",
                     "type": "Button",
                     "id": "6bb4e248-e42b-47c3-b66c-79566508ca74",
-                    "expectedControlType": "Button",
+                    "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
@@ -105,7 +105,7 @@
                     "path": "<HandheldARInputDevice>/devicePosition",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": ";Generic XR Controller",
                     "action": "Position",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -127,7 +127,7 @@
                     "path": "<HandheldARInputDevice>/deviceRotation",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": ";Generic XR Controller",
                     "action": "Rotation",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -336,7 +336,7 @@
                     "path": "<Mouse>/delta",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": ";Generic XR Controller",
                     "action": "Mouse",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -1805,17 +1805,17 @@
             "devices": [
                 {
                     "devicePath": "<XRController>{LeftHand}",
-                    "isOptional": true,
+                    "isOptional": false,
                     "isOR": false
                 },
                 {
                     "devicePath": "<XRController>{RightHand}",
-                    "isOptional": true,
+                    "isOptional": false,
                     "isOR": false
                 },
                 {
                     "devicePath": "<XRController>",
-                    "isOptional": true,
+                    "isOptional": false,
                     "isOR": false
                 },
                 {
@@ -1825,7 +1825,7 @@
                 },
                 {
                     "devicePath": "<OpenXRHmd>",
-                    "isOptional": false,
+                    "isOptional": true,
                     "isOR": false
                 }
             ]
