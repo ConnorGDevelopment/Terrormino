@@ -45,7 +45,7 @@ namespace Flashlight
             RightVelocityCheck();
             LeftVelocityCheck();
 
-            // Store past velocity every 0.25s
+            // Store past velocity every 0.5s
             if (_lastTimestamp <= 0)
             {
                 if (_inputData._leftController.TryGetFeatureValue(UnityEngine.XR.CommonUsages.deviceVelocity, out Vector3 currentLeftVelocity))
