@@ -49,7 +49,7 @@ public partial class @DefaultInputs: IInputActionCollection2, IDisposable
                     ""name"": ""Is Tracked"",
                     ""type"": ""Button"",
                     ""id"": ""6bb4e248-e42b-47c3-b66c-79566508ca74"",
-                    ""expectedControlType"": """",
+                    ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
@@ -127,7 +127,7 @@ public partial class @DefaultInputs: IInputActionCollection2, IDisposable
                     ""path"": ""<HandheldARInputDevice>/devicePosition"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": "";Generic XR Controller"",
+                    ""groups"": """",
                     ""action"": ""Position"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -149,7 +149,7 @@ public partial class @DefaultInputs: IInputActionCollection2, IDisposable
                     ""path"": ""<HandheldARInputDevice>/deviceRotation"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": "";Generic XR Controller"",
+                    ""groups"": """",
                     ""action"": ""Rotation"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -358,7 +358,7 @@ public partial class @DefaultInputs: IInputActionCollection2, IDisposable
                     ""path"": ""<Mouse>/delta"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": "";Generic XR Controller"",
+                    ""groups"": """",
                     ""action"": ""Mouse"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -1847,7 +1847,7 @@ public partial class @DefaultInputs: IInputActionCollection2, IDisposable
                 },
                 {
                     ""devicePath"": ""<OpenXRHmd>"",
-                    ""isOptional"": true,
+                    ""isOptional"": false,
                     ""isOR"": false
                 }
             ]
@@ -1858,12 +1858,12 @@ public partial class @DefaultInputs: IInputActionCollection2, IDisposable
             ""devices"": [
                 {
                     ""devicePath"": ""<Keyboard>"",
-                    ""isOptional"": false,
+                    ""isOptional"": true,
                     ""isOR"": false
                 },
                 {
                     ""devicePath"": ""<Mouse>"",
-                    ""isOptional"": false,
+                    ""isOptional"": true,
                     ""isOR"": false
                 }
             ]
