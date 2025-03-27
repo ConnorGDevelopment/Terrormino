@@ -7,7 +7,7 @@ public class JumpscareTrigger : MonoBehaviour
     public AudioSource Scream;
     //public GameObject PlayerCam;
     public GameObject Jumpscare;
-    public GameObject FlashImg;
+    
 
     private void OnTriggerEnter(Collider other)
     {
@@ -18,7 +18,7 @@ public class JumpscareTrigger : MonoBehaviour
             Scream.Play();
             Jumpscare.SetActive(true);
             //PlayerCam.SetActive(false);
-            FlashImg.SetActive(true);
+          
             StartCoroutine(EndJumpscare());
         }        
     }
@@ -28,7 +28,7 @@ public class JumpscareTrigger : MonoBehaviour
         yield return new WaitForSeconds(2.03f);
         //PlayerCam.SetActive(true);
         Jumpscare.SetActive(false);
-        FlashImg.SetActive(false);
+        
 
     }
 

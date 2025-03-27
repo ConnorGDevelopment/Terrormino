@@ -514,7 +514,7 @@ public partial class @DefaultInputs: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": true
                 },
                 {
-                    ""name"": ""Activate"",
+                    ""name"": ""Trigger"",
                     ""type"": ""Button"",
                     ""id"": ""e385d6e7-b71d-4cc5-9e40-77dec9613fab"",
                     ""expectedControlType"": """",
@@ -889,7 +889,7 @@ public partial class @DefaultInputs: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Generic XR Controller"",
-                    ""action"": ""Activate"",
+                    ""action"": ""Trigger"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -900,7 +900,7 @@ public partial class @DefaultInputs: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": "";Keyboard Mouse"",
-                    ""action"": ""Activate"",
+                    ""action"": ""Trigger"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -1240,7 +1240,7 @@ public partial class @DefaultInputs: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": true
                 },
                 {
-                    ""name"": ""Activate"",
+                    ""name"": ""Trigger"",
                     ""type"": ""Button"",
                     ""id"": ""51eec5c6-70b0-4e5c-8567-321060335bbe"",
                     ""expectedControlType"": """",
@@ -1615,7 +1615,7 @@ public partial class @DefaultInputs: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Generic XR Controller"",
-                    ""action"": ""Activate"",
+                    ""action"": ""Trigger"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -1626,7 +1626,7 @@ public partial class @DefaultInputs: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": "";Keyboard Mouse"",
-                    ""action"": ""Activate"",
+                    ""action"": ""Trigger"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -1899,7 +1899,7 @@ public partial class @DefaultInputs: IInputActionCollection2, IDisposable
         m_LeftHand_GripRotation = m_LeftHand.FindAction("Grip Rotation", throwIfNotFound: true);
         m_LeftHand_Select = m_LeftHand.FindAction("Select", throwIfNotFound: true);
         m_LeftHand_SelectValue = m_LeftHand.FindAction("Select Value", throwIfNotFound: true);
-        m_LeftHand_Activate = m_LeftHand.FindAction("Activate", throwIfNotFound: true);
+        m_LeftHand_Trigger = m_LeftHand.FindAction("Trigger", throwIfNotFound: true);
         m_LeftHand_ActivateValue = m_LeftHand.FindAction("Activate Value", throwIfNotFound: true);
         m_LeftHand_UIPress = m_LeftHand.FindAction("UI Press", throwIfNotFound: true);
         m_LeftHand_UIPressValue = m_LeftHand.FindAction("UI Press Value", throwIfNotFound: true);
@@ -1927,7 +1927,7 @@ public partial class @DefaultInputs: IInputActionCollection2, IDisposable
         m_RightHand_GripRotation = m_RightHand.FindAction("Grip Rotation", throwIfNotFound: true);
         m_RightHand_Select = m_RightHand.FindAction("Select", throwIfNotFound: true);
         m_RightHand_SelectValue = m_RightHand.FindAction("Select Value", throwIfNotFound: true);
-        m_RightHand_Activate = m_RightHand.FindAction("Activate", throwIfNotFound: true);
+        m_RightHand_Trigger = m_RightHand.FindAction("Trigger", throwIfNotFound: true);
         m_RightHand_ActivateValue = m_RightHand.FindAction("Activate Value", throwIfNotFound: true);
         m_RightHand_UIPress = m_RightHand.FindAction("UI Press", throwIfNotFound: true);
         m_RightHand_UIPressValue = m_RightHand.FindAction("UI Press Value", throwIfNotFound: true);
@@ -2130,7 +2130,7 @@ public partial class @DefaultInputs: IInputActionCollection2, IDisposable
     private readonly InputAction m_LeftHand_GripRotation;
     private readonly InputAction m_LeftHand_Select;
     private readonly InputAction m_LeftHand_SelectValue;
-    private readonly InputAction m_LeftHand_Activate;
+    private readonly InputAction m_LeftHand_Trigger;
     private readonly InputAction m_LeftHand_ActivateValue;
     private readonly InputAction m_LeftHand_UIPress;
     private readonly InputAction m_LeftHand_UIPressValue;
@@ -2159,7 +2159,7 @@ public partial class @DefaultInputs: IInputActionCollection2, IDisposable
         public InputAction @GripRotation => m_Wrapper.m_LeftHand_GripRotation;
         public InputAction @Select => m_Wrapper.m_LeftHand_Select;
         public InputAction @SelectValue => m_Wrapper.m_LeftHand_SelectValue;
-        public InputAction @Activate => m_Wrapper.m_LeftHand_Activate;
+        public InputAction @Trigger => m_Wrapper.m_LeftHand_Trigger;
         public InputAction @ActivateValue => m_Wrapper.m_LeftHand_ActivateValue;
         public InputAction @UIPress => m_Wrapper.m_LeftHand_UIPress;
         public InputAction @UIPressValue => m_Wrapper.m_LeftHand_UIPressValue;
@@ -2225,9 +2225,9 @@ public partial class @DefaultInputs: IInputActionCollection2, IDisposable
             @SelectValue.started += instance.OnSelectValue;
             @SelectValue.performed += instance.OnSelectValue;
             @SelectValue.canceled += instance.OnSelectValue;
-            @Activate.started += instance.OnActivate;
-            @Activate.performed += instance.OnActivate;
-            @Activate.canceled += instance.OnActivate;
+            @Trigger.started += instance.OnTrigger;
+            @Trigger.performed += instance.OnTrigger;
+            @Trigger.canceled += instance.OnTrigger;
             @ActivateValue.started += instance.OnActivateValue;
             @ActivateValue.performed += instance.OnActivateValue;
             @ActivateValue.canceled += instance.OnActivateValue;
@@ -2304,9 +2304,9 @@ public partial class @DefaultInputs: IInputActionCollection2, IDisposable
             @SelectValue.started -= instance.OnSelectValue;
             @SelectValue.performed -= instance.OnSelectValue;
             @SelectValue.canceled -= instance.OnSelectValue;
-            @Activate.started -= instance.OnActivate;
-            @Activate.performed -= instance.OnActivate;
-            @Activate.canceled -= instance.OnActivate;
+            @Trigger.started -= instance.OnTrigger;
+            @Trigger.performed -= instance.OnTrigger;
+            @Trigger.canceled -= instance.OnTrigger;
             @ActivateValue.started -= instance.OnActivateValue;
             @ActivateValue.performed -= instance.OnActivateValue;
             @ActivateValue.canceled -= instance.OnActivateValue;
@@ -2369,7 +2369,7 @@ public partial class @DefaultInputs: IInputActionCollection2, IDisposable
     private readonly InputAction m_RightHand_GripRotation;
     private readonly InputAction m_RightHand_Select;
     private readonly InputAction m_RightHand_SelectValue;
-    private readonly InputAction m_RightHand_Activate;
+    private readonly InputAction m_RightHand_Trigger;
     private readonly InputAction m_RightHand_ActivateValue;
     private readonly InputAction m_RightHand_UIPress;
     private readonly InputAction m_RightHand_UIPressValue;
@@ -2399,7 +2399,7 @@ public partial class @DefaultInputs: IInputActionCollection2, IDisposable
         public InputAction @GripRotation => m_Wrapper.m_RightHand_GripRotation;
         public InputAction @Select => m_Wrapper.m_RightHand_Select;
         public InputAction @SelectValue => m_Wrapper.m_RightHand_SelectValue;
-        public InputAction @Activate => m_Wrapper.m_RightHand_Activate;
+        public InputAction @Trigger => m_Wrapper.m_RightHand_Trigger;
         public InputAction @ActivateValue => m_Wrapper.m_RightHand_ActivateValue;
         public InputAction @UIPress => m_Wrapper.m_RightHand_UIPress;
         public InputAction @UIPressValue => m_Wrapper.m_RightHand_UIPressValue;
@@ -2468,9 +2468,9 @@ public partial class @DefaultInputs: IInputActionCollection2, IDisposable
             @SelectValue.started += instance.OnSelectValue;
             @SelectValue.performed += instance.OnSelectValue;
             @SelectValue.canceled += instance.OnSelectValue;
-            @Activate.started += instance.OnActivate;
-            @Activate.performed += instance.OnActivate;
-            @Activate.canceled += instance.OnActivate;
+            @Trigger.started += instance.OnTrigger;
+            @Trigger.performed += instance.OnTrigger;
+            @Trigger.canceled += instance.OnTrigger;
             @ActivateValue.started += instance.OnActivateValue;
             @ActivateValue.performed += instance.OnActivateValue;
             @ActivateValue.canceled += instance.OnActivateValue;
@@ -2550,9 +2550,9 @@ public partial class @DefaultInputs: IInputActionCollection2, IDisposable
             @SelectValue.started -= instance.OnSelectValue;
             @SelectValue.performed -= instance.OnSelectValue;
             @SelectValue.canceled -= instance.OnSelectValue;
-            @Activate.started -= instance.OnActivate;
-            @Activate.performed -= instance.OnActivate;
-            @Activate.canceled -= instance.OnActivate;
+            @Trigger.started -= instance.OnTrigger;
+            @Trigger.performed -= instance.OnTrigger;
+            @Trigger.canceled -= instance.OnTrigger;
             @ActivateValue.started -= instance.OnActivateValue;
             @ActivateValue.performed -= instance.OnActivateValue;
             @ActivateValue.canceled -= instance.OnActivateValue;
@@ -2642,7 +2642,7 @@ public partial class @DefaultInputs: IInputActionCollection2, IDisposable
         void OnGripRotation(InputAction.CallbackContext context);
         void OnSelect(InputAction.CallbackContext context);
         void OnSelectValue(InputAction.CallbackContext context);
-        void OnActivate(InputAction.CallbackContext context);
+        void OnTrigger(InputAction.CallbackContext context);
         void OnActivateValue(InputAction.CallbackContext context);
         void OnUIPress(InputAction.CallbackContext context);
         void OnUIPressValue(InputAction.CallbackContext context);
@@ -2671,7 +2671,7 @@ public partial class @DefaultInputs: IInputActionCollection2, IDisposable
         void OnGripRotation(InputAction.CallbackContext context);
         void OnSelect(InputAction.CallbackContext context);
         void OnSelectValue(InputAction.CallbackContext context);
-        void OnActivate(InputAction.CallbackContext context);
+        void OnTrigger(InputAction.CallbackContext context);
         void OnActivateValue(InputAction.CallbackContext context);
         void OnUIPress(InputAction.CallbackContext context);
         void OnUIPressValue(InputAction.CallbackContext context);
