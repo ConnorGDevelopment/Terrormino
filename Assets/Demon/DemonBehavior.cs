@@ -1,4 +1,3 @@
-using Flashlight;
 using UnityEngine;
 
 public class DemonBehavior : MonoBehaviour

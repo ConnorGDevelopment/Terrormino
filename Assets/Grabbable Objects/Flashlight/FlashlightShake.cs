@@ -7,18 +7,18 @@ using UnityEngine.Events;
 using UnityEngine.InputSystem;
 using UnityEngine.XR.Interaction.Toolkit;
 
-public class FlashlightScript : MonoBehaviour
+public class FlashlightShake : MonoBehaviour
 {
     public Light LightSource; //flashlight
-    public Collider LightInteractor;
-    public bool FlashlightActive = false;
+    public Collider LightInteractor;  //Collider for checking if the demon is inside
+    public bool FlashlightActive = false;     //flag for knowing if the flashlight is currently active
 
 
     
-    public InputData _inputData;
+    public InputData _inputData;     //Reference script to grab device characteristics, used for finding the device velocity
 
     private float _pastTime = 0.25f;   //Measuring the velocity of the controller every 0.25 seconds
-    private float _battery = 10f;     //battery life
+    private float _battery = 5f;     //battery life
 
 
     private readonly float smoothingFactor = 0.2f; //helping with noise from the controllers
@@ -60,27 +60,27 @@ public class FlashlightScript : MonoBehaviour
     {
         if (FlashlightActive == true)  // Flashlight battery drains when held
         {
-            _battery -= Time.deltaTime;
+            _battery -= Time.deltaTime;   //Battery continually loses charge
             
         }
 
         if (_battery < 0) // Battery dies
         {
-            LightInteractor.enabled = false;
+            LightInteractor.enabled = false;   //Resetting everything back to being inactive/off
             LightSource.enabled = false;
             FlashlightActive = false;
         }
 
-        _pastTime -= Time.deltaTime;
+        _pastTime -= Time.deltaTime;      //flag for checking the timing for whether or not the device velocity should be checked
 
 
 
 
 
-        RightVelocityCheck();
+        RightVelocityCheck();          //Checking for right controller every frame and seeing if there is a significant increase between the past velocity and current velocity
 
 
-        LeftVelocityCheck();
+        LeftVelocityCheck();           //Checking for left controller
         
 
 
@@ -88,9 +88,9 @@ public class FlashlightScript : MonoBehaviour
 
 
         // Store past velocity every 0.5s
-        if (_pastTime <= 0)
+        if (_pastTime <= 0)    
         {
-            if (_inputData._leftController.TryGetFeatureValue(UnityEngine.XR.CommonUsages.deviceVelocity, out Vector3 currentLeftVelocity))
+            if (_inputData._leftController.TryGetFeatureValue(UnityEngine.XR.CommonUsages.deviceVelocity, out Vector3 currentLeftVelocity))        //Using the input data script to cache the magnitude of the device velocity
             {
                 _cachedLeftVelocity = currentLeftVelocity;
 
@@ -98,7 +98,7 @@ public class FlashlightScript : MonoBehaviour
 
             }
 
-            if (_inputData._rightController.TryGetFeatureValue(UnityEngine.XR.CommonUsages.deviceVelocity, out Vector3 currentRightVelocity))
+            if (_inputData._rightController.TryGetFeatureValue(UnityEngine.XR.CommonUsages.deviceVelocity, out Vector3 currentRightVelocity))       //Same thing but for right controller
             {
                 _cachedRightVelocity = currentRightVelocity;
 
@@ -121,46 +121,16 @@ public class FlashlightScript : MonoBehaviour
     }
 
 
-    //public void OnGrab(SelectEnterEventArgs context)
-    //{
-    //    inHand = true;
-    //    UnityEngine.Debug.Log("Flashlight grabbed");
-    //}
-
-
-    //public void OnRelease(SelectExitEventArgs context)
-    //{
-
-    //    inHand = false;
-    //    UnityEngine.Debug.Log("Flashlight Dropped");
-    //}
 
 
 
 
-    //Grabbing the flashlight
-    //public void OnFlashlightGrab(SelectEnterEventArgs _)  
-    //{
-    //    inHand = true;
-    //    UnityEngine.Debug.Log("Flashlight grabbed");
-    //}
-
-    ////Dropping flashlight
-    //public void OnFlashlightRelease(SelectExitEventArgs _)
-    //{
-    //    inHand = false;
-    //}
-
-
-
-
-
-    public UnityEvent<InputAction> TogglePower = new();
-    public void OnTogglePower(InputAction inputAction)
+    public UnityEvent<InputAction> TogglePower = new();                
+    public void OnTogglePower(InputAction inputAction)                                         //By using the input router we can check what device was being used to press the button that triggers the unity event
     {
-        int triggerInput = Math.RoundNearestNonZeroInt(inputAction.ReadValue<float>());
-        UnityEngine.Debug.Log(triggerInput);
-        if (triggerInput == 1)
+        int triggerInput = Math.RoundNearestNonZeroInt(inputAction.ReadValue<float>());          //Putting the value of the button into either a 0 or 1
+        UnityEngine.Debug.Log(triggerInput);                   
+        if (triggerInput == 1)                          //If the value is 1 that means the button has been pressed and the flashlight can be active
         {
             FlashlightActive = !FlashlightActive;
             LightSource.enabled = !LightSource.enabled;
@@ -169,26 +139,6 @@ public class FlashlightScript : MonoBehaviour
             
         }
     }
-
-
-
-    //Checking if the primary button on either controller is in hand
-    //public void FlashLightButton(InputAction.CallbackContext context)
-    //{
-    //    // Check if the button is pressed 
-    //    if (context.performed && inHand)
-    //    {
-
-    //            FlashlightActive = !FlashlightActive; // Toggle the flashlight state
-    //            FlashLightLight.SetActive(FlashlightActive); // Enable or disable the light
-    //            LightInteractor.enabled = true;
-
-    //            Debug.Log($"Flashlight toggled: {FlashlightActive}");
-
-
-
-    //    }
-    //}
 
 
 
@@ -208,7 +158,7 @@ public class FlashlightScript : MonoBehaviour
                 //Debug.Log(RightPercentageIncrease);
 
 
-                if (RightPercentageIncrease >= 225f && currentRightMagnitude > 0.7f) //checking to see if the current right magnitude increased by 50%
+                if (RightPercentageIncrease >= 225f && currentRightMagnitude > 0.7f) //checking to see if the current right magnitude increased by 225% (i.e. shaking)
                 {
                     _battery = 10f;
                     UnityEngine.Debug.Log("Right charged the battery");
@@ -224,7 +174,7 @@ public class FlashlightScript : MonoBehaviour
     {
 
 
-        //checking past velocity of 
+        //checking past velocity of the left controller
         if (_inputData._leftController.TryGetFeatureValue(UnityEngine.XR.CommonUsages.deviceVelocity, out Vector3 leftVelocity))
         {
 
@@ -238,7 +188,7 @@ public class FlashlightScript : MonoBehaviour
                 //Debug.Log(LeftPercentageIncrease);
 
 
-                if (LeftPercentageIncrease >= 225f && currentLeftMagnitude > 0.7f) //checking to see if the current right magnitude increased by 50%
+                if (LeftPercentageIncrease >= 225f && currentLeftMagnitude > 0.7f) //checking to see if the current right magnitude increased by 225% (i.e. shaking)
                 {
                     _battery = 10f;
                     UnityEngine.Debug.Log("Left charged the battery");
