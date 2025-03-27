@@ -1,30 +1,31 @@
+using Helpers;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.InputSystem;
-using UnityEngine.XR;
 using UnityEngine.XR.Interaction.Toolkit;
 
 public class FlashlightScript : MonoBehaviour
 {
-    [SerializeField] private GameObject FlashLightLight; //flashlight
-    [SerializeField] private GameObject LightInteractor;
+    public Light LightSource; //flashlight
+    public Collider LightInteractor;
     public bool FlashlightActive = false;
 
 
-    private bool inHand = false;
-    [SerializeField] private InputData _inputData;
+    
+    public InputData _inputData;
 
     private float _pastTime = 0.25f;   //Measuring the velocity of the controller every 0.25 seconds
     private float _battery = 10f;     //battery life
 
 
-    private float smoothingFactor = 0.2f; //helping with noise from the controllers
+    private readonly float smoothingFactor = 0.2f; //helping with noise from the controllers
 
 
-    private Vector3 PastLeftVelocity = Vector3.zero;  //tracking the past velocity for measuring % change to current velocity
-    private Vector3 PastRightVelocity = Vector3.zero;
+    private Vector3 _cachedLeftVelocity = Vector3.zero;  //tracking the past velocity for measuring % change to current velocity
+    private Vector3 _cachedRightVelocity = Vector3.zero;
 
 
    
@@ -40,24 +41,24 @@ public class FlashlightScript : MonoBehaviour
        
         if(_inputData == null)
         {
-            Debug.Log("Input data script is missing");
+            UnityEngine.Debug.Log("Input data script is missing");
         }
 
 
 
         // Ensure the flashlight starts off
-        FlashLightLight.SetActive(false);
+        LightSource.enabled = false;
 
 
         //Setting the light interactor to be off
-        LightInteractor.SetActive(false);
+        LightInteractor.enabled = false;
 
 
 
     }
     void Update()
     {
-        if (inHand && FlashlightActive == true)  // Flashlight battery drains when held
+        if (FlashlightActive == true)  // Flashlight battery drains when held
         {
             _battery -= Time.deltaTime;
             
@@ -65,8 +66,8 @@ public class FlashlightScript : MonoBehaviour
 
         if (_battery < 0) // Battery dies
         {
-            LightInteractor.SetActive(false);
-            FlashLightLight.SetActive(false);
+            LightInteractor.enabled = false;
+            LightSource.enabled = false;
             FlashlightActive = false;
         }
 
@@ -91,7 +92,7 @@ public class FlashlightScript : MonoBehaviour
         {
             if (_inputData._leftController.TryGetFeatureValue(UnityEngine.XR.CommonUsages.deviceVelocity, out Vector3 currentLeftVelocity))
             {
-                PastLeftVelocity = currentLeftVelocity;
+                _cachedLeftVelocity = currentLeftVelocity;
 
                
 
@@ -99,7 +100,7 @@ public class FlashlightScript : MonoBehaviour
 
             if (_inputData._rightController.TryGetFeatureValue(UnityEngine.XR.CommonUsages.deviceVelocity, out Vector3 currentRightVelocity))
             {
-                PastRightVelocity = currentRightVelocity;
+                _cachedRightVelocity = currentRightVelocity;
 
 
                 
@@ -118,43 +119,76 @@ public class FlashlightScript : MonoBehaviour
         
 
     }
-    
 
+
+    //public void OnGrab(SelectEnterEventArgs context)
+    //{
+    //    inHand = true;
+    //    UnityEngine.Debug.Log("Flashlight grabbed");
+    //}
+
+
+    //public void OnRelease(SelectExitEventArgs context)
+    //{
+
+    //    inHand = false;
+    //    UnityEngine.Debug.Log("Flashlight Dropped");
+    //}
 
 
 
 
     //Grabbing the flashlight
-    public void OnFlashlightGrab(SelectEnterEventArgs _)  
-    {
-        inHand = true;
-    }
+    //public void OnFlashlightGrab(SelectEnterEventArgs _)  
+    //{
+    //    inHand = true;
+    //    UnityEngine.Debug.Log("Flashlight grabbed");
+    //}
 
-    //Dropping flashlight
-    public void OnFlashlightRelease(SelectExitEventArgs _)
-    {
-        inHand = false;
-    }
+    ////Dropping flashlight
+    //public void OnFlashlightRelease(SelectExitEventArgs _)
+    //{
+    //    inHand = false;
+    //}
 
 
-   
-    //Checking if the primary button on either controller is in hand
-    public void FlashLightButton(InputAction.CallbackContext context)
+
+
+
+    public UnityEvent<InputAction> TogglePower = new();
+    public void OnTogglePower(InputAction inputAction)
     {
-        // Check if the button is pressed 
-        if (context.performed && inHand)
+        int triggerInput = Math.RoundNearestNonZeroInt(inputAction.ReadValue<float>());
+        UnityEngine.Debug.Log(triggerInput);
+        if (triggerInput == 1)
         {
-            
-                FlashlightActive = !FlashlightActive; // Toggle the flashlight state
-                FlashLightLight.SetActive(FlashlightActive); // Enable or disable the light
-                LightInteractor.SetActive(true);
-
-                Debug.Log($"Flashlight toggled: {FlashlightActive}");
-            
-            
+            FlashlightActive = !FlashlightActive;
+            LightSource.enabled = !LightSource.enabled;
+            LightInteractor.enabled = !LightInteractor.enabled;
+            UnityEngine.Debug.Log($"Flashlight toggled: {FlashlightActive}");
             
         }
     }
+
+
+
+    //Checking if the primary button on either controller is in hand
+    //public void FlashLightButton(InputAction.CallbackContext context)
+    //{
+    //    // Check if the button is pressed 
+    //    if (context.performed && inHand)
+    //    {
+
+    //            FlashlightActive = !FlashlightActive; // Toggle the flashlight state
+    //            FlashLightLight.SetActive(FlashlightActive); // Enable or disable the light
+    //            LightInteractor.enabled = true;
+
+    //            Debug.Log($"Flashlight toggled: {FlashlightActive}");
+
+
+
+    //    }
+    //}
 
 
 
@@ -164,9 +198,9 @@ public class FlashlightScript : MonoBehaviour
         if (_inputData._rightController.TryGetFeatureValue(UnityEngine.XR.CommonUsages.deviceVelocity, out Vector3 rightVelocity))
         {
 
-            float pastRightMagnitude = PastRightVelocity.magnitude;
+            float pastRightMagnitude = _cachedRightVelocity.magnitude;
             float currentRightMagnitude = rightVelocity.magnitude;
-            PastRightVelocity = Vector3.Lerp(PastRightVelocity, rightVelocity, smoothingFactor);
+            _cachedRightVelocity = Vector3.Lerp(_cachedRightVelocity, rightVelocity, smoothingFactor);
 
             if (pastRightMagnitude > 0.2f) //checking to make sure we arent dividing by an insignificant amount to filter out noise
             {
@@ -174,10 +208,10 @@ public class FlashlightScript : MonoBehaviour
                 //Debug.Log(RightPercentageIncrease);
 
 
-                if (RightPercentageIncrease >= 225f && currentRightMagnitude > 0.7f && inHand) //checking to see if the current right magnitude increased by 50%
+                if (RightPercentageIncrease >= 225f && currentRightMagnitude > 0.7f) //checking to see if the current right magnitude increased by 50%
                 {
                     _battery = 10f;
-                    Debug.Log("Right charged the battery");
+                    UnityEngine.Debug.Log("Right charged the battery");
                 }
 
 
@@ -194,9 +228,9 @@ public class FlashlightScript : MonoBehaviour
         if (_inputData._leftController.TryGetFeatureValue(UnityEngine.XR.CommonUsages.deviceVelocity, out Vector3 leftVelocity))
         {
 
-            float pastLeftMagnitude = PastLeftVelocity.magnitude;
+            float pastLeftMagnitude = _cachedLeftVelocity.magnitude;
             float currentLeftMagnitude = leftVelocity.magnitude;
-            PastLeftVelocity = Vector3.Lerp(PastLeftVelocity, leftVelocity, smoothingFactor);
+            _cachedLeftVelocity = Vector3.Lerp(_cachedLeftVelocity, leftVelocity, smoothingFactor);
 
             if (pastLeftMagnitude > 0.2f) //checking to make sure we arent dividing by an insignificant amount and filtering out noise
             {
@@ -204,10 +238,10 @@ public class FlashlightScript : MonoBehaviour
                 //Debug.Log(LeftPercentageIncrease);
 
 
-                if (LeftPercentageIncrease >= 225f && currentLeftMagnitude > 0.7f && inHand) //checking to see if the current right magnitude increased by 50%
+                if (LeftPercentageIncrease >= 225f && currentLeftMagnitude > 0.7f) //checking to see if the current right magnitude increased by 50%
                 {
                     _battery = 10f;
-                    Debug.Log("Left charged the battery");
+                    UnityEngine.Debug.Log("Left charged the battery");
                 }
 
 

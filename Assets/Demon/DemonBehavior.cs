@@ -8,7 +8,7 @@ public class DemonBehavior : MonoBehaviour
     [SerializeField] private Material _mainBody;
     [SerializeField] private Material _cube;
 
-    [SerializeField] private Trigger _flashlightTrigger;
+    [SerializeField] private FlashlightTrigger _flashlightTrigger;
 
     private bool _isDissolving = false;
     private float _dissolveValue = 0f;

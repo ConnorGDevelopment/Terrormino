@@ -254,10 +254,10 @@ PrefabInstance:
       addedObject: {fileID: 2268033591653283249}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: cd944ab9a57b09347b8f52586a92c742, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 3394611111895909369}
+      addedObject: {fileID: 5748993670519756378}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: cd944ab9a57b09347b8f52586a92c742, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 5748993670519756378}
+      addedObject: {fileID: -2718025970545665652}
   m_SourcePrefab: {fileID: 100100000, guid: cd944ab9a57b09347b8f52586a92c742, type: 3}
 --- !u!4 &2623541740237862910 stripped
 Transform:
@@ -507,37 +507,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e8193c4ecc32bc4e822fd59b6b8934e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &3394611111895909369
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3396666281392991556}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 70e60c4bf1bdbaf43b2abf782f0183a8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _lightSource: {fileID: 7422671382374179238}
-  _lightInteractor: {fileID: 791747449702899915}
-  FlashlightActive: 0
-  _inputData: {fileID: 2268033591653283249}
-  TogglePower:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!114 &5748993670519756378
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -555,7 +524,7 @@ MonoBehaviour:
     Outputs:
     - m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 3394611111895909369}
+        - m_Target: {fileID: -2718025970545665652}
           m_TargetAssemblyTypeName: Flashlight.Shake, Assembly-CSharp
           m_MethodName: OnTogglePower
           m_Mode: 0
@@ -571,7 +540,7 @@ MonoBehaviour:
     Outputs:
     - m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 3394611111895909369}
+        - m_Target: {fileID: -2718025970545665652}
           m_TargetAssemblyTypeName: Flashlight.Shake, Assembly-CSharp
           m_MethodName: OnTogglePower
           m_Mode: 0
@@ -583,6 +552,25 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+--- !u!114 &-2718025970545665652
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3396666281392991556}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 776035e80d1b35d44be05afdd00b61b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  LightSource: {fileID: 7422671382374179238}
+  LightInteractor: {fileID: 791747449702899915}
+  FlashlightActive: 0
+  _inputData: {fileID: 2268033591653283249}
+  TogglePower:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1001 &8957419843645271154
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -674,7 +662,7 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 2841131373596262681, guid: cc141c3dfdded5a48a6614a023cc187a, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 4479942332852446451}
+      addedObject: {fileID: 198479770331742479}
   m_SourcePrefab: {fileID: 100100000, guid: cc141c3dfdded5a48a6614a023cc187a, type: 3}
 --- !u!136 &791747449702899915 stripped
 CapsuleCollider:
@@ -691,7 +679,7 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 2841131373596262681, guid: cc141c3dfdded5a48a6614a023cc187a, type: 3}
   m_PrefabInstance: {fileID: 8957419843645271154}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &4479942332852446451
+--- !u!114 &198479770331742479
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -700,10 +688,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 6566982789662420331}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d1f2fd9559ab0c943ba2e51c0e8ccd5a, type: 3}
+  m_Script: {fileID: 11500000, guid: aa92b2efd0e399444b9851bce993f083, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _flashlightscript: {fileID: 0}
+  _flashlightscript: {fileID: -2718025970545665652}
   _animator: {fileID: 2204310083863458761, guid: 4cbdf402610b8b34e93cc73915647547, type: 3}
   LightTimer: 2
   SpookEnemy: 0
