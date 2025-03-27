@@ -186,8 +186,8 @@ MonoBehaviour:
   _hook: {fileID: 2100000, guid: f4e752c2793317847986988b789f763a, type: 2}
   _hookBase: {fileID: 2100000, guid: 2b26f522890b1d446891d3f7c2f1d389, type: 2}
   _mainBody: {fileID: 2100000, guid: e47924706b6206541af9be7609652703, type: 2}
-  _cube: {fileID: 2100000, guid: 3eeef364de5c9c041951d739d639e2c3, type: 2}
-  _flashlightTrigger: {fileID: 685845732}
+  _cube: {fileID: 2100000, guid: 79caaaad48dd7cf4eb7d1da94e24ef91, type: 2}
+  _flashlightTrigger: {fileID: 1446150593}
 --- !u!114 &95853700
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1266,17 +1266,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &685845732 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4479942332852446451, guid: 623cadfc32875d342964e5530dd414db, type: 3}
-  m_PrefabInstance: {fileID: 2048581210}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d1f2fd9559ab0c943ba2e51c0e8ccd5a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &689693673 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7695268439232847063, guid: 3d0101bda4e2bf846b346bc2f317e67c, type: 3}
@@ -2234,15 +2223,26 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &969861502 stripped
+--- !u!114 &969861503 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3394611111895909369, guid: 623cadfc32875d342964e5530dd414db, type: 3}
+  m_CorrespondingSourceObject: {fileID: 5748993670519756378, guid: 623cadfc32875d342964e5530dd414db, type: 3}
   m_PrefabInstance: {fileID: 2048581210}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 70e60c4bf1bdbaf43b2abf782f0183a8, type: 3}
+  m_Script: {fileID: 11500000, guid: 7e07c79661129c94fbe3b1af30c4ba96, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &969861509 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: -2718025970545665652, guid: 623cadfc32875d342964e5530dd414db, type: 3}
+  m_PrefabInstance: {fileID: 2048581210}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 776035e80d1b35d44be05afdd00b61b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1014602834
@@ -3412,6 +3412,17 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1446150593 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 198479770331742479, guid: 623cadfc32875d342964e5530dd414db, type: 3}
+  m_PrefabInstance: {fileID: 2048581210}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa92b2efd0e399444b9851bce993f083, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1487931747
 GameObject:
   m_ObjectHideFlags: 0
@@ -4388,10 +4399,58 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -2718025970545665652, guid: 623cadfc32875d342964e5530dd414db, type: 3}
+      propertyPath: TogglePower.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -2718025970545665652, guid: 623cadfc32875d342964e5530dd414db, type: 3}
+      propertyPath: TogglePower.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 969861509}
+    - target: {fileID: -2718025970545665652, guid: 623cadfc32875d342964e5530dd414db, type: 3}
+      propertyPath: TogglePower.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -2718025970545665652, guid: 623cadfc32875d342964e5530dd414db, type: 3}
+      propertyPath: TogglePower.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnTogglePower
+      objectReference: {fileID: 0}
+    - target: {fileID: -2718025970545665652, guid: 623cadfc32875d342964e5530dd414db, type: 3}
+      propertyPath: TogglePower.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: FlashlightScript, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: -2718025970545665652, guid: 623cadfc32875d342964e5530dd414db, type: 3}
+      propertyPath: TogglePower.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 2620974450929678201, guid: 623cadfc32875d342964e5530dd414db, type: 3}
       propertyPath: m_InteractionManager
       value: 
       objectReference: {fileID: 669044181}
+    - target: {fileID: 2620974450929678201, guid: 623cadfc32875d342964e5530dd414db, type: 3}
+      propertyPath: m_SelectExited.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 969861503}
+    - target: {fileID: 2620974450929678201, guid: 623cadfc32875d342964e5530dd414db, type: 3}
+      propertyPath: m_SelectEntered.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 969861503}
+    - target: {fileID: 2620974450929678201, guid: 623cadfc32875d342964e5530dd414db, type: 3}
+      propertyPath: m_SelectExited.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnSelectExit
+      objectReference: {fileID: 0}
+    - target: {fileID: 2620974450929678201, guid: 623cadfc32875d342964e5530dd414db, type: 3}
+      propertyPath: m_SelectEntered.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnSelectEnter
+      objectReference: {fileID: 0}
+    - target: {fileID: 2620974450929678201, guid: 623cadfc32875d342964e5530dd414db, type: 3}
+      propertyPath: m_SelectExited.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: TerrorminoControls.InputRouter, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 2620974450929678201, guid: 623cadfc32875d342964e5530dd414db, type: 3}
+      propertyPath: m_SelectEntered.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: TerrorminoControls.InputRouter, Assembly-CSharp
+      objectReference: {fileID: 0}
     - target: {fileID: 2623541740237862910, guid: 623cadfc32875d342964e5530dd414db, type: 3}
       propertyPath: m_LocalPosition.x
       value: 2.77
@@ -4439,7 +4498,11 @@ PrefabInstance:
     - target: {fileID: 4479942332852446451, guid: 623cadfc32875d342964e5530dd414db, type: 3}
       propertyPath: _flashlightscript
       value: 
-      objectReference: {fileID: 969861502}
+      objectReference: {fileID: 0}
+    - target: {fileID: 5748993670519756378, guid: 623cadfc32875d342964e5530dd414db, type: 3}
+      propertyPath: Routes.Array.data[0].ActionRef
+      value: 
+      objectReference: {fileID: -9193754557445823138, guid: e120b2e44cc38bd4facc36f05330f81e, type: 3}
     m_RemovedComponents:
     - {fileID: 0}
     m_RemovedGameObjects: []
