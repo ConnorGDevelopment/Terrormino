@@ -3,8 +3,11 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Events;
+using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 using UnityEngine.XR.Interaction.Toolkit;
+using Helpers;
 
 
 public class TitleScreen : MonoBehaviour
@@ -17,28 +20,37 @@ public class TitleScreen : MonoBehaviour
         
     }
 
-    public void SelectingTitle(SelectEnterEventArgs _)
-    {
-        
-    }
+    
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown("Escape"))
-        {
-            BeginGame();
-        }
+        
 
     }
     
      
 
-    void BeginGame()
+    public void BeginGame()
     {
         SceneManager.LoadScene("Tetris Gameplay");
     }
 
 
-    
+    public UnityEvent<InputAction> OnTitleTransitionGrab = new();
+
+    public void TitleToGameplayTransition(InputAction inputAction)
+    {
+        int triggerInput = Math.RoundNearestNonZeroInt(inputAction.ReadValue<float>());
+        UnityEngine.Debug.Log(triggerInput);
+        if (triggerInput == 1)
+        {
+            BeginGame();
+        }
+        
+    }
 }
+
+
+    
+
