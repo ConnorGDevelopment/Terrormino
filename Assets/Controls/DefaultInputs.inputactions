@@ -492,7 +492,7 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "Activate",
+                    "name": "Trigger",
                     "type": "Button",
                     "id": "e385d6e7-b71d-4cc5-9e40-77dec9613fab",
                     "expectedControlType": "",
@@ -867,7 +867,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Generic XR Controller",
-                    "action": "Activate",
+                    "action": "Trigger",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -878,7 +878,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": ";Keyboard Mouse",
-                    "action": "Activate",
+                    "action": "Trigger",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -1218,7 +1218,7 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "Activate",
+                    "name": "Trigger",
                     "type": "Button",
                     "id": "51eec5c6-70b0-4e5c-8567-321060335bbe",
                     "expectedControlType": "",
@@ -1593,7 +1593,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Generic XR Controller",
-                    "action": "Activate",
+                    "action": "Trigger",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -1604,7 +1604,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": ";Keyboard Mouse",
-                    "action": "Activate",
+                    "action": "Trigger",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },

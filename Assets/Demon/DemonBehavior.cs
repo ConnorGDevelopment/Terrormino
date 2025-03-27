@@ -1,3 +1,4 @@
+using Flashlight;
 using UnityEngine;
 
 public class DemonBehavior : MonoBehaviour
@@ -7,7 +8,7 @@ public class DemonBehavior : MonoBehaviour
     [SerializeField] private Material _mainBody;
     [SerializeField] private Material _cube;
 
-    [SerializeField] private FlashlightTrigger _flashlightTrigger;
+    [SerializeField] private Trigger _flashlightTrigger;
 
     private bool _isDissolving = false;
     private float _dissolveValue = 0f;

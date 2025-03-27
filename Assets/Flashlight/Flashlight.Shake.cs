@@ -75,10 +75,13 @@ namespace Flashlight
         public UnityEvent<InputAction> TogglePower = new();
         public void OnTogglePower(InputAction inputAction)
         {
-            FlashlightActive = !FlashlightActive;
-            _lightSource.enabled = !_lightSource.enabled;
-            _lightInteractor.enabled = !_lightInteractor.enabled;
-            Debug.Log($"Flashlight toggled: {FlashlightActive}");
+            if (_isGrabbed)
+            {
+                FlashlightActive = !FlashlightActive;
+                _lightSource.enabled = !_lightSource.enabled;
+                _lightInteractor.enabled = !_lightInteractor.enabled;
+                Debug.Log($"Flashlight toggled: {FlashlightActive}");
+            }
         }
 
         public void RightVelocityCheck()
