@@ -8,32 +8,54 @@ using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 using UnityEngine.XR.Interaction.Toolkit;
 using Helpers;
+using UnityEngine.Android;
+
 
 
 public class TitleScreen : MonoBehaviour
 {
 
+    private float _transitionTime = 10;
+    private bool _beginTransition = false;
+
+    public Light LightSource;
+    public ParticleSystem Fog;
+    public MeshRenderer StartObjectRenderer;
+
 
     // Start is called before the first frame update
-    void Start()
+    public void Start()
     {
         
     }
 
-    
+
 
     // Update is called once per frame
-    void Update()
+    public void Update()
     {
-        
+        if(_beginTransition == true)
+        {
+            LightSource.intensity -= Time.deltaTime * 0.75f;
 
+            var emission = Fog.emission;
+            emission.rateOverTime = Mathf.Max(0, emission.rateOverTime.constant - Time.deltaTime * 15f);
+
+            _transitionTime -= Time.deltaTime;
+
+            if(_transitionTime <= 0)
+            {
+                BeginGame();
+                _transitionTime = 5;
+            }
+        }
     }
     
      
 
     public void BeginGame()
     {
-        SceneManager.LoadScene("Tetris Gameplay");
+        SceneManager.LoadScene("Flashlight and Handheld Grabbing");
     }
 
 
@@ -45,7 +67,8 @@ public class TitleScreen : MonoBehaviour
         UnityEngine.Debug.Log(triggerInput);
         if (triggerInput == 1)
         {
-            BeginGame();
+            _beginTransition = true;
+            StartObjectRenderer.enabled = false;
         }
         
     }

@@ -1196,6 +1196,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Point Light (for seeing room)
       objectReference: {fileID: 0}
+    - target: {fileID: 2843191035377201385, guid: 6a8acb542650cdb49b06b4c606cd132e, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8336234404633396982, guid: 6a8acb542650cdb49b06b4c606cd132e, type: 3}
       propertyPath: m_LocalPosition.x
       value: 2.45
@@ -1522,7 +1526,8 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 2803199918074430030, guid: 1c85353dcabb23048b28823055012206, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1c85353dcabb23048b28823055012206, type: 3}
