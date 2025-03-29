@@ -475,7 +475,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   LightSource: {fileID: 841920375}
   Fog: {fileID: 541619927}
-  StartObjectRenderer: {fileID: 295025208}
+  materials: []
+  GameConsole: {fileID: 0}
   OnTitleTransitionGrab:
     m_PersistentCalls:
       m_Calls:
@@ -2365,11 +2366,11 @@ PrefabInstance:
     - target: {fileID: -2299435770590162589, guid: 7da68fce7cab46141a0baeb6aee3ee88, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 248773d41d07f8c45b96d43f8758865d, type: 2}
+      objectReference: {fileID: 2100000, guid: b0d94407aad18644db9472cca3a73819, type: 2}
     - target: {fileID: 112722348851752519, guid: 7da68fce7cab46141a0baeb6aee3ee88, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 1a1fbc6d58bcb7e4ba66192003f29975, type: 2}
+      objectReference: {fileID: 2100000, guid: 7eb5119756be3754abaca3b588dc9e3a, type: 2}
     - target: {fileID: 919132149155446097, guid: 7da68fce7cab46141a0baeb6aee3ee88, type: 3}
       propertyPath: m_Name
       value: Game Console Early Version (With Button Press Animations)
@@ -2377,23 +2378,23 @@ PrefabInstance:
     - target: {fileID: 3188042459459427148, guid: 7da68fce7cab46141a0baeb6aee3ee88, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 9e6bfd3c7afd9354ebab065a9fbca63a, type: 2}
+      objectReference: {fileID: 2100000, guid: e8fffabdb8bbd4345ac93e6e48755f2f, type: 2}
     - target: {fileID: 4084007978000119486, guid: 7da68fce7cab46141a0baeb6aee3ee88, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 1a1fbc6d58bcb7e4ba66192003f29975, type: 2}
+      objectReference: {fileID: 2100000, guid: 7eb5119756be3754abaca3b588dc9e3a, type: 2}
     - target: {fileID: 4150278406945125185, guid: 7da68fce7cab46141a0baeb6aee3ee88, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 1a1fbc6d58bcb7e4ba66192003f29975, type: 2}
+      objectReference: {fileID: 2100000, guid: 7eb5119756be3754abaca3b588dc9e3a, type: 2}
     - target: {fileID: 6179845133793117862, guid: 7da68fce7cab46141a0baeb6aee3ee88, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 1a1fbc6d58bcb7e4ba66192003f29975, type: 2}
+      objectReference: {fileID: 2100000, guid: 7eb5119756be3754abaca3b588dc9e3a, type: 2}
     - target: {fileID: 7537326514497354194, guid: 7da68fce7cab46141a0baeb6aee3ee88, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 8b8e07000370d2647b9de59c0dcb3e55, type: 2}
+      objectReference: {fileID: 2100000, guid: 1d0789e3975c8b642b59edde32d698a3, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
@@ -2455,7 +2456,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: b8ecb796e62442f4bac427bad7e6719c, type: 2}
+  - {fileID: 2100000, guid: b2302b44f05436a45b12a6377c1f6320, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4773,7 +4774,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   LightSource: {fileID: 841920375}
   Fog: {fileID: 541619927}
-  StartObjectRenderer: {fileID: 0}
+  materials:
+  - {fileID: 2100000, guid: 1d0789e3975c8b642b59edde32d698a3, type: 2}
+  - {fileID: 2100000, guid: e8fffabdb8bbd4345ac93e6e48755f2f, type: 2}
+  - {fileID: 2100000, guid: b2302b44f05436a45b12a6377c1f6320, type: 2}
+  - {fileID: 2100000, guid: 7eb5119756be3754abaca3b588dc9e3a, type: 2}
+  - {fileID: 2100000, guid: b0d94407aad18644db9472cca3a73819, type: 2}
+  GameConsole: {fileID: 2041572453}
   OnTitleTransitionGrab:
     m_PersistentCalls:
       m_Calls: []
@@ -4997,7 +5004,7 @@ Transform:
   m_GameObject: {fileID: 2066387844}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.45, y: 5.649, z: -57.68}
+  m_LocalPosition: {x: 2.45, y: 4.133, z: -53.956}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

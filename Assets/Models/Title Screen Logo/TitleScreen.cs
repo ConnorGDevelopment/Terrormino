@@ -9,6 +9,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.XR.Interaction.Toolkit;
 using Helpers;
 using UnityEngine.Android;
+using UnityEngine.ProBuilder.Shapes;
 
 
 
@@ -20,13 +21,25 @@ public class TitleScreen : MonoBehaviour
 
     public Light LightSource;
     public ParticleSystem Fog;
-    public MeshRenderer StartObjectRenderer;
+
+
+    //Shader stuff
+    public List<Material> materials = new List<Material>();
+
+
+    private bool _isDissolving = false;
+    private float _dissolveValue = 0f;
+
+
+    private int _shaderRef = Shader.PropertyToID("_clipping_value");
+
+    public GameObject GameConsole;
 
 
     // Start is called before the first frame update
     public void Start()
     {
-        
+      
     }
 
 
@@ -36,6 +49,12 @@ public class TitleScreen : MonoBehaviour
     {
         if(_beginTransition == true)
         {
+
+            if(_isDissolving)
+            {
+                DissolveConsole();
+            }
+
             LightSource.intensity -= Time.deltaTime * 0.75f;
 
             var emission = Fog.emission;
@@ -47,6 +66,11 @@ public class TitleScreen : MonoBehaviour
             {
                 BeginGame();
                 _transitionTime = 5;
+
+                foreach (Material mat in materials)
+                {
+                    mat.SetFloat(_shaderRef, 0);
+                }
             }
         }
     }
@@ -68,10 +92,45 @@ public class TitleScreen : MonoBehaviour
         if (triggerInput == 1)
         {
             _beginTransition = true;
-            StartObjectRenderer.enabled = false;
+            _isDissolving = true;
+
+
+            XRGrabInteractable grabInteractable = GameConsole.GetComponent<XRGrabInteractable>();
+           
+            
+            grabInteractable.interactionManager.SelectExit(grabInteractable.interactorsSelecting[0], grabInteractable);
+
+            Collider ConsoleCollider = GameConsole.GetComponent<BoxCollider>();
+
+            ConsoleCollider.enabled = false;
         }
         
     }
+
+
+
+    public void DissolveConsole()
+    {
+
+        _dissolveValue += Time.deltaTime * 1f;
+        _dissolveValue = Mathf.Clamp01(_dissolveValue); // Keep between 0 and 1
+
+        foreach (Material mat in materials)
+        {
+            mat.SetFloat(_shaderRef, _dissolveValue);
+        }
+
+
+        if (_dissolveValue >= 1)
+        {
+            _isDissolving = false;
+        }
+    }
+
+
+
+
+
 }
 
 
