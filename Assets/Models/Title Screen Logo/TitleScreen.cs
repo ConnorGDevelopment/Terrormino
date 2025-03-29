@@ -8,32 +8,78 @@ using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 using UnityEngine.XR.Interaction.Toolkit;
 using Helpers;
+using UnityEngine.Android;
+using UnityEngine.ProBuilder.Shapes;
+
 
 
 public class TitleScreen : MonoBehaviour
 {
 
+    private float _transitionTime = 10;
+    private bool _beginTransition = false;
+
+    public Light LightSource;
+    public ParticleSystem Fog;
+
+
+    //Shader stuff
+    public List<Material> materials = new List<Material>();
+
+
+    private bool _isDissolving = false;
+    private float _dissolveValue = 0f;
+
+
+    private int _shaderRef = Shader.PropertyToID("_clipping_value");
+
+    public GameObject GameConsole;
+
 
     // Start is called before the first frame update
-    void Start()
+    public void Start()
     {
-        
+      
     }
 
-    
+
 
     // Update is called once per frame
-    void Update()
+    public void Update()
     {
-        
+        if(_beginTransition == true)
+        {
 
+            if(_isDissolving)
+            {
+                DissolveConsole();
+            }
+
+            LightSource.intensity -= Time.deltaTime * 0.75f;
+
+            var emission = Fog.emission;
+            emission.rateOverTime = Mathf.Max(0, emission.rateOverTime.constant - Time.deltaTime * 15f);
+
+            _transitionTime -= Time.deltaTime;
+
+            if(_transitionTime <= 0)
+            {
+                BeginGame();
+                _transitionTime = 5;
+
+                foreach (Material mat in materials)
+                {
+                    mat.SetFloat(_shaderRef, 0);
+                }
+            }
+        }
     }
     
      
 
     public void BeginGame()
     {
-        SceneManager.LoadScene("Tetris Gameplay");
+        SceneManager.LoadScene("Flashlight and Handheld Grabbing");
     }
 
 
@@ -45,10 +91,46 @@ public class TitleScreen : MonoBehaviour
         UnityEngine.Debug.Log(triggerInput);
         if (triggerInput == 1)
         {
-            BeginGame();
+            _beginTransition = true;
+            _isDissolving = true;
+
+
+            XRGrabInteractable grabInteractable = GameConsole.GetComponent<XRGrabInteractable>();
+           
+            
+            grabInteractable.interactionManager.SelectExit(grabInteractable.interactorsSelecting[0], grabInteractable);
+
+            Collider ConsoleCollider = GameConsole.GetComponent<BoxCollider>();
+
+            ConsoleCollider.enabled = false;
         }
         
     }
+
+
+
+    public void DissolveConsole()
+    {
+
+        _dissolveValue += Time.deltaTime * 1f;
+        _dissolveValue = Mathf.Clamp01(_dissolveValue); // Keep between 0 and 1
+
+        foreach (Material mat in materials)
+        {
+            mat.SetFloat(_shaderRef, _dissolveValue);
+        }
+
+
+        if (_dissolveValue >= 1)
+        {
+            _isDissolving = false;
+        }
+    }
+
+
+
+
+
 }
 
 

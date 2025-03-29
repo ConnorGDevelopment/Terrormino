@@ -28,6 +28,13 @@ public class FlashlightShake : MonoBehaviour
     private Vector3 _cachedRightVelocity = Vector3.zero;
 
 
+
+    //Audio
+
+    public AudioSource ShakingSound;
+    public AudioSource BatteryOutSound;
+
+
    
 
 
@@ -69,6 +76,7 @@ public class FlashlightShake : MonoBehaviour
             LightInteractor.enabled = false;   //Resetting everything back to being inactive/off
             LightSource.enabled = false;
             FlashlightActive = false;
+            BatteryOutSound.Play();
         }
 
         _pastTime -= Time.deltaTime;      //flag for checking the timing for whether or not the device velocity should be checked
@@ -136,6 +144,7 @@ public class FlashlightShake : MonoBehaviour
             LightSource.enabled = !LightSource.enabled;
             LightInteractor.enabled = !LightInteractor.enabled;
             UnityEngine.Debug.Log($"Flashlight toggled: {FlashlightActive}");
+
             
         }
     }
@@ -152,6 +161,7 @@ public class FlashlightShake : MonoBehaviour
             float currentRightMagnitude = rightVelocity.magnitude;
             _cachedRightVelocity = Vector3.Lerp(_cachedRightVelocity, rightVelocity, smoothingFactor);
 
+
             if (pastRightMagnitude > 0.2f) //checking to make sure we arent dividing by an insignificant amount to filter out noise
             {
                 float RightPercentageIncrease = Mathf.Abs((currentRightMagnitude - pastRightMagnitude) / pastRightMagnitude) * 100f;   //Math for checking the percentage increase between past magnitude and current magnitude
@@ -161,7 +171,13 @@ public class FlashlightShake : MonoBehaviour
                 if (RightPercentageIncrease >= 225f && currentRightMagnitude > 0.7f) //checking to see if the current right magnitude increased by 225% (i.e. shaking)
                 {
                     _battery = 10f;
+                    ShakingSound.Play();
                     UnityEngine.Debug.Log("Right charged the battery");
+                }
+
+                else
+                {
+                    ShakingSound.Stop();
                 }
 
 
@@ -191,7 +207,12 @@ public class FlashlightShake : MonoBehaviour
                 if (LeftPercentageIncrease >= 225f && currentLeftMagnitude > 0.7f) //checking to see if the current right magnitude increased by 225% (i.e. shaking)
                 {
                     _battery = 10f;
+                    ShakingSound.Play();
                     UnityEngine.Debug.Log("Left charged the battery");
+                }
+                else
+                {
+                    ShakingSound.Stop();
                 }
 
 
