@@ -31,7 +31,7 @@ public class LightTransition : MonoBehaviour
 
     private void AdjustingMoonlight()
     {
-        while(MoonLight.intensity < 0.2)
+        while(MoonLight.intensity < 0.3)
         {
             MoonLight.intensity = Time.deltaTime * TimeTillBright;
         }
