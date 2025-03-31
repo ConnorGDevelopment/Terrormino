@@ -1,13 +1,26 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class JumpscareTrigger : MonoBehaviour
 {
     public AudioSource Scream;
-    //public GameObject PlayerCam;
+    
     public GameObject Jumpscare;
     
+
+
+
+    public Light MoonLight;
+    public Light GameConsoleLight;
+    public Light Flashlight;
+
+
+    private void Start()
+    {
+       
+    }
 
     private void OnTriggerEnter(Collider other)
     {
@@ -17,7 +30,7 @@ public class JumpscareTrigger : MonoBehaviour
             Debug.Log("jumpscare");
             Scream.Play();
             Jumpscare.SetActive(true);
-            //PlayerCam.SetActive(false);
+            AdjustingMoonlight();
           
             StartCoroutine(EndJumpscare());
         }        
@@ -25,11 +38,23 @@ public class JumpscareTrigger : MonoBehaviour
 
     IEnumerator EndJumpscare()
     {
-        yield return new WaitForSeconds(2.03f);
-        //PlayerCam.SetActive(true);
+        yield return new WaitForSeconds(1.5f);
+        Scream.Stop();
         Jumpscare.SetActive(false);
+        SceneManager.LoadScene("TitleScreen");
         
 
+    }
+
+
+    public void AdjustingMoonlight()
+    {
+        while (MoonLight.intensity < 0.3)
+        {
+            MoonLight.enabled = false;
+            GameConsoleLight.enabled = false;
+            Flashlight.enabled = false;
+        }
     }
 
 

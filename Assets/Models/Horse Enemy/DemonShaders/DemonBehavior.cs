@@ -1,5 +1,6 @@
 using UnityEngine;
 
+
 public class DemonBehavior : MonoBehaviour
 {
     [SerializeField] private Material _hook;
@@ -9,6 +10,9 @@ public class DemonBehavior : MonoBehaviour
 
     [SerializeField] private FlashlightTrigger _flashlightTrigger;
 
+    
+
+
     private bool _isDissolving = false;
     private float _dissolveValue = 0f;
 
@@ -17,7 +21,7 @@ public class DemonBehavior : MonoBehaviour
 
     void Start()
     {
-
+        
         // TODO: create a way for the shaders to reset themselves without hard coding it in
 
     }
@@ -43,6 +47,8 @@ public class DemonBehavior : MonoBehaviour
 
             Debug.Log($"Dissolve Value: {_dissolveValue}");
             Debug.Log($"Hook Material: {_hook.GetFloat(_shaderRef)}");
+
+
 
 
 
