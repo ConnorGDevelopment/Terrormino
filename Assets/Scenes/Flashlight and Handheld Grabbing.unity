@@ -195,7 +195,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 95853691}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: dead104a6fc877740a8646acbaee483e, type: 3}
   m_Name: 
@@ -404,6 +404,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Scream: {fileID: 1165119541}
   Jumpscare: {fileID: 460235385}
+  MoonLight: {fileID: 2080039036}
+  GameConsoleLight: {fileID: 1710483032}
+  Flashlight: {fileID: 805801622}
 --- !u!1 &318886909
 GameObject:
   m_ObjectHideFlags: 0
@@ -716,6 +719,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!108 &805801622 stripped
+Light:
+  m_CorrespondingSourceObject: {fileID: 4152046751657848988, guid: fa0f01d6aba9d6141b5a7dc7d201e895, type: 3}
+  m_PrefabInstance: {fileID: 1220136707}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &961348667
 GameObject:
   m_ObjectHideFlags: 0
@@ -861,6 +869,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Flashlight
       objectReference: {fileID: 0}
+    - target: {fileID: 1301999252989223532, guid: fa0f01d6aba9d6141b5a7dc7d201e895, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1826897670557366486, guid: fa0f01d6aba9d6141b5a7dc7d201e895, type: 3}
       propertyPath: m_LocalPosition.x
       value: 2.77
@@ -909,6 +921,10 @@ PrefabInstance:
       propertyPath: BatteryOutSound
       value: 
       objectReference: {fileID: 1922577047}
+    - target: {fileID: 5431471044323302201, guid: fa0f01d6aba9d6141b5a7dc7d201e895, type: 3}
+      propertyPath: m_Name
+      value: Flashlight Light
+      objectReference: {fileID: 0}
     - target: {fileID: 6832949501653480131, guid: fa0f01d6aba9d6141b5a7dc7d201e895, type: 3}
       propertyPath: DetectionBox
       value: 
@@ -962,7 +978,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1576541300}
-  - component: {fileID: 1576541299}
   m_Layer: 0
   m_Name: Light Manager
   m_TagString: Untagged
@@ -970,20 +985,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1576541299
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1576541298}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0e2ce0f2b698d464fba032d0d0659160, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  MoonLight: {fileID: 0}
-  TimeTillBright: 0
 --- !u!4 &1576541300
 Transform:
   m_ObjectHideFlags: 0
@@ -1008,6 +1009,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 349035270056824198, guid: eadd4072ab9ff004abdad2f14eca91df, type: 3}
+      propertyPath: m_Name
+      value: Game Console Light
+      objectReference: {fileID: 0}
     - target: {fileID: 2617882575203552536, guid: eadd4072ab9ff004abdad2f14eca91df, type: 3}
       propertyPath: Routes.Array.data[1].Outputs.Array.data[0].m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: 
@@ -1073,6 +1078,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: eadd4072ab9ff004abdad2f14eca91df, type: 3}
+--- !u!108 &1710483032 stripped
+Light:
+  m_CorrespondingSourceObject: {fileID: 7685533080438579891, guid: eadd4072ab9ff004abdad2f14eca91df, type: 3}
+  m_PrefabInstance: {fileID: 1686111426}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1791205201
 GameObject:
   m_ObjectHideFlags: 0
@@ -1627,7 +1637,7 @@ Transform:
   m_GameObject: {fileID: 2080039034}
   serializedVersion: 2
   m_LocalRotation: {x: 0.5047108, y: 0.31170782, z: 0.49524376, w: 0.63469595}
-  m_LocalPosition: {x: -23.591988, y: 16.620329, z: 11.5240555}
+  m_LocalPosition: {x: -21.12, y: 16.620329, z: 11.5240555}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1766,7 +1776,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2843191035377201385, guid: 6a8acb542650cdb49b06b4c606cd132e, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8336234404633396982, guid: 6a8acb542650cdb49b06b4c606cd132e, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1950,7 +1960,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2863227369176499711, guid: 9f3f0f28c5ed9034088719f7a06a9b5a, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3291203429714662051, guid: 9f3f0f28c5ed9034088719f7a06a9b5a, type: 3}
       propertyPath: m_Intensity
