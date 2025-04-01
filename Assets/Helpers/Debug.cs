@@ -13,7 +13,7 @@ namespace Helpers
             T foundComponent = sourceObject.GetComponent<T>();
             if (foundComponent == null)
             {
-                UnityEngine.Debug.Log($"Could not find {typeof(T).Name} on {sourceObject.name}");
+                UnityEngine.Debug.Log($"Could not find {typeof(T).Name} on {sourceObject.name}", sourceObject);
             }
             // If the component wasn't actually found, then this will return null because pretty much everything in Unity is a nullable type
             return foundComponent;
@@ -60,7 +60,7 @@ namespace Helpers
         {
             if (toCheck == null)
             {
-                UnityEngine.Debug.Log($"{name} in {gameObject} not set in Inspector");
+                UnityEngine.Debug.Log($"{name} in {gameObject} not set in Inspector", gameObject);
             }
         }
 
@@ -69,7 +69,7 @@ namespace Helpers
             T matchedComponent = sourceObject.GetComponentInChildren<T>();
             if (matchedComponent == null)
             {
-                UnityEngine.Debug.Log($"Could not find {typeof(T).Name} in Children of {sourceObject.name}");
+                UnityEngine.Debug.Log($"Could not find {typeof(T).Name} in Children of {sourceObject.name}", sourceObject);
             }
             return matchedComponent;
         }
