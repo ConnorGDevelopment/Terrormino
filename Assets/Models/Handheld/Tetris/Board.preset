@@ -9,7 +9,7 @@ Preset:
   m_Name: Board
   m_TargetType:
     m_NativeTypeID: 114
-    m_ManagedTypePPtr: {fileID: 11500000, guid: 394dd7ebca67fea4e84010984961e77e, type: 3}
+    m_ManagedTypePPtr: {fileID: 11500000, guid: 466aba6813fe8c146a27962a16d95ce8, type: 3}
     m_ManagedTypeFallback: 
   m_Properties:
   - target: {fileID: 0}
@@ -30,7 +30,7 @@ Preset:
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: Tetrominoes.Array.size
-    value: 7
+    value: 8
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: Tetrominoes.Array.data[0].ShapeKey
@@ -39,34 +39,34 @@ Preset:
   - target: {fileID: 0}
     propertyPath: Tetrominoes.Array.data[0].Tile
     value: 
-    objectReference: {fileID: 11400000, guid: aa44b5216a5f39e4881c5323564afe81, type: 2}
+    objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: Tetrominoes.Array.data[1].ShapeKey
-    value: 1
+    value: 0
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: Tetrominoes.Array.data[1].Tile
     value: 
-    objectReference: {fileID: 11400000, guid: 66df2645ff909154b9c8f7c006a6af32, type: 2}
+    objectReference: {fileID: 11400000, guid: f6c4109fd0d185b419e5e665b07c42f0, type: 2}
   - target: {fileID: 0}
     propertyPath: Tetrominoes.Array.data[2].ShapeKey
-    value: 2
+    value: 1
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: Tetrominoes.Array.data[2].Tile
     value: 
-    objectReference: {fileID: 11400000, guid: 8316c87896e7b6448a324d8a66e43174, type: 2}
+    objectReference: {fileID: 11400000, guid: aa44b5216a5f39e4881c5323564afe81, type: 2}
   - target: {fileID: 0}
     propertyPath: Tetrominoes.Array.data[3].ShapeKey
-    value: 3
+    value: 2
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: Tetrominoes.Array.data[3].Tile
     value: 
-    objectReference: {fileID: 11400000, guid: f6c4109fd0d185b419e5e665b07c42f0, type: 2}
+    objectReference: {fileID: 11400000, guid: ae5c5dcd9d2744248ba2beb6b8dab80f, type: 2}
   - target: {fileID: 0}
     propertyPath: Tetrominoes.Array.data[4].ShapeKey
-    value: 4
+    value: 3
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: Tetrominoes.Array.data[4].Tile
@@ -74,27 +74,35 @@ Preset:
     objectReference: {fileID: 11400000, guid: 89eae29ecf56ea14c8b3927213a00066, type: 2}
   - target: {fileID: 0}
     propertyPath: Tetrominoes.Array.data[5].ShapeKey
-    value: 5
+    value: 4
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: Tetrominoes.Array.data[5].Tile
     value: 
-    objectReference: {fileID: 11400000, guid: ae5c5dcd9d2744248ba2beb6b8dab80f, type: 2}
+    objectReference: {fileID: 11400000, guid: 8316c87896e7b6448a324d8a66e43174, type: 2}
   - target: {fileID: 0}
     propertyPath: Tetrominoes.Array.data[6].ShapeKey
-    value: 6
+    value: 5
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: Tetrominoes.Array.data[6].Tile
     value: 
     objectReference: {fileID: 11400000, guid: be0a34e2a842ae742b4fa8541a5f9fcf, type: 2}
   - target: {fileID: 0}
+    propertyPath: Tetrominoes.Array.data[7].ShapeKey
+    value: 6
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: Tetrominoes.Array.data[7].Tile
+    value: 
+    objectReference: {fileID: 11400000, guid: 66df2645ff909154b9c8f7c006a6af32, type: 2}
+  - target: {fileID: 0}
     propertyPath: ActivePiece
     value: 
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: Config.GravityDelay
-    value: 0.5
+    value: 1
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: Config.MoveDelay
@@ -110,7 +118,7 @@ Preset:
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: BoardSize.y
-    value: 15
+    value: 14
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: SpawnPosition.x
@@ -118,7 +126,7 @@ Preset:
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: SpawnPosition.y
-    value: 6
+    value: 5
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: SpawnPosition.z
