@@ -36,20 +36,24 @@ namespace Flashlight
             LightCollider.enabled = Active;
         }
 
-        private float _cachedDistance = 0f;
         private Vector3 _cachedPosition = Vector3.zero;
+        private Vector3 _cachedVelocity = Vector3.zero;
         public void Charge(Vector3 position, float deltaTime)
         {
-            if (GrabInteractable)
+            if (GrabInteractable.isSelected && !Active)
             {
-                Debug.Log("Test");
-                _cachedDistance = Vector3.Distance(position, _cachedPosition) + _cachedDistance;
-                if (Vector3.Angle(position, _cachedPosition) > 90f)
+                var velocity = (position - _cachedPosition) / deltaTime;
+
+                Debug.Log(Vector3.Angle(velocity, _cachedVelocity));
+
+                if (Vector3.Angle(velocity, _cachedVelocity) > 5f)
                 {
-                    Battery += _cachedDistance;
+                    Battery += 1f;
                 }
+
+                _cachedVelocity = velocity;
+                _cachedPosition = position;
             }
-            _cachedPosition = position;
         }
 
 
