@@ -9,8 +9,16 @@ namespace Tetris
         public Tilemap BoardTilemap;
         public Shape[] Tetrominoes;
         public ActivePieceController ActivePiece;
-        public Config Config;
-        public Vector2Int BoardSize = new(10, 20);
+        //    public float stepDelay = 1f;
+        //    public float moveDelay = 0.1f;
+        //    public float lockDelay = 0.5f;
+        public Config Config = new()
+        {
+            GravityDelay = 1f,
+            MoveDelay = 0.1f,
+            LockDelay = 0.5f
+        };
+        public Vector2Int BoardSize = new(10, 14);
         public RectInt BoardBounds
         {
             get
@@ -18,7 +26,7 @@ namespace Tetris
                 return new RectInt(new Vector2Int(-BoardSize.x / 2, -BoardSize.y / 2), BoardSize);
             }
         }
-        public Vector3Int SpawnPosition = new(-1, 8, 0);
+        public Vector3Int SpawnPosition = new(-1, 6, 0);
 
         public void Awake()
         {
