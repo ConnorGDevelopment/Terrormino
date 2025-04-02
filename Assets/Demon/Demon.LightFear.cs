@@ -12,18 +12,19 @@ namespace Demon
             get { return _health; }
             set
             {
-                _health = Mathf.Clamp(_health + value, 0, MaxHealth);
+                _health = Mathf.Clamp(value, 0, MaxHealth);
             }
         }
 
         private SkinnedMeshRenderer[] _skinnedMeshRenderers;
 
-        public UnityEvent Illuminate = new();
-        public void Dissolve()
+        public UnityEvent<bool> Illuminate = new();
+        public void Dissolve(bool _)
         {
             foreach (var skinnedMeshRenderer in _skinnedMeshRenderers)
             {
-                skinnedMeshRenderer.material.SetFloat(Shader.PropertyToID("_DissolveValue"), Mathf.Clamp01(Health / MaxHealth));
+                Debug.Log(Health / MaxHealth);
+                skinnedMeshRenderer.material.SetFloat(Shader.PropertyToID("_DissolveValue"), Mathf.Clamp01(1 - (Health / MaxHealth)));
             }
         }
 
@@ -35,15 +36,22 @@ namespace Demon
 
         private void OnTriggerStay(Collider other)
         {
-            if (other.gameObject.TryGetComponent(out FlashlightShake _))
+            if (other.CompareTag("Flashlight"))
             {
                 Health -= Time.deltaTime;
-                Debug.Log(Health);
-                Illuminate.Invoke();
+                Illuminate.Invoke(true);
                 if (Health <= 0)
                 {
                     Banish.Invoke();
                 }
+            }
+        }
+
+        private void OnTriggerExit(Collider other)
+        {
+            if (other.CompareTag("Flashlight"))
+            {
+                Illuminate.Invoke(false);
             }
         }
 

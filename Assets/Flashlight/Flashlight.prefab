@@ -120,6 +120,9 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: cd944ab9a57b09347b8f52586a92c742, type: 3}
       insertIndex: -1
+      addedObject: {fileID: 184242882822062363}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: cd944ab9a57b09347b8f52586a92c742, type: 3}
+      insertIndex: -1
       addedObject: {fileID: -5937373203774879163}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: cd944ab9a57b09347b8f52586a92c742, type: 3}
       insertIndex: -1
@@ -133,9 +136,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: cd944ab9a57b09347b8f52586a92c742, type: 3}
       insertIndex: -1
       addedObject: {fileID: -8530946292041847583}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: cd944ab9a57b09347b8f52586a92c742, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 184242882822062363}
     - targetCorrespondingSourceObject: {fileID: -1927160926982060196, guid: cd944ab9a57b09347b8f52586a92c742, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1823116825746203566}
@@ -225,7 +225,7 @@ CapsuleCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -243,6 +243,26 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: cd944ab9a57b09347b8f52586a92c742, type: 3}
   m_PrefabInstance: {fileID: 7085068438354445409}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &184242882822062363
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7967520735591659824}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c97803258b5a9a46917d130eeb9c467, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  LightSource: {fileID: 1823116825746203566}
+  LightCollider: {fileID: 1192058182877751323}
+  GrabInteractable: {fileID: 2624312001072739279}
+  Active: 0
+  BatteryMax: 5
+  TogglePower:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!54 &-5937373203774879163
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -527,22 +547,3 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
---- !u!114 &184242882822062363
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7967520735591659824}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3c97803258b5a9a46917d130eeb9c467, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  LightSource: {fileID: 1823116825746203566}
-  LightCollider: {fileID: 1192058182877751323}
-  GrabInteractable: {fileID: 2624312001072739279}
-  Active: 0
-  TogglePower:
-    m_PersistentCalls:
-      m_Calls: []

@@ -11,9 +11,9 @@ namespace Demon
         {
             _animator.SetTrigger("Banish");
         }
-        public void OnIlluminate()
+        public void OnIlluminate(bool value)
         {
-            _animator.SetBool("IsIlluminated", true);
+            _animator.SetBool("IsIlluminated", value);
         }
         public void OnJumpscare()
         {

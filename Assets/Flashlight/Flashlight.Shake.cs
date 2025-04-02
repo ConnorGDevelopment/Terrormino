@@ -12,7 +12,8 @@ namespace Flashlight
         public XRGrabInteractable GrabInteractable;
         public bool Active = false;
 
-        public float _battery = 5f;
+        public float BatteryMax = 5f;
+        private float _battery = 5f;
         public float Battery
         {
             get { return _battery; }
@@ -44,11 +45,12 @@ namespace Flashlight
             {
                 var velocity = (position - _cachedPosition) / deltaTime;
 
-                Debug.Log(Vector3.Angle(velocity, _cachedVelocity));
-
-                if (Vector3.Angle(velocity, _cachedVelocity) > 5f)
+                // Signed Angle basically draws angle using a third reference point
+                // The angle between the previous velocity and the current velocity is the change in direction
+                // We know the device is being shaken if the velocity is changing direction from the reference point of the player
+                if (Vector3.SignedAngle(velocity, _cachedVelocity, gameObject.transform.position) > 0)
                 {
-                    Battery += 1f;
+                    Battery += deltaTime * 2;
                 }
 
                 _cachedVelocity = velocity;
