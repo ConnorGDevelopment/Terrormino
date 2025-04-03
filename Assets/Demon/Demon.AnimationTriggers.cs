@@ -10,6 +10,12 @@ namespace Demon
         public void OnBanish(GameObject _)
         {
             _animator.SetTrigger("Banish");
+
+
+            
+          
+
+
         }
 
 
@@ -18,10 +24,15 @@ namespace Demon
         {
             _animator.SetBool("IsIlluminated", value);
             // This sets the % of dissolve to the Demon's health, so it doesn't actually matter if is or isn't being illuminated
-            foreach (var skinnedMeshRenderer in _skinnedMeshRenderers)
+            
+            if((_lightFear.Health / _lightFear.MaxHealth) <= 1f/8)
             {
-                skinnedMeshRenderer.material.SetFloat(Shader.PropertyToID("_DissolveValue"), Mathf.Clamp(1 - (_lightFear.Health / _lightFear.MaxHealth), 0, 1f / 2));
+                foreach (var skinnedMeshRenderer in _skinnedMeshRenderers)
+                {
+                    skinnedMeshRenderer.material.SetFloat(Shader.PropertyToID("_DissolveValue"), Mathf.Clamp(1 - (_lightFear.Health / _lightFear.MaxHealth), 0, 1f));
+                }
             }
+
         }
 
         public AudioSource JumpscareScream;
