@@ -1067,6 +1067,7 @@ Transform:
   - {fileID: 2381296411395424521}
   - {fileID: 8357446470033008012}
   - {fileID: 3973558962733528706}
+  - {fileID: 3973281885168908709}
   - {fileID: 3826317947828119589}
   - {fileID: 7305989122294135176}
   - {fileID: 1497604301674834379}
@@ -5511,3 +5512,89 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.03550967, y: 0.047992088, z: 0.009782533}
   m_Center: {x: -0.00006060023, y: -0.0041305106, z: -0.0014670894}
+--- !u!1001 &3506430197291408974
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 7659347580118364649}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: e4c598db073a63848b8617af3fac27bf, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: e4c598db073a63848b8617af3fac27bf, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: e4c598db073a63848b8617af3fac27bf, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: e4c598db073a63848b8617af3fac27bf, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: e4c598db073a63848b8617af3fac27bf, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: e4c598db073a63848b8617af3fac27bf, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: e4c598db073a63848b8617af3fac27bf, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: e4c598db073a63848b8617af3fac27bf, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: e4c598db073a63848b8617af3fac27bf, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: e4c598db073a63848b8617af3fac27bf, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -7775781104469758807, guid: e4c598db073a63848b8617af3fac27bf, type: 3}
+      propertyPath: m_Convex
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -7775781104469758807, guid: e4c598db073a63848b8617af3fac27bf, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -5540932102675875704, guid: e4c598db073a63848b8617af3fac27bf, type: 3}
+      propertyPath: m_Convex
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -5540932102675875704, guid: e4c598db073a63848b8617af3fac27bf, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: e4c598db073a63848b8617af3fac27bf, type: 3}
+      propertyPath: m_Name
+      value: Bedroom.BlackHallways
+      objectReference: {fileID: 0}
+    - target: {fileID: 2586624896437460228, guid: e4c598db073a63848b8617af3fac27bf, type: 3}
+      propertyPath: m_Convex
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2586624896437460228, guid: e4c598db073a63848b8617af3fac27bf, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: e4c598db073a63848b8617af3fac27bf, type: 3}
+--- !u!4 &3973281885168908709 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: e4c598db073a63848b8617af3fac27bf, type: 3}
+  m_PrefabInstance: {fileID: 3506430197291408974}
+  m_PrefabAsset: {fileID: 0}

@@ -7,7 +7,7 @@ namespace Demon
         private LightFear _lightFear;
         private Animator _animator;
 
-        public void OnBanish()
+        public void OnBanish(GameObject _)
         {
             _animator.SetTrigger("Banish");
         }
@@ -20,7 +20,7 @@ namespace Demon
             // This sets the % of dissolve to the Demon's health, so it doesn't actually matter if is or isn't being illuminated
             foreach (var skinnedMeshRenderer in _skinnedMeshRenderers)
             {
-                skinnedMeshRenderer.material.SetFloat(Shader.PropertyToID("_DissolveValue"), Mathf.Clamp01(1 - (_lightFear.Health / _lightFear.MaxHealth)));
+                skinnedMeshRenderer.material.SetFloat(Shader.PropertyToID("_DissolveValue"), Mathf.Clamp(1 - (_lightFear.Health / _lightFear.MaxHealth), 0, 1f / 2));
             }
         }
 

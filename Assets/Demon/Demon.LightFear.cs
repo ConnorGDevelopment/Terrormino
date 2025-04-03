@@ -27,7 +27,7 @@ namespace Demon
                 Illuminate.Invoke(true);
                 if (Health <= 0)
                 {
-                    Banish.Invoke();
+                    Banish.Invoke(gameObject);
                 }
             }
         }
@@ -42,8 +42,8 @@ namespace Demon
         // In case other things want to respond, the Demon being destroyed is wrapped in an event
         // When Banish is invoked, it sets a marker to destroy it in LateUpdate() which is the same as Update() except it runs after everything
         // EventListeners are executed in the order they're added, this basically ensure that the actual destroy runs after everything else
-        public UnityEvent Banish = new();
-        public void StartDelayedDestroy()
+        public UnityEvent<GameObject> Banish = new();
+        public void StartDelayedDestroy(GameObject _)
         {
             _destroyInLateUpdate = true;
         }
