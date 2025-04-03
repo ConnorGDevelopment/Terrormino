@@ -52,9 +52,6 @@ namespace TerrorminoControls
             {
                 _grabbedActionMaps.Add(controller.selectAction.action.actionMap);
             }
-
-
-            _grabbedActionMaps.ForEach(actionMap => Debug.Log(actionMap.name));
         }
         public void OnSelectExit(SelectExitEventArgs context)
         {
@@ -62,8 +59,6 @@ namespace TerrorminoControls
             {
                 _grabbedActionMaps.Remove(controller.selectAction.action.actionMap);
             }
-
-            _grabbedActionMaps.ForEach(actionMap => Debug.Log(actionMap.name));
         }
 
         private List<InputAction> _enabledActions

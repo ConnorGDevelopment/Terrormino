@@ -1,0 +1,795 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!181963792 &2655988077585873504
+Preset:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: PlayerInput
+  m_TargetType:
+    m_NativeTypeID: 114
+    m_ManagedTypePPtr: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
+    m_ManagedTypeFallback: 
+  m_Properties:
+  - target: {fileID: 0}
+    propertyPath: m_Enabled
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_EditorHideFlags
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_EditorClassIdentifier
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_Actions
+    value: 
+    objectReference: {fileID: -944628639613478452, guid: e120b2e44cc38bd4facc36f05330f81e, type: 3}
+  - target: {fileID: 0}
+    propertyPath: m_NotificationBehavior
+    value: 2
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_UIInputModule
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_DeviceLostEvent.m_PersistentCalls.m_Calls.Array.size
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_DeviceRegainedEvent.m_PersistentCalls.m_Calls.Array.size
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_ControlsChangedEvent.m_PersistentCalls.m_Calls.Array.size
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_ActionEvents.Array.size
+    value: 60
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_ActionEvents.Array.data[0].m_PersistentCalls.m_Calls.Array.size
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_ActionEvents.Array.data[0].m_ActionId
+    value: 1a9029f8-7a46-46b9-9eff-e9ae8365f611
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_ActionEvents.Array.data[0].m_ActionName
+    value: Head/Position
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_ActionEvents.Array.data[1].m_PersistentCalls.m_Calls.Array.size
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_ActionEvents.Array.data[1].m_ActionId
+    value: aed87fe6-2b01-4dd2-a8fa-195578fd8158
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_ActionEvents.Array.data[1].m_ActionName
+    value: Head/Rotation
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_ActionEvents.Array.data[2].m_PersistentCalls.m_Calls.Array.size
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_ActionEvents.Array.data[2].m_ActionId
+    value: 6bb4e248-e42b-47c3-b66c-79566508ca74
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_ActionEvents.Array.data[2].m_ActionName
+    value: Head/Is Tracked
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_ActionEvents.Array.data[3].m_PersistentCalls.m_Calls.Array.size
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_ActionEvents.Array.data[3].m_ActionId
+    value: 08654a17-c094-4bbd-8946-415ae4ce2406
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_ActionEvents.Array.data[3].m_ActionName
+    value: Head/Tracking State
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_ActionEvents.Array.data[4].m_PersistentCalls.m_Calls.Array.size
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_ActionEvents.Array.data[4].m_ActionId
+    value: dde820a2-0462-4756-be47-630b5b56c115
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_ActionEvents.Array.data[4].m_ActionName
+    value: Head/Eye Gaze Position
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_ActionEvents.Array.data[5].m_PersistentCalls.m_Calls.Array.size
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_ActionEvents.Array.data[5].m_ActionId
+    value: 8ac32629-4403-4068-aae5-2cd243e230c2
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_ActionEvents.Array.data[5].m_ActionName
+    value: Head/Eye Gaze Rotation
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_ActionEvents.Array.data[6].m_PersistentCalls.m_Calls.Array.size
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_ActionEvents.Array.data[6].m_ActionId
+    value: ea26ba43-844b-4585-817a-2f124b571813
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_ActionEvents.Array.data[6].m_ActionName
+    value: Head/Eye Gaze Is Tracked
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_ActionEvents.Array.data[7].m_PersistentCalls.m_Calls.Array.size
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_ActionEvents.Array.data[7].m_ActionId
+    value: 73053154-2fbc-4d78-9cac-000282b64f79
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_ActionEvents.Array.data[7].m_ActionName
+    value: Head/Eye Gaze Tracking State
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_ActionEvents.Array.data[8].m_PersistentCalls.m_Calls.Array.size
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_ActionEvents.Array.data[8].m_ActionId
+    value: 4b82c470-4e11-4323-9392-54b225379a87
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_ActionEvents.Array.data[8].m_ActionName
+    value: LeftHand/Directionals[/Keyboard/s,/Keyboard/a,/Keyboard/d]
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_ActionEvents.Array.data[9].m_PersistentCalls.m_Calls.Array.size
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_ActionEvents.Array.data[9].m_ActionId
+    value: 83a7af0b-87e3-42c3-a909-95fbf8091e4f
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_ActionEvents.Array.data[9].m_ActionName
+    value: LeftHand/Position
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_ActionEvents.Array.data[10].m_PersistentCalls.m_Calls.Array.size
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_ActionEvents.Array.data[10].m_ActionId
+    value: cb6b7130-2bac-4ef7-abe4-6991ae7d419d
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_ActionEvents.Array.data[10].m_ActionName
+    value: LeftHand/Rotation
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_ActionEvents.Array.data[11].m_PersistentCalls.m_Calls.Array.size
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_ActionEvents.Array.data[11].m_ActionId
+    value: 82eb6741-beef-48d3-83ab-a957dc1caa1e
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_ActionEvents.Array.data[11].m_ActionName
+    value: LeftHand/Is Tracked
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_ActionEvents.Array.data[12].m_PersistentCalls.m_Calls.Array.size
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_ActionEvents.Array.data[12].m_ActionId
+    value: d20fc51c-7916-43a7-8b03-706049966aea
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_ActionEvents.Array.data[12].m_ActionName
+    value: LeftHand/Tracking State
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_ActionEvents.Array.data[13].m_PersistentCalls.m_Calls.Array.size
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_ActionEvents.Array.data[13].m_ActionId
+    value: 664a62b0-e178-421d-b3f8-014eec01591d
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_ActionEvents.Array.data[13].m_ActionName
+    value: LeftHand/Haptic Device
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_ActionEvents.Array.data[14].m_PersistentCalls.m_Calls.Array.size
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_ActionEvents.Array.data[14].m_ActionId
+    value: c73a0160-3d9b-4dde-96f9-6a390e68778c
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_ActionEvents.Array.data[14].m_ActionName
+    value: LeftHand/Aim Position
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_ActionEvents.Array.data[15].m_PersistentCalls.m_Calls.Array.size
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_ActionEvents.Array.data[15].m_ActionId
+    value: f208faac-e869-4280-ac9c-9b3d0ab819bb
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_ActionEvents.Array.data[15].m_ActionName
+    value: LeftHand/Aim Rotation
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_ActionEvents.Array.data[16].m_PersistentCalls.m_Calls.Array.size
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_ActionEvents.Array.data[16].m_ActionId
+    value: f98e71db-49b4-4882-8991-a0e386733e87
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_ActionEvents.Array.data[16].m_ActionName
+    value: LeftHand/Aim Flags
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_ActionEvents.Array.data[17].m_PersistentCalls.m_Calls.Array.size
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_ActionEvents.Array.data[17].m_ActionId
+    value: cac52a91-5970-4ad2-8c86-a8c0e91a1837
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_ActionEvents.Array.data[17].m_ActionName
+    value: LeftHand/Pinch Position
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_ActionEvents.Array.data[18].m_PersistentCalls.m_Calls.Array.size
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_ActionEvents.Array.data[18].m_ActionId
+    value: 4c557d81-3795-4355-a83e-6f886221d011
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_ActionEvents.Array.data[18].m_ActionName
+    value: LeftHand/Poke Position
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_ActionEvents.Array.data[19].m_PersistentCalls.m_Calls.Array.size
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_ActionEvents.Array.data[19].m_ActionId
+    value: 0565b7f7-f841-4395-98df-a77f4dd6d9c9
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_ActionEvents.Array.data[19].m_ActionName
+    value: LeftHand/Poke Rotation
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_ActionEvents.Array.data[20].m_PersistentCalls.m_Calls.Array.size
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_ActionEvents.Array.data[20].m_ActionId
+    value: e1240870-ef45-4f3e-8110-ff1b9049c4ca
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_ActionEvents.Array.data[20].m_ActionName
+    value: LeftHand/Grip Position
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_ActionEvents.Array.data[21].m_PersistentCalls.m_Calls.Array.size
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_ActionEvents.Array.data[21].m_ActionId
+    value: 41873a55-b316-4dbe-96e6-93477eef5e47
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_ActionEvents.Array.data[21].m_ActionName
+    value: LeftHand/Grip Rotation
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_ActionEvents.Array.data[22].m_PersistentCalls.m_Calls.Array.size
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_ActionEvents.Array.data[22].m_ActionId
+    value: 5ad3a107-0c52-4293-9e5a-a4e525462931
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_ActionEvents.Array.data[22].m_ActionName
+    value: LeftHand/Select
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_ActionEvents.Array.data[23].m_PersistentCalls.m_Calls.Array.size
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_ActionEvents.Array.data[23].m_ActionId
+    value: 24adb937-17fe-4d42-87eb-b26ff575213c
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_ActionEvents.Array.data[23].m_ActionName
+    value: LeftHand/Select Value
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_ActionEvents.Array.data[24].m_PersistentCalls.m_Calls.Array.size
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_ActionEvents.Array.data[24].m_ActionId
+    value: e385d6e7-b71d-4cc5-9e40-77dec9613fab
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_ActionEvents.Array.data[24].m_ActionName
+    value: LeftHand/Activate
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_ActionEvents.Array.data[25].m_PersistentCalls.m_Calls.Array.size
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_ActionEvents.Array.data[25].m_ActionId
+    value: 9c15acc1-dffb-4cfb-a6fa-36a1cbf62441
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_ActionEvents.Array.data[25].m_ActionName
+    value: LeftHand/Activate Value
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_ActionEvents.Array.data[26].m_PersistentCalls.m_Calls.Array.size
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_ActionEvents.Array.data[26].m_ActionId
+    value: c1315dbd-1cbe-445b-812b-0ecd687c2203
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_ActionEvents.Array.data[26].m_ActionName
+    value: LeftHand/UI Press
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_ActionEvents.Array.data[27].m_PersistentCalls.m_Calls.Array.size
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_ActionEvents.Array.data[27].m_ActionId
+    value: 06ee248f-3ebc-4212-93f0-7eb5b3ae465f
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_ActionEvents.Array.data[27].m_ActionName
+    value: LeftHand/UI Press Value
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_ActionEvents.Array.data[28].m_PersistentCalls.m_Calls.Array.size
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_ActionEvents.Array.data[28].m_ActionId
+    value: f72b7f5c-36db-4359-9543-373c3980cfd4
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_ActionEvents.Array.data[28].m_ActionName
+    value: LeftHand/UI Scroll
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_ActionEvents.Array.data[29].m_PersistentCalls.m_Calls.Array.size
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_ActionEvents.Array.data[29].m_ActionId
+    value: 09d6c6f8-50b3-46e4-9cec-13d85082dddf
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_ActionEvents.Array.data[29].m_ActionName
+    value: LeftHand/Rotate Anchor
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_ActionEvents.Array.data[30].m_PersistentCalls.m_Calls.Array.size
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_ActionEvents.Array.data[30].m_ActionId
+    value: d5dc3064-5084-4b91-bead-dde06064827a
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_ActionEvents.Array.data[30].m_ActionName
+    value: LeftHand/Translate Anchor
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_ActionEvents.Array.data[31].m_PersistentCalls.m_Calls.Array.size
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_ActionEvents.Array.data[31].m_ActionId
+    value: d3fdbf09-558d-4171-8902-73d74288723c
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_ActionEvents.Array.data[31].m_ActionName
+    value: LeftHand/Scale Toggle
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_ActionEvents.Array.data[32].m_PersistentCalls.m_Calls.Array.size
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_ActionEvents.Array.data[32].m_ActionId
+    value: 1db5a25b-62fc-482b-8556-96479872f6ad
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_ActionEvents.Array.data[32].m_ActionName
+    value: LeftHand/Scale Delta
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_ActionEvents.Array.data[33].m_PersistentCalls.m_Calls.Array.size
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_ActionEvents.Array.data[33].m_ActionId
+    value: dd8c3723-05f1-49c1-be19-c95987620e9b
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_ActionEvents.Array.data[33].m_ActionName
+    value: RightHand/Directionals
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_ActionEvents.Array.data[34].m_PersistentCalls.m_Calls.Array.size
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_ActionEvents.Array.data[34].m_ActionId
+    value: 80a3ffcb-fb1c-4dbf-8c39-52c2d7a303b3
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_ActionEvents.Array.data[34].m_ActionName
+    value: RightHand/Face Buttons[/Keyboard/q,/Keyboard/e]
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_ActionEvents.Array.data[35].m_PersistentCalls.m_Calls.Array.size
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_ActionEvents.Array.data[35].m_ActionId
+    value: c4990d70-7b8a-4ce1-b03c-da86716b8352
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_ActionEvents.Array.data[35].m_ActionName
+    value: RightHand/Position
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_ActionEvents.Array.data[36].m_PersistentCalls.m_Calls.Array.size
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_ActionEvents.Array.data[36].m_ActionId
+    value: ee6bf5bf-bb0a-4a50-8327-cb654b19e298
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_ActionEvents.Array.data[36].m_ActionName
+    value: RightHand/Rotation
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_ActionEvents.Array.data[37].m_PersistentCalls.m_Calls.Array.size
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_ActionEvents.Array.data[37].m_ActionId
+    value: a705ffe4-b2c8-4b78-847f-25257d4e30af
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_ActionEvents.Array.data[37].m_ActionName
+    value: RightHand/Is Tracked
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_ActionEvents.Array.data[38].m_PersistentCalls.m_Calls.Array.size
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_ActionEvents.Array.data[38].m_ActionId
+    value: 167ea203-5bfb-4d74-bde9-8026b7483102
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_ActionEvents.Array.data[38].m_ActionName
+    value: RightHand/Tracking State
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_ActionEvents.Array.data[39].m_PersistentCalls.m_Calls.Array.size
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_ActionEvents.Array.data[39].m_ActionId
+    value: 57b2a1b4-3290-46d6-ac07-4854ee8f91b1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_ActionEvents.Array.data[39].m_ActionName
+    value: RightHand/Haptic Device
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_ActionEvents.Array.data[40].m_PersistentCalls.m_Calls.Array.size
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_ActionEvents.Array.data[40].m_ActionId
+    value: daf49d5d-4ba8-4bf7-9010-e7cae2096907
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_ActionEvents.Array.data[40].m_ActionName
+    value: RightHand/Aim Position
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_ActionEvents.Array.data[41].m_PersistentCalls.m_Calls.Array.size
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_ActionEvents.Array.data[41].m_ActionId
+    value: 148c182f-63ef-4709-8057-f6ea8070cb5c
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_ActionEvents.Array.data[41].m_ActionName
+    value: RightHand/Aim Rotation
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_ActionEvents.Array.data[42].m_PersistentCalls.m_Calls.Array.size
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_ActionEvents.Array.data[42].m_ActionId
+    value: 93a75a21-033e-440c-9954-ff264afb2db9
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_ActionEvents.Array.data[42].m_ActionName
+    value: RightHand/Aim Flags
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_ActionEvents.Array.data[43].m_PersistentCalls.m_Calls.Array.size
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_ActionEvents.Array.data[43].m_ActionId
+    value: 7a2e5dcd-3e49-4622-90ea-6607994f2be0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_ActionEvents.Array.data[43].m_ActionName
+    value: RightHand/Pinch Position
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_ActionEvents.Array.data[44].m_PersistentCalls.m_Calls.Array.size
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_ActionEvents.Array.data[44].m_ActionId
+    value: 496d56bd-afd7-495b-a326-16e4ef742bc1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_ActionEvents.Array.data[44].m_ActionName
+    value: RightHand/Poke Position
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_ActionEvents.Array.data[45].m_PersistentCalls.m_Calls.Array.size
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_ActionEvents.Array.data[45].m_ActionId
+    value: 3767652c-5427-421b-8f8d-660106453cb1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_ActionEvents.Array.data[45].m_ActionName
+    value: RightHand/Poke Rotation
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_ActionEvents.Array.data[46].m_PersistentCalls.m_Calls.Array.size
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_ActionEvents.Array.data[46].m_ActionId
+    value: defe4495-ba8f-4958-b2fb-98d889e45ac5
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_ActionEvents.Array.data[46].m_ActionName
+    value: RightHand/Grip Position
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_ActionEvents.Array.data[47].m_PersistentCalls.m_Calls.Array.size
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_ActionEvents.Array.data[47].m_ActionId
+    value: 6bc56065-b0db-4265-8cef-5c7d4f40128a
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_ActionEvents.Array.data[47].m_ActionName
+    value: RightHand/Grip Rotation
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_ActionEvents.Array.data[48].m_PersistentCalls.m_Calls.Array.size
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_ActionEvents.Array.data[48].m_ActionId
+    value: 4b55c896-4ced-47c4-b27e-c8a809ead811
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_ActionEvents.Array.data[48].m_ActionName
+    value: RightHand/Select
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_ActionEvents.Array.data[49].m_PersistentCalls.m_Calls.Array.size
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_ActionEvents.Array.data[49].m_ActionId
+    value: 4f77e422-026f-43cb-8b34-831f768c50bb
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_ActionEvents.Array.data[49].m_ActionName
+    value: RightHand/Select Value
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_ActionEvents.Array.data[50].m_PersistentCalls.m_Calls.Array.size
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_ActionEvents.Array.data[50].m_ActionId
+    value: 51eec5c6-70b0-4e5c-8567-321060335bbe
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_ActionEvents.Array.data[50].m_ActionName
+    value: RightHand/Activate
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_ActionEvents.Array.data[51].m_PersistentCalls.m_Calls.Array.size
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_ActionEvents.Array.data[51].m_ActionId
+    value: e44ed956-7e9b-49dc-9a59-f37f516c92d4
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_ActionEvents.Array.data[51].m_ActionName
+    value: RightHand/Activate Value
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_ActionEvents.Array.data[52].m_PersistentCalls.m_Calls.Array.size
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_ActionEvents.Array.data[52].m_ActionId
+    value: c3472f2f-5754-4cdd-ae18-6bf11428630e
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_ActionEvents.Array.data[52].m_ActionName
+    value: RightHand/UI Press
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_ActionEvents.Array.data[53].m_PersistentCalls.m_Calls.Array.size
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_ActionEvents.Array.data[53].m_ActionId
+    value: 0b8961c1-74c6-403e-bef2-b8da57874403
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_ActionEvents.Array.data[53].m_ActionName
+    value: RightHand/UI Press Value
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_ActionEvents.Array.data[54].m_PersistentCalls.m_Calls.Array.size
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_ActionEvents.Array.data[54].m_ActionId
+    value: 7a7253fc-e9bd-403b-a43c-1c3fb8ff3d18
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_ActionEvents.Array.data[54].m_ActionName
+    value: RightHand/UI Scroll
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_ActionEvents.Array.data[55].m_PersistentCalls.m_Calls.Array.size
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_ActionEvents.Array.data[55].m_ActionId
+    value: 3599ba21-b85e-4e34-8a39-701daadc86fb
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_ActionEvents.Array.data[55].m_ActionName
+    value: RightHand/Rotate Anchor
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_ActionEvents.Array.data[56].m_PersistentCalls.m_Calls.Array.size
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_ActionEvents.Array.data[56].m_ActionId
+    value: 846fb9c9-62c8-49ff-9b65-50534d356779
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_ActionEvents.Array.data[56].m_ActionName
+    value: RightHand/Translate Anchor
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_ActionEvents.Array.data[57].m_PersistentCalls.m_Calls.Array.size
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_ActionEvents.Array.data[57].m_ActionId
+    value: 962ce2be-c389-48a2-a716-83738701954f
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_ActionEvents.Array.data[57].m_ActionName
+    value: RightHand/Scale Toggle
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_ActionEvents.Array.data[58].m_PersistentCalls.m_Calls.Array.size
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_ActionEvents.Array.data[58].m_ActionId
+    value: 305fa983-616e-4164-9b7c-71e2506fd761
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_ActionEvents.Array.data[58].m_ActionName
+    value: RightHand/Scale Delta
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_ActionEvents.Array.data[59].m_PersistentCalls.m_Calls.Array.size
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_ActionEvents.Array.data[59].m_ActionId
+    value: 56b5b549-b6db-416c-bb4b-fa82d087abd0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_ActionEvents.Array.data[59].m_ActionName
+    value: Head/Mouse[/Mouse/position]
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_NeverAutoSwitchControlSchemes
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_DefaultControlScheme
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_DefaultActionMap
+    value: Head
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_SplitScreenIndex
+    value: -1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_Camera
+    value: 
+    objectReference: {fileID: 0}
+  m_ExcludedProperties: []
