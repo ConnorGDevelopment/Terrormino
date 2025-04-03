@@ -136,15 +136,14 @@ MonoBehaviour:
     Tile: {fileID: 11400000, guid: 3a4429c75a4808f40928f0edc79027a0, type: 2}
   - ShapeKey: 6
     Tile: {fileID: 11400000, guid: e9bb2b57f7d976d4e9ca02b515df944d, type: 2}
-  - ShapeKey: 0
-    Tile: {fileID: 0}
   ActivePiece: {fileID: 2188418919333694666}
   Config:
-    GravityDelay: 0
-    MoveDelay: 0
-    LockDelay: 0
-  BoardSize: {x: 10, y: 20}
-  SpawnPosition: {x: -1, y: 8, z: 0}
+    GravityDelay: 1
+    MoveDelay: 0.1
+    LockDelay: 0.5
+  BoardSize: {x: 10, y: 15}
+  PlayerManager: {fileID: 0}
+  SpawnPosition: {x: -1, y: 6, z: 0}
 --- !u!1 &2449598529847062879
 GameObject:
   m_ObjectHideFlags: 0

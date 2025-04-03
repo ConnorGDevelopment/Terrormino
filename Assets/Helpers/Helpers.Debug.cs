@@ -83,5 +83,30 @@ namespace Helpers
             }
             return matchedComponents;
         }
+
+        public static GameObject TryFindByTag(string tag)
+        {
+            GameObject matchedObject = GameObject.FindGameObjectWithTag(tag);
+
+            if (matchedObject == null)
+            {
+                UnityEngine.Debug.Log($"Could not find GameObject with tag: {tag}");
+            }
+
+            return matchedObject;
+        }
+
+        public static T TryFindComponentOnGameObjectByTag<T>(string tag) where T : Component
+        {
+            GameObject matchedObject = TryFindByTag(tag);
+            T matchedComponent = TryFindComponent<T>(matchedObject);
+
+            if (matchedComponent == null)
+            {
+                UnityEngine.Debug.Log($"Could not find {typeof(T).Name} on {matchedObject.name}");
+            }
+
+            return matchedComponent;
+        }
     }
 }

@@ -32,8 +32,8 @@ namespace Tetris
         public void OnMove(InputAction inputAction)
         {
             Vector2Int moveInput = new(
-                Helpers.Math.RoundNearestNonZeroInt(inputAction.ReadValue<Vector2>().x),
-                Helpers.Math.RoundNearestNonZeroInt(inputAction.ReadValue<Vector2>().y)
+                Helpers.Math.RoundNearestNonZeroInt(inputAction.ReadValue<Vector2>().x, 0.5f),
+                Mathf.Clamp(Helpers.Math.RoundNearestNonZeroInt(inputAction.ReadValue<Vector2>().y, 0.5f), -1, 0)
             );
 
             Board.UnpaintTiles(this);

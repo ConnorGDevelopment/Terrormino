@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.Events;
 using UnityEngine.Tilemaps;
 
 namespace Tetris
@@ -10,8 +9,14 @@ namespace Tetris
         public Tilemap BoardTilemap;
         public Shape[] Tetrominoes;
         public ActivePieceController ActivePiece;
-        public Config Config;
-        public Vector2Int BoardSize = new(10, 20);
+        public Config Config = new()
+        {
+            GravityDelay = 1f,
+            MoveDelay = 0.1f,
+            LockDelay = 0.5f
+        };
+        public Vector2Int BoardSize = new(10, 16);
+        public Player.Manager PlayerManager;
         public RectInt BoardBounds
         {
             get
@@ -19,7 +24,7 @@ namespace Tetris
                 return new RectInt(new Vector2Int(-BoardSize.x / 2, -BoardSize.y / 2), BoardSize);
             }
         }
-        public Vector3Int SpawnPosition = new(-1, 8, 0);
+        public Vector3Int SpawnPosition = new(-1, 6, 0);
 
         public void Awake()
         {
@@ -34,8 +39,7 @@ namespace Tetris
         {
             BoardTilemap = Helpers.Debug.TryFindComponentOnGameObjectByName<Tilemap>("BoardTilemap");
             ActivePiece = Helpers.Debug.TryFindComponent<ActivePieceController>(gameObject);
-            GameOver.AddListener(OnGameOver);
-
+            PlayerManager = Helpers.Debug.TryFindComponentOnGameObjectByTag<Player.Manager>("Player");
             SpawnPiece();
         }
 
@@ -56,15 +60,11 @@ namespace Tetris
             }
             else
             {
-                GameOver.Invoke();
+                BoardTilemap.ClearAllTiles();
+                PlayerManager.GameOver.Invoke();
             }
         }
 
-        public UnityEvent GameOver = new();
-        public void OnGameOver()
-        {
-            BoardTilemap.ClearAllTiles();
-        }
 
         public void PaintTiles(ActivePieceController tetromino)
         {
@@ -93,6 +93,7 @@ namespace Tetris
 
                 if (!BoardBounds.Contains(new(tilePosition.x, tilePosition.y)))
                 {
+                    Debug.Log("Invalid");
                     return false;
                 }
 

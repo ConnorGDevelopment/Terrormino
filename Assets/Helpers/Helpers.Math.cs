@@ -21,6 +21,25 @@ namespace Helpers
         }
 
 
+        public static int RoundNearestNonZeroInt(float val, float floor)
+        {
+
+            if (val > floor)
+            {
+                return Mathf.CeilToInt(val);
+            }
+            else if (val <= floor)
+            {
+                return Mathf.FloorToInt(val);
+            }
+            else
+            {
+                return 0;
+            }
+        }
+
+
+
         // If value is greater than max, cap it at max
         // If value is less than min, cap it at min
         public static int Wrap(int input, int min, int max)
