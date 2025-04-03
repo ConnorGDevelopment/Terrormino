@@ -33,7 +33,7 @@ namespace Tetris
         {
             Vector2Int moveInput = new(
                 Helpers.Math.RoundNearestNonZeroInt(inputAction.ReadValue<Vector2>().x, 0.5f),
-                Mathf.Clamp(Helpers.Math.RoundNearestNonZeroInt(inputAction.ReadValue<Vector2>().y, 0.5f), -1, 0)
+                Mathf.Clamp(Helpers.Math.RoundNearestNonZeroInt(inputAction.ReadValue<Vector2>().y, 0.5f),-1,0)
             );
 
             Board.UnpaintTiles(this);

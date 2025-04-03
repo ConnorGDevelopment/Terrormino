@@ -9,14 +9,16 @@ namespace Tetris
         public Tilemap BoardTilemap;
         public Shape[] Tetrominoes;
         public ActivePieceController ActivePiece;
+        //    public float stepDelay = 1f;
+        //    public float moveDelay = 0.1f;
+        //    public float lockDelay = 0.5f;
         public Config Config = new()
         {
             GravityDelay = 1f,
             MoveDelay = 0.1f,
             LockDelay = 0.5f
         };
-        public Vector2Int BoardSize = new(10, 16);
-        public Player.Manager PlayerManager;
+        public Vector2Int BoardSize = new(10, 14);
         public RectInt BoardBounds
         {
             get
@@ -39,7 +41,7 @@ namespace Tetris
         {
             BoardTilemap = Helpers.Debug.TryFindComponentOnGameObjectByName<Tilemap>("BoardTilemap");
             ActivePiece = Helpers.Debug.TryFindComponent<ActivePieceController>(gameObject);
-            PlayerManager = Helpers.Debug.TryFindComponentOnGameObjectByTag<Player.Manager>("Player");
+
             SpawnPiece();
         }
 
@@ -60,11 +62,14 @@ namespace Tetris
             }
             else
             {
-                BoardTilemap.ClearAllTiles();
-                PlayerManager.GameOver.Invoke();
+                GameOver();
             }
         }
 
+        public void GameOver()
+        {
+            BoardTilemap.ClearAllTiles();
+        }
 
         public void PaintTiles(ActivePieceController tetromino)
         {
@@ -93,7 +98,6 @@ namespace Tetris
 
                 if (!BoardBounds.Contains(new(tilePosition.x, tilePosition.y)))
                 {
-                    Debug.Log("Invalid");
                     return false;
                 }
 
