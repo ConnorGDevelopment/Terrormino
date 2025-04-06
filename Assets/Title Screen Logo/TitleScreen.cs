@@ -19,6 +19,8 @@ public class TitleScreen : MonoBehaviour
     public Light LightSource;
     public ParticleSystem Fog;
 
+    public GameObject FogBlock;   //Temp fix for fog staying
+
 
     //Shader stuff
     public List<Material> materials = new List<Material>();
@@ -90,7 +92,7 @@ public class TitleScreen : MonoBehaviour
         {
             _beginTransition = true;
             _isDissolving = true;
-
+            
 
             XRGrabInteractable grabInteractable = GameConsole.GetComponent<XRGrabInteractable>();
            
@@ -100,6 +102,8 @@ public class TitleScreen : MonoBehaviour
             Collider ConsoleCollider = GameConsole.GetComponent<BoxCollider>();
 
             ConsoleCollider.enabled = false;
+
+            FogBlock.SetActive(true);
         }
         
     }

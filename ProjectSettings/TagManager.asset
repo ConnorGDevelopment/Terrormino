@@ -7,6 +7,7 @@ TagManager:
   - Enemy
   - Flashlight
   - Handheld
+  - Jumpscare
   layers:
   - Default
   - TransparentFX

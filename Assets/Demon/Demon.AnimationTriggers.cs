@@ -7,6 +7,9 @@ namespace Demon
         private LightFear _lightFear;
         private Animator _animator;
 
+        
+
+
         public void OnBanish(GameObject _)
         {
             _animator.SetTrigger("Banish");
@@ -38,6 +41,7 @@ namespace Demon
         public AudioSource JumpscareScream;
         public void OnJumpscare()
         {
+            
             _animator.SetTrigger("Jumpscare");
         }
 

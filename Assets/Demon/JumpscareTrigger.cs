@@ -13,9 +13,7 @@ public class JumpscareTrigger : MonoBehaviour
 
 
     public Light MoonLight;
-    public Light GameConsoleLight;
-    public Light Flashlight;
-
+    
 
     private void Start()
     {
@@ -26,12 +24,12 @@ public class JumpscareTrigger : MonoBehaviour
     {
         if(other.CompareTag("Enemy"))
         {
-
+            
             Debug.Log("jumpscare");
             Scream.Play();
             Jumpscare.SetActive(true);
             AdjustingMoonlight();
-          
+            other.gameObject.SetActive(false);
             StartCoroutine(EndJumpscare());
         }        
     }
@@ -49,12 +47,11 @@ public class JumpscareTrigger : MonoBehaviour
 
     public void AdjustingMoonlight()
     {
-        while (MoonLight.intensity < 0.3)
-        {
-            MoonLight.enabled = false;
-            GameConsoleLight.enabled = false;
-            Flashlight.enabled = false;
-        }
+       
+        
+        MoonLight.enabled = false;
+        
+        
     }
 
 
