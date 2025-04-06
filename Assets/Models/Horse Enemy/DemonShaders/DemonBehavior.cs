@@ -8,7 +8,7 @@ public class DemonBehavior : MonoBehaviour
     [SerializeField] private Material _mainBody;
     [SerializeField] private Material _cube;
 
-    [SerializeField] private FlashlightTrigger _flashlightTrigger;
+    //[SerializeField] private FlashlightTrigger _flashlightTrigger;
 
     
 
@@ -29,7 +29,7 @@ public class DemonBehavior : MonoBehaviour
     void Update()
     {
 
-        if (_flashlightTrigger.SpookEnemy)
+        //if (_flashlightTrigger.SpookEnemy)
         {
             _isDissolving = true;
 
