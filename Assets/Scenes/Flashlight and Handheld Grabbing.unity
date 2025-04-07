@@ -553,6 +553,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3883158821470461326, guid: d8df0d5072a6c74488121235de2de84c, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 101.409996
+      objectReference: {fileID: 0}
+    - target: {fileID: 3883158821470461326, guid: d8df0d5072a6c74488121235de2de84c, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -1.8556
+      objectReference: {fileID: 0}
     - target: {fileID: 4050193931434688026, guid: d8df0d5072a6c74488121235de2de84c, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -569,16 +577,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: ------ BEDROOM (Nav Mesh) ------
       objectReference: {fileID: 0}
+    - target: {fileID: 5935996274055977873, guid: d8df0d5072a6c74488121235de2de84c, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4062727015664011710, guid: d8df0d5072a6c74488121235de2de84c, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2074726834}
   m_SourcePrefab: {fileID: 100100000, guid: d8df0d5072a6c74488121235de2de84c, type: 3}
---- !u!136 &527754830 stripped
-CapsuleCollider:
-  m_CorrespondingSourceObject: {fileID: 1192058182877751323, guid: cf2d1a2b446eacc4c807e00cc6fdb1ad, type: 3}
-  m_PrefabInstance: {fileID: 1290868002}
-  m_PrefabAsset: {fileID: 0}
 --- !u!108 &527754834 stripped
 Light:
   m_CorrespondingSourceObject: {fileID: 1823116825746203566, guid: cf2d1a2b446eacc4c807e00cc6fdb1ad, type: 3}
@@ -1628,7 +1638,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   LightSource: {fileID: 527754834}
-  LightInteractor: {fileID: 527754830}
   FlashlightActive: 0
   ShakingSound: {fileID: 661750805}
   BatteryOutSound: {fileID: 1922577047}
@@ -1647,7 +1656,7 @@ GameObject:
   - component: {fileID: 1513220027}
   m_Layer: 0
   m_Name: Demon.Manager
-  m_TagString: Untagged
+  m_TagString: DemonManager
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1664,7 +1673,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a630cb0f5d255047a0d0568c8af9a64, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _demons: []
+  Demons: []
   DemonPrefab: {fileID: 1303907663855446040, guid: a406fb04e9322ef4b96938d97a994207, type: 3}
   SpawnColliders:
   - {fileID: 1529996206}
@@ -1708,19 +1717,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4270982911669251365, guid: 17281565544023545950892dc554decd, type: 3}
       propertyPath: m_Size.x
-      value: 4.3703766
+      value: 4.64388
       objectReference: {fileID: 0}
     - target: {fileID: 4270982911669251365, guid: 17281565544023545950892dc554decd, type: 3}
       propertyPath: m_Size.z
-      value: 4.659996
+      value: 3.6534119
       objectReference: {fileID: 0}
     - target: {fileID: 4270982911669251365, guid: 17281565544023545950892dc554decd, type: 3}
       propertyPath: m_Center.x
-      value: -0.15575242
+      value: -0.23506784
       objectReference: {fileID: 0}
     - target: {fileID: 4270982911669251365, guid: 17281565544023545950892dc554decd, type: 3}
       propertyPath: m_Center.z
-      value: 1.579998
+      value: 1.0767059
       objectReference: {fileID: 0}
     - target: {fileID: 5207453410523758122, guid: 17281565544023545950892dc554decd, type: 3}
       propertyPath: m_UseForceGrab
@@ -2024,6 +2033,32 @@ BoxCollider:
   m_CorrespondingSourceObject: {fileID: 5696896616786063821, guid: 2662af8ba959d3649b8bc8fa3d845ae0, type: 3}
   m_PrefabInstance: {fileID: 18195660359723345}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &2074726830 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4062727015664011710, guid: d8df0d5072a6c74488121235de2de84c, type: 3}
+  m_PrefabInstance: {fileID: 514697544}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &2074726834
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2074726830}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.03550967, y: 0.047992088, z: 0.009782533}
+  m_Center: {x: -0.00006060023, y: -0.0041305106, z: -0.0014670894}
 --- !u!4 &2080039035 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 411884054919245052, guid: 35aa69d4b8868b840a9c3ccd0b3ae726, type: 3}
@@ -2188,7 +2223,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2843191035377201385, guid: 6a8acb542650cdb49b06b4c606cd132e, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8336234404633396982, guid: 6a8acb542650cdb49b06b4c606cd132e, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2425,6 +2460,10 @@ PrefabInstance:
     - target: {fileID: 1278650930602484261, guid: 35aa69d4b8868b840a9c3ccd0b3ae726, type: 3}
       propertyPath: m_Name
       value: Moon Light
+      objectReference: {fileID: 0}
+    - target: {fileID: 1278650930602484261, guid: 35aa69d4b8868b840a9c3ccd0b3ae726, type: 3}
+      propertyPath: m_TagString
+      value: Moonlight
       objectReference: {fileID: 0}
     - target: {fileID: 8840678590522763951, guid: 35aa69d4b8868b840a9c3ccd0b3ae726, type: 3}
       propertyPath: m_Range

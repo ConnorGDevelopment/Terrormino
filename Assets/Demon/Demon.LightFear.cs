@@ -23,8 +23,8 @@ namespace Demon
         {
             if (other.CompareTag("Flashlight"))
             {
-                var shake = other.GetComponentInParent<Flashlight.Shake>();
-                if (shake.Active)
+                var shake = other.GetComponentInParent<FlashlightShake>();
+                if (shake.FlashlightActive)
                 {
                     Health -= Time.deltaTime;
                     Illuminate.Invoke(true);

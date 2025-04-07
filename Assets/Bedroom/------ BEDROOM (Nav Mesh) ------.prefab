@@ -5855,9 +5855,33 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7775781104469758807, guid: e4c598db073a63848b8617af3fac27bf, type: 3}
+      propertyPath: m_Convex
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -7775781104469758807, guid: e4c598db073a63848b8617af3fac27bf, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -5540932102675875704, guid: e4c598db073a63848b8617af3fac27bf, type: 3}
+      propertyPath: m_Convex
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -5540932102675875704, guid: e4c598db073a63848b8617af3fac27bf, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: e4c598db073a63848b8617af3fac27bf, type: 3}
       propertyPath: m_Name
       value: Bedroom.BlackHallways
+      objectReference: {fileID: 0}
+    - target: {fileID: 2586624896437460228, guid: e4c598db073a63848b8617af3fac27bf, type: 3}
+      propertyPath: m_Convex
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2586624896437460228, guid: e4c598db073a63848b8617af3fac27bf, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

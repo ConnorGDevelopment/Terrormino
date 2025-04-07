@@ -61,7 +61,7 @@ namespace Flashlight
         public void Start()
         {
             LightSource = Helpers.Debug.TryFindComponentInChildren<Light>(gameObject);
-            Helpers.Debug.CheckIfSetInInspector(gameObject, LightCollider, "LightCollider");
+            
             GrabInteractable = Helpers.Debug.TryFindComponent<XRGrabInteractable>(gameObject);
             TogglePower.AddListener(OnTogglePower);
             OnTogglePower(false);
