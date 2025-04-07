@@ -1,4 +1,6 @@
+using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace Demon
 {
@@ -6,19 +8,13 @@ namespace Demon
     {
         private LightFear _lightFear;
         private Animator _animator;
-
-        
-
-
+        private AudioSource _scream;
+        private Light _moonlight;
+        private Demon.Manager _demonManager;
+        private Player.Manager _playerManager;
         public void OnBanish(GameObject _)
         {
             _animator.SetTrigger("Banish");
-
-
-            
-          
-
-
         }
 
 
@@ -26,9 +22,8 @@ namespace Demon
         public void OnIlluminate(bool value)
         {
             _animator.SetBool("IsIlluminated", value);
-            // This sets the % of dissolve to the Demon's health, so it doesn't actually matter if is or isn't being illuminated
-            
-            if((_lightFear.Health / _lightFear.MaxHealth) <= 1f/8)
+
+            if ((_lightFear.Health / _lightFear.MaxHealth) <= 1f / 8)
             {
                 foreach (var skinnedMeshRenderer in _skinnedMeshRenderers)
                 {
@@ -38,14 +33,30 @@ namespace Demon
 
         }
 
-        public AudioSource JumpscareScream;
         public void OnJumpscare()
         {
-            
+            _moonlight.enabled = false;
+
+            if (_demonManager.Demons.Count == 0)
+            {
+                _demonManager.SpawnDemon();
+            }
+            var demon = _demonManager.Demons[0];
+            demon.transform.position = _playerManager.gameObject.transform.position;
+
+            _scream.Play();
             _animator.SetTrigger("Jumpscare");
+            StartCoroutine(EndJumpscare());
         }
 
-        public void Start()
+        IEnumerator EndJumpscare()
+        {
+            yield return new WaitForSeconds(1.5f);
+            _scream.Stop();
+            SceneManager.LoadScene("TitleScreen");
+        }
+
+        public void Awake()
         {
             _lightFear = Helpers.Debug.TryFindComponent<LightFear>(gameObject);
             if (_lightFear != null)
@@ -54,10 +65,17 @@ namespace Demon
                 _lightFear.Illuminate.AddListener(OnIlluminate);
             }
 
+            _playerManager = Helpers.Debug.TryFindByTag("Player").GetComponent<Player.Manager>();
+            if (_playerManager != null)
+            {
+                _playerManager.GameOver.AddListener(OnJumpscare);
+            }
+
             _animator = Helpers.Debug.TryFindComponent<Animator>(gameObject);
             _skinnedMeshRenderers = Helpers.Debug.TryFindComponentsInChildren<SkinnedMeshRenderer>(gameObject);
-
-            Helpers.Debug.CheckIfSetInInspector(gameObject, JumpscareScream, "JumpscareScream");
+            _demonManager = Helpers.Debug.TryFindByTag("DemonManager").GetComponent<Demon.Manager>();
+            _scream = Helpers.Debug.TryFindComponent<AudioSource>(gameObject);
+            _moonlight = Helpers.Debug.TryFindByTag("Moonlight").GetComponent<Light>();
         }
     }
 }

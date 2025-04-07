@@ -23,11 +23,19 @@ namespace Demon
         {
             if (other.CompareTag("Flashlight"))
             {
-                Health -= Time.deltaTime;
-                Illuminate.Invoke(true);
-                if (Health <= 0)
+                var shake = other.GetComponentInParent<Flashlight.Shake>();
+                if (shake.Active)
                 {
-                    Banish.Invoke(gameObject);
+                    Health -= Time.deltaTime;
+                    Illuminate.Invoke(true);
+                    if (Health <= 0)
+                    {
+                        Banish.Invoke(gameObject);
+                    }
+                }
+                else
+                {
+                    Illuminate.Invoke(false);
                 }
             }
         }
@@ -52,7 +60,7 @@ namespace Demon
         {
             if (_destroyInLateUpdate)
             {
-                Destroy(gameObject);
+                //Destroy(gameObject);
             }
         }
 

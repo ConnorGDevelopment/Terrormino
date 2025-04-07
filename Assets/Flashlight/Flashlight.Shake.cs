@@ -28,13 +28,11 @@ namespace Flashlight
         {
             Active = !Active;
             LightSource.enabled = Active;
-            LightCollider.enabled = Active;
         }
         public void OnTogglePower(bool value)
         {
             Active = value;
             LightSource.enabled = Active;
-            LightCollider.enabled = Active;
         }
 
         private Vector3 _cachedPosition = Vector3.zero;

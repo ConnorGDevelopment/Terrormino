@@ -6,18 +6,18 @@ namespace Demon
 {
     public class Manager : MonoBehaviour
     {
-        public List<GameObject> _demons = new List<GameObject>();
+        public List<GameObject> Demons = new List<GameObject>();
         public GameObject DemonPrefab;
         public List<Collider> SpawnColliders = new List<Collider>();
 
         public void OnBanish(GameObject demon)
         {
-            _demons.Remove(demon);
+            Demons.Remove(demon);
         }
 
         public void SpawnDemon()
         {
-            if (_demons.Count == 0)
+            if (Demons.Count == 0)
             {
                 var selectedSpawnCollider = SpawnColliders[Random.Range(0, SpawnColliders.Count)];
                 Bounds spawnBounds = new(selectedSpawnCollider.bounds.center, selectedSpawnCollider.bounds.size);
@@ -37,7 +37,7 @@ namespace Demon
                         Debug.Log("Hit");
                         var demon = Instantiate(DemonPrefab, hit.position, Quaternion.identity);
                         demon.GetComponent<Demon.LightFear>().Banish.AddListener(OnBanish);
-                        _demons.Add(demon);
+                        Demons.Add(demon);
 
                     }
                 }
