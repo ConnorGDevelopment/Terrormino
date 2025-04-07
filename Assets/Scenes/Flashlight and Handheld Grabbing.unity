@@ -906,26 +906,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3082825564437205221, guid: 6fe43150e40619f4cb81e786601bc967, type: 3}
   m_PrefabInstance: {fileID: 115014426}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &736956612 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1060476792195088031, guid: 17281565544023545950892dc554decd, type: 3}
-  m_PrefabInstance: {fileID: 1551607253}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &736956618
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 736956612}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6f4038e7d6cae864e8d264f9c0bbae31, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Scream: {fileID: 1887906182}
-  Jumpscare: {fileID: 1303907665094665648}
-  MoonLight: {fileID: 2080039036}
 --- !u!1 &766985694
 GameObject:
   m_ObjectHideFlags: 0
@@ -1818,10 +1798,7 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4134471194627830888, guid: 17281565544023545950892dc554decd, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1825006441582313226}
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 1060476792195088031, guid: 17281565544023545950892dc554decd, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 736956618}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 17281565544023545950892dc554decd, type: 3}
 --- !u!1 &1576541298
 GameObject:
