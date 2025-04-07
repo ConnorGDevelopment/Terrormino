@@ -9,9 +9,6 @@ namespace Tetris
         public Tilemap BoardTilemap;
         public Shape[] Tetrominoes;
         public ActivePieceController ActivePiece;
-        //    public float stepDelay = 1f;
-        //    public float moveDelay = 0.1f;
-        //    public float lockDelay = 0.5f;
         public Config Config = new()
         {
             GravityDelay = 1f,
@@ -27,6 +24,7 @@ namespace Tetris
             }
         }
         public Vector3Int SpawnPosition = new(-1, 6, 0);
+        public Player.Manager PlayerManager;
 
         public void Awake()
         {
@@ -41,7 +39,7 @@ namespace Tetris
         {
             BoardTilemap = Helpers.Debug.TryFindComponentOnGameObjectByName<Tilemap>("BoardTilemap");
             ActivePiece = Helpers.Debug.TryFindComponent<ActivePieceController>(gameObject);
-
+            PlayerManager = Helpers.Debug.TryFindComponentOnGameObjectByTag<Player.Manager>("Player");
             SpawnPiece();
         }
 
@@ -62,13 +60,10 @@ namespace Tetris
             }
             else
             {
-                GameOver();
-            }
-        }
 
-        public void GameOver()
-        {
-            BoardTilemap.ClearAllTiles();
+                BoardTilemap.ClearAllTiles();
+                PlayerManager.GameOver.Invoke();
+            }
         }
 
         public void PaintTiles(ActivePieceController tetromino)
