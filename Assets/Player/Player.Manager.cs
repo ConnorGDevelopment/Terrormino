@@ -21,7 +21,7 @@ namespace Player
         {
             if (other.CompareTag("Enemy"))
             {
-                GameOver.Invoke();
+                GameOver.Invoke();   
             }
         }
     }
