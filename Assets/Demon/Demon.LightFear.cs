@@ -54,6 +54,7 @@ namespace Demon
         public void StartDelayedDestroy(GameObject _)
         {
             _destroyInLateUpdate = true;
+
         }
         private bool _destroyInLateUpdate = false;
         public void LateUpdate()

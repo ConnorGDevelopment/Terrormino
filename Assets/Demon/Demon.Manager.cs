@@ -12,6 +12,7 @@ namespace Demon
 
         public void OnBanish(GameObject demon)
         {
+            
             Demons.Remove(demon);
         }
 

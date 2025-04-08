@@ -123,9 +123,9 @@ public class FlashlightShake : MonoBehaviour
 
             if (PercentageIncrease >= 2.5f) //checking to see if the current magnitude increased by 2.5% (i.e. shaking)
             {
-                _battery += Time.deltaTime * 4f;
+                _battery += Time.deltaTime * 6f;
                 ShakingSound.Play();
-                UnityEngine.Debug.Log("charged the battery");
+                
             }
 
             else

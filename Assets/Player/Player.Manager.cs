@@ -1,3 +1,6 @@
+using Unity.VisualScripting;
+using Unity.XR.CoreUtils;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -19,10 +22,11 @@ namespace Player
 
         public void OnTriggerEnter(Collider other)
         {
-            if (other.CompareTag("Enemy"))
+            if (other.TryGetComponent(out Demon.LightFear _))
             {
                 Debug.Log(other.gameObject);
-                GameOver.Invoke();   
+                //EditorApplication.isPaused = true;
+                GameOver.Invoke();
             }
         }
     }

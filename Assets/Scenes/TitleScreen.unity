@@ -189,8 +189,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Scream: {fileID: 0}
-  Jumpscare: {fileID: 0}
+  JumpscareDemon: {fileID: 0}
   MoonLight: {fileID: 0}
+  Jumpscare:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &340060456
 GameObject:
   m_ObjectHideFlags: 0
@@ -4131,7 +4134,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 1504116763655961758, guid: 334fcafe5463cf34b97f078d28f53aae, type: 3}
+  - {fileID: 2100000, guid: 4aa9629f035beac4a8d6cf413b190bf3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4173,7 +4176,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -2948672930785742604, guid: 334fcafe5463cf34b97f078d28f53aae, type: 3}
+  - {fileID: 2100000, guid: e8a0d74aaf58cfe4d9125820f5591df7, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4245,7 +4248,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -5382246507780074876, guid: 334fcafe5463cf34b97f078d28f53aae, type: 3}
+  - {fileID: 2100000, guid: e8a0d74aaf58cfe4d9125820f5591df7, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4302,7 +4305,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -5382246507780074876, guid: 334fcafe5463cf34b97f078d28f53aae, type: 3}
+  - {fileID: 2100000, guid: e8a0d74aaf58cfe4d9125820f5591df7, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

@@ -1,3 +1,4 @@
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
@@ -61,6 +62,10 @@ namespace Tetris
             else
             {
 
+                
+                Debug.Log(ActivePiece.Shape.ShapeKey);
+                Debug.Log("You suck! Tetris");
+                //EditorApplication.isPaused = true;
                 BoardTilemap.ClearAllTiles();
                 PlayerManager.GameOver.Invoke();
             }

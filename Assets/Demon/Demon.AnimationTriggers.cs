@@ -14,6 +14,8 @@ namespace Demon
         private Player.Manager _playerManager;
         public void OnBanish(GameObject _)
         {
+
+            Debug.Log("man im dead",gameObject);
             _animator.SetTrigger("Banish");
         }
 
@@ -23,13 +25,13 @@ namespace Demon
         {
             _animator.SetBool("IsIlluminated", value);
 
-            if ((_lightFear.Health / _lightFear.MaxHealth) <= 1f / 8)
-            {
-                foreach (var skinnedMeshRenderer in _skinnedMeshRenderers)
-                {
-                    skinnedMeshRenderer.material.SetFloat(Shader.PropertyToID("_DissolveValue"), Mathf.Clamp(1 - (_lightFear.Health / _lightFear.MaxHealth), 0, 1f));
-                }
-            }
+            //if ((_lightFear.Health / _lightFear.MaxHealth) <= 1f / 8)
+            //{
+            //    foreach (var skinnedMeshRenderer in _skinnedMeshRenderers)
+            //    {
+            //        skinnedMeshRenderer.material.SetFloat(Shader.PropertyToID("_DissolveValue"), Mathf.Clamp(1 - (_lightFear.Health / _lightFear.MaxHealth), 0, 1f));
+            //    }
+            //}
 
         }
 

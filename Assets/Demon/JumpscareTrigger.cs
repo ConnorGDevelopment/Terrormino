@@ -21,24 +21,18 @@ public class JumpscareTrigger : MonoBehaviour
     {
 
 
-        _playerManager = Helpers.Debug.TryFindByTag("Player").GetComponent<Player.Manager>();
-        if (_playerManager != null)
-        {
-            _playerManager.GameOver.AddListener(OnJumpscare);
-        }
-        _demonManager = Helpers.Debug.TryFindByTag("DemonManager").GetComponent<Demon.Manager>();
-
+        
 
     }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("Enemy"))
-        {
-            Jumpscare.Invoke();
-            other.gameObject.SetActive(false);
-        }
-    }
+    //private void OnTriggerEnter(Collider other)
+    //{
+    //    if (other.CompareTag("Enemy"))
+    //    {
+    //        Jumpscare.Invoke();
+    //        other.gameObject.SetActive(false);
+    //    }
+    //}
 
 
 
@@ -73,7 +67,15 @@ public class JumpscareTrigger : MonoBehaviour
     }
 
 
-    
+    public void Awake()
+    {
+        _playerManager = Helpers.Debug.TryFindByTag("Player").GetComponent<Player.Manager>();
+        if (_playerManager != null)
+        {
+            _playerManager.GameOver.AddListener(OnJumpscare);
+        }
+        _demonManager = Helpers.Debug.TryFindByTag("DemonManager").GetComponent<Demon.Manager>();
+    }
 
 
 
