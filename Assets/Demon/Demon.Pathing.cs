@@ -19,6 +19,27 @@ namespace Demon
                 _agent.destination = _destination;
             }
         }
+
+        public static int IntFromMask(int mask)
+        {
+            for (int i = 0; i < 32; ++i)
+            {
+                if ((1 << i) == mask)
+                    return i;
+            }
+            return -1;
+        }
+
+        private bool _enteredSlow = false;
+        public void Update()
+        {
+            if (NavMesh.SamplePosition(gameObject.transform.position, out NavMeshHit hit, 5f, NavMesh.AllAreas) && IntFromMask(hit.mask) == NavMesh.GetAreaFromName("Slow") && !_enteredSlow)
+            {
+                _agent.velocity = (_agent.velocity / 4);
+                _agent.speed = 1;
+                _enteredSlow = true;
+            }
+        }
     }
 
 }
