@@ -1,64 +1,22 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.InputSystem;
 using UnityEngine.XR.Interaction.Toolkit;
 
-public class GrabbableConfig : MonoBehaviour
+public class GrabbableConfig : XRGrabInteractable
 {
-
-
-    public XRGrabInteractable XRGrabRef;
     public Transform LeftAttach;
     public Transform RightAttach;
 
-
-    // Start is called before the first frame update
-    void Start()
+    protected override void OnSelectEntering(SelectEnterEventArgs args)
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-
-
-    public void GrabConsole(InputAction inputAction)
-    {
-
-        int Grabbed = Helpers.Math.RoundNearestNonZeroInt(inputAction.ReadValue<float>());
-
-        XRGrabRef.attachTransform = LeftAttach;
-        XRGrabRef.secondaryAttachTransform = RightAttach;
-
-        if(Grabbed <= 0)
+        if (args.interactorObject.transform.CompareTag("LeftHand"))
         {
-            XRGrabRef.attachTransform = RightAttach;
-            XRGrabRef.secondaryAttachTransform = LeftAttach;
+            attachTransform = LeftAttach;
         }
-        
-        
-        
+        else if (args.interactorObject.transform.CompareTag("RightHand"))
+        {
+            attachTransform = RightAttach;
+        }
 
+        base.OnSelectEntering(args);
     }
-
-
-
-    
-
-
-    
-
-
-
-
-
-
-
-
 }
