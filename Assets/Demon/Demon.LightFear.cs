@@ -60,7 +60,7 @@ namespace Demon
         {
             if (_destroyInLateUpdate)
             {
-                //Destroy(gameObject);
+                Destroy(gameObject);
             }
         }
 

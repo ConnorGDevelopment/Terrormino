@@ -33,28 +33,7 @@ namespace Demon
 
         }
 
-        public void OnJumpscare()
-        {
-            _moonlight.enabled = false;
-
-            if (_demonManager.Demons.Count == 0)
-            {
-                _demonManager.SpawnDemon();
-            }
-            var demon = _demonManager.Demons[0];
-            demon.transform.position = _playerManager.gameObject.transform.position;
-
-            _scream.Play();
-            _animator.SetTrigger("Jumpscare");
-            StartCoroutine(EndJumpscare());
-        }
-
-        IEnumerator EndJumpscare()
-        {
-            yield return new WaitForSeconds(1.5f);
-            _scream.Stop();
-            SceneManager.LoadScene("TitleScreen");
-        }
+        
 
         public void Awake()
         {
@@ -65,11 +44,11 @@ namespace Demon
                 _lightFear.Illuminate.AddListener(OnIlluminate);
             }
 
-            _playerManager = Helpers.Debug.TryFindByTag("Player").GetComponent<Player.Manager>();
-            if (_playerManager != null)
-            {
-                _playerManager.GameOver.AddListener(OnJumpscare);
-            }
+            //_playerManager = Helpers.Debug.TryFindByTag("Player").GetComponent<Player.Manager>();
+            //if (_playerManager != null)
+            //{
+            //    _playerManager.GameOver.AddListener(OnJumpscare);
+            //}
 
             _animator = Helpers.Debug.TryFindComponent<Animator>(gameObject);
             _skinnedMeshRenderers = Helpers.Debug.TryFindComponentsInChildren<SkinnedMeshRenderer>(gameObject);
