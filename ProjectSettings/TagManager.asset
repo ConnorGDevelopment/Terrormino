@@ -10,6 +10,8 @@ TagManager:
   - DemonManager
   - Enemy
   - Moonlight
+  - LeftHand
+  - RightHand
   layers:
   - Default
   - TransparentFX
