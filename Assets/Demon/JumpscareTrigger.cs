@@ -31,14 +31,14 @@ public class JumpscareTrigger : MonoBehaviour
 
     }
 
-    //private void OnTriggerEnter(Collider other)
-    //{
-    //    if(other.CompareTag("Enemy"))
-    //    {
-    //        Jumpscare.Invoke();
-    //        other.gameObject.SetActive(false);
-    //    }        
-    //}
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Enemy"))
+        {
+            Jumpscare.Invoke();
+            other.gameObject.SetActive(false);
+        }
+    }
 
 
 
