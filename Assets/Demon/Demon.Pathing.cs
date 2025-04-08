@@ -15,7 +15,7 @@ namespace Demon
 
         public void Start()
         {
-            _player = Helpers.Debug.TryFindByTag("Player");
+            _player = Helpers.Debug.TryFindByTag("Player").GetComponentInChildren<Camera>().gameObject;
             _agent = Helpers.Debug.TryFindComponent<NavMeshAgent>(gameObject);
             if (_player && _agent)
             {

@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
@@ -7,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class JumpscareTrigger : MonoBehaviour
 {
     public AudioSource Scream;
-    
+
     public GameObject JumpscareDemon;
 
     private Player.Manager _playerManager;
@@ -15,13 +14,13 @@ public class JumpscareTrigger : MonoBehaviour
 
 
     public Light MoonLight;
-    
+
 
     private void Start()
     {
 
 
-        
+
 
     }
 
@@ -39,11 +38,11 @@ public class JumpscareTrigger : MonoBehaviour
     public UnityEvent Jumpscare;
     public void OnJumpscare()
     {
-        AdjustingMoonlight();
+        //AdjustingMoonlight();
         _demonManager.Demons.ForEach(demon => demon.SetActive(false));
         Scream.Play();
         JumpscareDemon.SetActive(true);
-        
+
         StartCoroutine(EndJumpscare());
     }
 
@@ -57,14 +56,14 @@ public class JumpscareTrigger : MonoBehaviour
     }
 
 
-    public void AdjustingMoonlight()
-    {
-       
-        
-        MoonLight.enabled = false;
-        
-        
-    }
+    //public void AdjustingMoonlight()
+    //{
+
+
+    //    MoonLight.enabled = false;
+
+
+    //}
 
 
     public void Awake()

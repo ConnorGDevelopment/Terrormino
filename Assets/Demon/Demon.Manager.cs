@@ -12,7 +12,7 @@ namespace Demon
 
         public void OnBanish(GameObject demon)
         {
-            
+            SpawnTimer = 15f;
             Demons.Remove(demon);
         }
 
@@ -45,9 +45,29 @@ namespace Demon
             }
         }
 
+        public void ClearAll()
+        {
+            Demons.ForEach(demon => demon.GetComponent<Demon.LightFear>().Banish.Invoke(demon));
+        }
+
+        public void Start()
+        {
+            GraceTimer = 30f;
+            SpawnTimer = 15f;
+        }
+        public float GraceTimer = 30f;
+        public float SpawnTimer = 15f;
         public void Update()
         {
-            SpawnDemon();
+            GraceTimer -= Time.deltaTime;
+            SpawnTimer -= Time.deltaTime;
+
+            if (GraceTimer <= 0 && SpawnTimer <= 0)
+            {
+                SpawnDemon();
+                SpawnTimer = 15f;
+            }
+
         }
     }
 }

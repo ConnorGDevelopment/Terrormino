@@ -12,6 +12,7 @@ TagManager:
   - Moonlight
   - LeftHand
   - RightHand
+  - DropWatch
   layers:
   - Default
   - TransparentFX

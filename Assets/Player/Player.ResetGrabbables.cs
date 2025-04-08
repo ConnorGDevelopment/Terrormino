@@ -1,44 +1,25 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class ResetGrabbables : MonoBehaviour
 {
-
-    public GameObject HandheldReset;
-    public GameObject FlashlightReset;
-
-   
-
-    public Collider DetectionBox;
-
+    public Collider DropWatchCollider;
+    public Vector3 StartingPosition;
+    public Quaternion StartingRotation;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        DropWatchCollider = Helpers.Debug.TryFindByTag("DropWatch").GetComponent<Collider>();
+        StartingPosition = gameObject.transform.position;
+        StartingRotation = gameObject.transform.rotation;
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-
 
     public void OnTriggerExit(Collider other)
     {
-        if (other == DetectionBox)
+        if (other == DropWatchCollider)
         {
-            if(this.CompareTag("Handheld"))
-            {
-                this.transform.position = HandheldReset.transform.position;
-            }
-            else if (this.CompareTag("Flashlight"))
-            {
-                this.transform.position = FlashlightReset.transform.position;
-            }
+            gameObject.transform.position = StartingPosition;
+            gameObject.transform.rotation = StartingRotation;
         }
     }
 

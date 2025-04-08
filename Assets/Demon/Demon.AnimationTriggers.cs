@@ -1,23 +1,18 @@
-using System.Collections;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 namespace Demon
 {
     public class AnimationController : MonoBehaviour
     {
-        private LightFear _lightFear;
-        private Animator _animator;
-        private AudioSource _scream;
-        private Light _moonlight;
+        public LightFear _lightFear;
+        public Animator _animator;
+        public AudioSource _scream;
         private Demon.Manager _demonManager;
-        private Player.Manager _playerManager;
+        public Player.Manager _playerManager;
         private float _dissolveValue = 0f;
 
         public void OnBanish(GameObject _)
         {
-
-            Debug.Log("man im dead",gameObject);
             _animator.SetTrigger("Banish");
         }
 
@@ -29,12 +24,27 @@ namespace Demon
 
             if ((_lightFear.Health / _lightFear.MaxHealth) <= 1f / 8)
             {
-                dissolve();
+                Dissolve();
             }
-
         }
 
-        
+
+        //public void OnJumpscare()
+        //{
+        //    var cameraPosition = _playerManager.GetComponentInChildren<Camera>().gameObject.transform;
+        //    gameObject.transform.SetParent(cameraPosition, false);
+        //    gameObject.transform.localPosition = new Vector3(0f, 0f, 3.8f);
+        //    gameObject.transform.LookAt(cameraPosition);
+        //    _animator.SetTrigger("Jumpscare");
+        //    _scream.Play();
+        //    StartCoroutine(EndJumpscare());
+        //}
+        //IEnumerator EndJumpscare()
+        //{
+        //    yield return new WaitForSeconds(1.5f);
+        //    _scream.Stop();
+        //    _playerManager.BackToTitle();
+        //}
 
         public void Awake()
         {
@@ -55,17 +65,10 @@ namespace Demon
             _skinnedMeshRenderers = Helpers.Debug.TryFindComponentsInChildren<SkinnedMeshRenderer>(gameObject);
             _demonManager = Helpers.Debug.TryFindByTag("DemonManager").GetComponent<Demon.Manager>();
             _scream = Helpers.Debug.TryFindComponent<AudioSource>(gameObject);
-            _moonlight = Helpers.Debug.TryFindByTag("Moonlight").GetComponent<Light>();
         }
 
-        public void dissolve()
+        public void Dissolve()
         {
-            //foreach (var skinnedMeshRenderer in _skinnedMeshRenderers)
-            //{
-            //    skinnedMeshRenderer.material.SetFloat(Shader.PropertyToID("_DissolveValue"), Mathf.Clamp(1 - (_lightFear.Health / _lightFear.MaxHealth), 0, 1f));
-            //}
-
-
             _dissolveValue += Time.deltaTime * 1f;
             _dissolveValue = Mathf.Clamp01(_dissolveValue); // Keep between 0 and 1
 
@@ -73,14 +76,6 @@ namespace Demon
             {
                 skinnedMeshRenderer.material.SetFloat("_DissolveValue", _dissolveValue);
             }
-
-
-            
-
-
         }
-
-
-
     }
 }

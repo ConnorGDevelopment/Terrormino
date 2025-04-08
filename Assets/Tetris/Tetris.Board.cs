@@ -1,5 +1,5 @@
-using UnityEditor;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.Tilemaps;
 
 namespace Tetris
@@ -62,12 +62,15 @@ namespace Tetris
             else
             {
 
-                
+
                 Debug.Log(ActivePiece.Shape.ShapeKey);
                 Debug.Log("You suck! Tetris");
                 //EditorApplication.isPaused = true;
                 BoardTilemap.ClearAllTiles();
-                PlayerManager.GameOver.Invoke();
+                if (SceneManager.GetActiveScene().name == "Expo")
+                {
+                    PlayerManager.GameOver.Invoke();
+                }
             }
         }
 
