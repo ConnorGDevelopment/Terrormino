@@ -9,6 +9,10 @@ namespace Demon
         private Vector3 _destination;
         private NavMeshAgent _agent;
 
+        public float SlowZoneSpeed = 1.0f;
+        //public float SlowZoneBrakeMultiplier = 4;
+        public float SlowZoneAcceleration = 0.075f;
+
         public void Start()
         {
             _player = Helpers.Debug.TryFindByTag("Player");
@@ -35,8 +39,10 @@ namespace Demon
         {
             if (NavMesh.SamplePosition(gameObject.transform.position, out NavMeshHit hit, 5f, NavMesh.AllAreas) && IntFromMask(hit.mask) == NavMesh.GetAreaFromName("Slow") && !_enteredSlow)
             {
-                _agent.velocity = (_agent.velocity / 4);
-                _agent.speed = 1;
+                //_agent.velocity = (_agent.velocity / SlowZoneBrakeMultiplier);
+                _agent.velocity = Vector3.zero;
+                _agent.acceleration = SlowZoneAcceleration;
+                _agent.speed = SlowZoneSpeed;
                 _enteredSlow = true;
             }
         }
