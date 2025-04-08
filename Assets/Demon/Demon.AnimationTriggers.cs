@@ -12,6 +12,8 @@ namespace Demon
         private Light _moonlight;
         private Demon.Manager _demonManager;
         private Player.Manager _playerManager;
+        private float _dissolveValue = 0f;
+
         public void OnBanish(GameObject _)
         {
 
@@ -25,13 +27,10 @@ namespace Demon
         {
             _animator.SetBool("IsIlluminated", value);
 
-            //if ((_lightFear.Health / _lightFear.MaxHealth) <= 1f / 8)
-            //{
-            //    foreach (var skinnedMeshRenderer in _skinnedMeshRenderers)
-            //    {
-            //        skinnedMeshRenderer.material.SetFloat(Shader.PropertyToID("_DissolveValue"), Mathf.Clamp(1 - (_lightFear.Health / _lightFear.MaxHealth), 0, 1f));
-            //    }
-            //}
+            if ((_lightFear.Health / _lightFear.MaxHealth) <= 1f / 8)
+            {
+                dissolve();
+            }
 
         }
 
@@ -58,5 +57,30 @@ namespace Demon
             _scream = Helpers.Debug.TryFindComponent<AudioSource>(gameObject);
             _moonlight = Helpers.Debug.TryFindByTag("Moonlight").GetComponent<Light>();
         }
+
+        public void dissolve()
+        {
+            //foreach (var skinnedMeshRenderer in _skinnedMeshRenderers)
+            //{
+            //    skinnedMeshRenderer.material.SetFloat(Shader.PropertyToID("_DissolveValue"), Mathf.Clamp(1 - (_lightFear.Health / _lightFear.MaxHealth), 0, 1f));
+            //}
+
+
+            _dissolveValue += Time.deltaTime * 1f;
+            _dissolveValue = Mathf.Clamp01(_dissolveValue); // Keep between 0 and 1
+
+            foreach (var skinnedMeshRenderer in _skinnedMeshRenderers)
+            {
+                skinnedMeshRenderer.material.SetFloat("_DissolveValue", _dissolveValue);
+            }
+
+
+            
+
+
+        }
+
+
+
     }
 }
