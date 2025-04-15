@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 
 namespace Player
 {
@@ -7,9 +8,14 @@ namespace Player
     {
         public UnityEvent GameOver = new();
 
-        public static void OnGameOver()
+        public void OnGameOver()
         {
             Debug.Log("Game Over");
+        }
+
+        public void BackToTitle()
+        {
+            SceneManager.LoadScene("TitleScreen");
         }
 
         public void Start()
@@ -19,8 +25,10 @@ namespace Player
 
         public void OnTriggerEnter(Collider other)
         {
-            if (other.CompareTag("Enemy"))
+            if (other.TryGetComponent(out Demon.LightFear _))
             {
+                Debug.Log(other.gameObject);
+                //EditorApplication.isPaused = true;
                 GameOver.Invoke();
             }
         }

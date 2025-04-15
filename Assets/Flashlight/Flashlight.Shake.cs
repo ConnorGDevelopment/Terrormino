@@ -28,13 +28,11 @@ namespace Flashlight
         {
             Active = !Active;
             LightSource.enabled = Active;
-            LightCollider.enabled = Active;
         }
         public void OnTogglePower(bool value)
         {
             Active = value;
             LightSource.enabled = Active;
-            LightCollider.enabled = Active;
         }
 
         private Vector3 _cachedPosition = Vector3.zero;
@@ -63,7 +61,7 @@ namespace Flashlight
         public void Start()
         {
             LightSource = Helpers.Debug.TryFindComponentInChildren<Light>(gameObject);
-            Helpers.Debug.CheckIfSetInInspector(gameObject, LightCollider, "LightCollider");
+            
             GrabInteractable = Helpers.Debug.TryFindComponent<XRGrabInteractable>(gameObject);
             TogglePower.AddListener(OnTogglePower);
             OnTogglePower(false);

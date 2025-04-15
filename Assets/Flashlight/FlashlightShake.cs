@@ -11,7 +11,7 @@ using UnityEngine.XR.Interaction.Toolkit;
 public class FlashlightShake : MonoBehaviour
 {
     public Light LightSource; //flashlight
-    public Collider LightInteractor;  //Collider for checking if the demon is inside
+    
     public bool FlashlightActive = false;     //flag for knowing if the flashlight is currently active
 
 
@@ -52,7 +52,7 @@ public class FlashlightShake : MonoBehaviour
 
 
         //Setting the light interactor to be off
-        LightInteractor.enabled = false;
+        
 
 
 
@@ -67,7 +67,7 @@ public class FlashlightShake : MonoBehaviour
 
         if (_battery <= 0) // Battery dies
         {
-            LightInteractor.enabled = false;   //Resetting everything back to being inactive/off
+            
             LightSource.enabled = false;
             FlashlightActive = false;
             BatteryOutSound.Play();
@@ -82,12 +82,12 @@ public class FlashlightShake : MonoBehaviour
 
 
     public UnityEvent<InputAction> TogglePower = new();                
-    public void OnTogglePower(InputAction inputAction)                                         //By using the input router we can check what device was being used to press the button that triggers the unity event
+    public void OnTogglePower(InputAction inputAction)            //By using the input router we can check what device was being used to press the button that triggers the unity event
     {
       
             FlashlightActive = !FlashlightActive;
             LightSource.enabled = FlashlightActive;
-            LightInteractor.enabled = FlashlightActive;  
+            
         
 
     }
@@ -123,9 +123,9 @@ public class FlashlightShake : MonoBehaviour
 
             if (PercentageIncrease >= 2.5f) //checking to see if the current magnitude increased by 2.5% (i.e. shaking)
             {
-                _battery += Time.deltaTime * 4f;
+                _battery += Time.deltaTime * 6f;
                 ShakingSound.Play();
-                UnityEngine.Debug.Log("charged the battery");
+                
             }
 
             else

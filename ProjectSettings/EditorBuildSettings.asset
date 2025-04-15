@@ -14,9 +14,12 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/Tetris Gameplay.unity
     guid: 3e887b44c8a91814a996d31ed6212417
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Flashlight and Handheld Grabbing.unity
     guid: 2b6e329911937514d9e02fd205b7554f
+  - enabled: 1
+    path: Assets/Scenes/Expo.unity
+    guid: 2a0d1538bf9082344b278cee290a302d
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: bfa1182bd221b4ca89619141f66f1260, type: 2}
     Unity.XR.WindowsMR.Settings: {fileID: 11400000, guid: dc5a169419fa04987b057f65238cf3ba, type: 2}

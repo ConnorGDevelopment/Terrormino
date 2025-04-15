@@ -1,11 +1,9 @@
-
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 using UnityEngine.XR.Interaction.Toolkit;
-using Helpers;
 
 
 
@@ -30,15 +28,14 @@ public class TitleScreen : MonoBehaviour
     private float _dissolveValue = 0f;
 
 
-    private int _shaderRef = Shader.PropertyToID("_clipping_value");
-
     public GameObject GameConsole;
 
 
     // Start is called before the first frame update
     public void Start()
     {
-      
+        _skinnedMeshRenderers = Helpers.Debug.TryFindComponentsInChildren<SkinnedMeshRenderer>(gameObject);
+
     }
 
 
@@ -46,10 +43,10 @@ public class TitleScreen : MonoBehaviour
     // Update is called once per frame
     public void Update()
     {
-        if(_beginTransition == true)
+        if (_beginTransition)
         {
 
-            if(_isDissolving)
+            if (_isDissolving)
             {
                 DissolveConsole();
             }
@@ -61,54 +58,46 @@ public class TitleScreen : MonoBehaviour
 
             _transitionTime -= Time.deltaTime;
 
-            if(_transitionTime <= 0)
+            if (_transitionTime <= 0)
             {
                 BeginGame();
                 _transitionTime = 5;
 
-                foreach (Material mat in materials)
+                foreach (var skinnedMeshRenderer in _skinnedMeshRenderers)
                 {
-                    mat.SetFloat(_shaderRef, 0);
+                    skinnedMeshRenderer.material.SetFloat("_DissolveValue", _dissolveValue);
                 }
             }
         }
     }
-    
-     
+
+
 
     public void BeginGame()
     {
-        SceneManager.LoadScene("Flashlight and Handheld Grabbing");
+        SceneManager.LoadScene("Expo");
     }
 
 
     public UnityEvent<InputAction> OnTitleTransitionGrab = new();
 
-    public void TitleToGameplayTransition(InputAction inputAction)
+    public void TitleToGameplayTransition(SelectEnterEventArgs context)
     {
-        int triggerInput = Math.RoundNearestNonZeroInt(inputAction.ReadValue<float>());
-        UnityEngine.Debug.Log(triggerInput);
-        if (triggerInput == 1)
-        {
-            _beginTransition = true;
-            _isDissolving = true;
-            
+        _beginTransition = true;
+        _isDissolving = true;
 
-            XRGrabInteractable grabInteractable = GameConsole.GetComponent<XRGrabInteractable>();
-           
-            
-            grabInteractable.interactionManager.SelectExit(grabInteractable.interactorsSelecting[0], grabInteractable);
 
-            Collider ConsoleCollider = GameConsole.GetComponent<BoxCollider>();
+        XRGrabInteractable grabInteractable = gameObject.GetComponent<XRGrabInteractable>();
 
-            ConsoleCollider.enabled = false;
 
-            FogBlock.SetActive(true);
-        }
-        
+        grabInteractable.interactionManager.SelectExit(grabInteractable.interactorsSelecting[0], grabInteractable);
+
+        FogBlock.SetActive(true);
+
     }
 
 
+    private SkinnedMeshRenderer[] _skinnedMeshRenderers;
 
     public void DissolveConsole()
     {
@@ -116,9 +105,9 @@ public class TitleScreen : MonoBehaviour
         _dissolveValue += Time.deltaTime * 1f;
         _dissolveValue = Mathf.Clamp01(_dissolveValue); // Keep between 0 and 1
 
-        foreach (Material mat in materials)
+        foreach (var skinnedMeshRenderer in _skinnedMeshRenderers)
         {
-            mat.SetFloat(_shaderRef, _dissolveValue);
+            skinnedMeshRenderer.material.SetFloat("_DissolveValue", _dissolveValue);
         }
 
 
@@ -135,5 +124,5 @@ public class TitleScreen : MonoBehaviour
 }
 
 
-    
+
 
