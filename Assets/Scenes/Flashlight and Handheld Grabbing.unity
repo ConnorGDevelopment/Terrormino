@@ -141,6 +141,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Scream: {fileID: 1887906182}
   JumpscareDemon: {fileID: 1303907665094665648}
+  Room: {fileID: 514697545}
   MoonLight: {fileID: 2080039036}
   Jumpscare:
     m_PersistentCalls:
@@ -556,6 +557,11 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 2074726834}
   m_SourcePrefab: {fileID: 100100000, guid: d8df0d5072a6c74488121235de2de84c, type: 3}
+--- !u!1 &514697545 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5935996274055977873, guid: d8df0d5072a6c74488121235de2de84c, type: 3}
+  m_PrefabInstance: {fileID: 514697544}
+  m_PrefabAsset: {fileID: 0}
 --- !u!108 &527754834 stripped
 Light:
   m_CorrespondingSourceObject: {fileID: 1823116825746203566, guid: cf2d1a2b446eacc4c807e00cc6fdb1ad, type: 3}
@@ -1735,9 +1741,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f0183b6801556e4b8a51c9e44ca9a37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HandheldReset: {fileID: 639137294}
-  FlashlightReset: {fileID: 1338967221}
-  DetectionBox: {fileID: 2033119848}
+  DropWatchCollider: {fileID: 0}
+  StartingPosition: {x: 0, y: 0, z: 0}
+  StartingRotation: {x: 0, y: 0, z: 0, w: 0}
 --- !u!114 &1361137097
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1792,6 +1798,8 @@ MonoBehaviour:
   - {fileID: 1529996206}
   - {fileID: 1037205622}
   - {fileID: 800838431}
+  GraceTimer: 30
+  SpawnTimer: 15
 --- !u!4 &1513220028
 Transform:
   m_ObjectHideFlags: 0
@@ -2334,7 +2342,7 @@ MonoBehaviour:
   m_MatchAttachPosition: 1
   m_MatchAttachRotation: 0
   m_SnapToColliderVolume: 1
-  m_ReinitializeDynamicAttachEverySingleGrab: 1
+  m_ReinitializeDynamicAttachEverySingleGrab: 0
   m_AttachEaseInTime: 0.15
   m_MovementType: 2
   m_VelocityDamping: 1

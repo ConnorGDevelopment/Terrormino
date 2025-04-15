@@ -748,7 +748,7 @@ MonoBehaviour:
   m_MatchAttachPosition: 1
   m_MatchAttachRotation: 0
   m_SnapToColliderVolume: 1
-  m_ReinitializeDynamicAttachEverySingleGrab: 1
+  m_ReinitializeDynamicAttachEverySingleGrab: 0
   m_AttachEaseInTime: 0.15
   m_MovementType: 2
   m_VelocityDamping: 1
@@ -2901,31 +2901,31 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7339039221192041354, guid: cf2d1a2b446eacc4c807e00cc6fdb1ad, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 4.52
+      value: 4.07
       objectReference: {fileID: 0}
     - target: {fileID: 7339039221192041354, guid: cf2d1a2b446eacc4c807e00cc6fdb1ad, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -53.3
+      value: -52.05
       objectReference: {fileID: 0}
     - target: {fileID: 7339039221192041354, guid: cf2d1a2b446eacc4c807e00cc6fdb1ad, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.7020539
       objectReference: {fileID: 0}
     - target: {fileID: 7339039221192041354, guid: cf2d1a2b446eacc4c807e00cc6fdb1ad, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0.7121238
       objectReference: {fileID: 0}
     - target: {fileID: 7339039221192041354, guid: cf2d1a2b446eacc4c807e00cc6fdb1ad, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 7339039221192041354, guid: cf2d1a2b446eacc4c807e00cc6fdb1ad, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 7339039221192041354, guid: cf2d1a2b446eacc4c807e00cc6fdb1ad, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
+      value: -90.816
       objectReference: {fileID: 0}
     - target: {fileID: 7339039221192041354, guid: cf2d1a2b446eacc4c807e00cc6fdb1ad, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
