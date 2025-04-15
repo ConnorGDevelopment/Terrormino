@@ -8,6 +8,7 @@ public class JumpscareTrigger : MonoBehaviour
     public AudioSource Scream;
 
     public GameObject JumpscareDemon;
+    public GameObject Room;
 
     private Player.Manager _playerManager;
     private Demon.Manager _demonManager;
@@ -42,6 +43,7 @@ public class JumpscareTrigger : MonoBehaviour
         _demonManager.Demons.ForEach(demon => demon.SetActive(false));
         Scream.Play();
         JumpscareDemon.SetActive(true);
+        Room.SetActive(false);
 
         StartCoroutine(EndJumpscare());
     }
