@@ -29,22 +29,8 @@ namespace Demon
         }
 
 
-        //public void OnJumpscare()
-        //{
-        //    var cameraPosition = _playerManager.GetComponentInChildren<Camera>().gameObject.transform;
-        //    gameObject.transform.SetParent(cameraPosition, false);
-        //    gameObject.transform.localPosition = new Vector3(0f, 0f, 3.8f);
-        //    gameObject.transform.LookAt(cameraPosition);
-        //    _animator.SetTrigger("Jumpscare");
-        //    _scream.Play();
-        //    StartCoroutine(EndJumpscare());
-        //}
-        //IEnumerator EndJumpscare()
-        //{
-        //    yield return new WaitForSeconds(1.5f);
-        //    _scream.Stop();
-        //    _playerManager.BackToTitle();
-        //}
+        
+        
 
         public void Awake()
         {
@@ -55,11 +41,7 @@ namespace Demon
                 _lightFear.Illuminate.AddListener(OnIlluminate);
             }
 
-            //_playerManager = Helpers.Debug.TryFindByTag("Player").GetComponent<Player.Manager>();
-            //if (_playerManager != null)
-            //{
-            //    _playerManager.GameOver.AddListener(OnJumpscare);
-            //}
+           
 
             _animator = Helpers.Debug.TryFindComponent<Animator>(gameObject);
             _skinnedMeshRenderers = Helpers.Debug.TryFindComponentsInChildren<SkinnedMeshRenderer>(gameObject);

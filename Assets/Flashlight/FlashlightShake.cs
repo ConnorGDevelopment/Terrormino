@@ -51,7 +51,7 @@ public class FlashlightShake : MonoBehaviour
         LightSource.enabled = false;
 
 
-        //Setting the light interactor to be off
+        
         
 
 
