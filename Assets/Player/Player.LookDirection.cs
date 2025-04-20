@@ -1,51 +1,59 @@
 using Object;
-using System.Collections;
 using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
 
 namespace Player
 {
     public class LookDirection : MonoBehaviour
     {
+        private AmbientObjectChange _changeManager;
+        private HashSet<GameObject> currentlyLookingAt = new();
 
-        private ChangeManager _changeManager;
-        public Collider PlayerLookDirection;
-        
-
-        // Start is called before the first frame update
         void Start()
         {
-
-            _changeManager = Helpers.Debug.TryFindComponent<Object.ChangeManager>(gameObject);
-
+            _changeManager = Helpers.Debug.TryFindComponent<AmbientObjectChange>(gameObject);
         }
 
-        // Update is called once per frame
-        void Update()
+        //void OnTriggerEnter(Collider other)
+        //{
+        //    if (IsAmbientObject(other.gameObject))
+        //    {
+        //        if (!currentlyLookingAt.Contains(other.gameObject))
+        //        {
+        //            currentlyLookingAt.Add(other.gameObject);
+        //            _changeManager.SetObjectFrozen(other.gameObject, true);
+        //        }
+        //    }
+        //}
+
+        private void OnTriggerStay(Collider other)
         {
-
+            if (IsAmbientObject(other.gameObject))
+            {
+                if (!currentlyLookingAt.Contains(other.gameObject))
+                {
+                    currentlyLookingAt.Add(other.gameObject);
+                    _changeManager.SetObjectFrozen(other.gameObject, true);
+                }
+            }
         }
 
 
-        public void OnTriggerStay(Collider other)
+        void OnTriggerExit(Collider other)
         {
-            ObjectLookedAt(other.gameObject);
+            if (IsAmbientObject(other.gameObject))
+            {
+                if (currentlyLookingAt.Contains(other.gameObject))
+                {
+                    currentlyLookingAt.Remove(other.gameObject);
+                    _changeManager.SetObjectFrozen(other.gameObject, false);
+                }
+            }
         }
 
-
-        public void OnTriggerExit(Collider other)
+        private bool IsAmbientObject(GameObject obj)
         {
-            _changeManager.ObjectFreeze.Invoke(false);
+            return obj.CompareTag("Ambient");
         }
-
-
-        public void ObjectLookedAt(GameObject other)
-        {
-            _changeManager.ObjectFreeze.Invoke(true);
-        }
-
-
-
     }
 }

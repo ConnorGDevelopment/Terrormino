@@ -13,6 +13,7 @@ TagManager:
   - LeftHand
   - RightHand
   - DropWatch
+  - Ambient
   layers:
   - Default
   - TransparentFX
