@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace Ambient
@@ -14,27 +15,13 @@ namespace Ambient
             Helpers.Debug.CheckIfSetInInspector(SecondaryObject, "SecondaryObject");
         }
 
-        public override void OnTriggerEffect()
+        public override void OnTriggerEffect(List<GameObject> _)
         {
-            var primaryOldPosition = new Vector3(
-                PrimaryObject.transform.position.x,
-                PrimaryObject.transform.position.y,
-                PrimaryObject.transform.position.z
-            );
-
-
-            var secondaryOldPosition = new Vector3(
-                SecondaryObject.transform.position.x,
-                SecondaryObject.transform.position.y,
-                SecondaryObject.transform.position.z
-            );
-
-
+            var primaryOldPosition = PrimaryObject.transform.position;
+            var secondaryOldPosition = SecondaryObject.transform.position;
 
             PrimaryObject.transform.position = secondaryOldPosition;
             SecondaryObject.transform.position = primaryOldPosition;
-
-            Debug.Log("Test");
         }
     }
 }

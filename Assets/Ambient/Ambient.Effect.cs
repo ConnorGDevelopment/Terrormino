@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 using UnityEngine.Events;
 
 namespace Ambient
@@ -11,22 +12,22 @@ namespace Ambient
         // We trigger an internally used UnityEvent so that we can separate out calling the effect and the implementation of the effect
         // This is hidden in the Inspector because we need the Manager to see it but it shouldn't be set in the Inspector
         [HideInInspector]
-        public UnityEvent TriggerEffect = new();
+        public UnityEvent<List<GameObject>> TriggerEffect = new();
 
         // Basic Timer
-        //public float Frequency;
-        //private float _timer = 0;
-        //public void Update()
-        //{
+        // public float Frequency;
+        // private float _timer = 0;
+        // public void Update()
+        // {
         //    _timer += Time.deltaTime;
         //    if (_timer >= Frequency)
         //    {
         //        TriggerEffect.Invoke();
         //    }
-        //}
+        // }
 
         // By making an abstract method, we guarantee that all child classes will have an OnTriggerEffect method
-        public abstract void OnTriggerEffect();
+        public abstract void OnTriggerEffect(List<GameObject> gameObjects);
 
         // The 'virtual' keyword means this method can be replaced in a child class using the 'override' keyword
         // The reason we use virtual here instead of abstract is because we're providing some implementation
@@ -35,6 +36,5 @@ namespace Ambient
         {
             TriggerEffect.AddListener(OnTriggerEffect);
         }
-
     }
 }

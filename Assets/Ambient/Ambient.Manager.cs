@@ -6,17 +6,36 @@ namespace Ambient
     public class Manager : MonoBehaviour
     {
         public List<Effect> Effects;
+        public List<GameObject> TrackedObjects;
+        public Collider PlayerVision;
 
-        public float Frequency;
-        private float _timer = 0;
+        //public float Frequency;
+        //private float _timer = 0;
+        //public void Update()
+        //{
+        //    _timer += Time.deltaTime;
+        //    if (_timer >= Frequency)
+        //    {
+        //        var randomIndex = UnityEngine.Random.Range(0, Effects.Count);
+        //        Effects[randomIndex].TriggerEffect.Invoke();
+        //        _timer = 0;
+        //    }
+        //}
         public void Update()
         {
-            _timer += Time.deltaTime;
-            if (_timer >= Frequency)
+            List<GameObject> validObjects = new List<GameObject>();
+
+            foreach (GameObject trackedObject in TrackedObjects)
             {
-                var randomIndex = UnityEngine.Random.Range(0, Effects.Count);
-                Effects[randomIndex].TriggerEffect.Invoke();
-                _timer = 0;
+                if (!PlayerVision.bounds.Intersects(trackedObject.GetComponent<Collider>().bounds))
+                {
+                    validObjects.Add(trackedObject);
+                }
+            }
+
+            foreach (Effect effect in Effects)
+            {
+                effect.TriggerEffect.Invoke(validObjects);
             }
         }
 
