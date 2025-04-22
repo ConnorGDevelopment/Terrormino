@@ -2,7 +2,6 @@ using UnityEngine;
 
 namespace Ambient
 {
-    [CreateAssetMenu(fileName = "SwapPositionEffect", menuName = "AmbientEffect/SwapPosition")]
     public class SwapPosition : Effect
     {
         public GameObject PrimaryObject;

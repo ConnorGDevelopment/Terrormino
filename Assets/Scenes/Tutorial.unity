@@ -1438,6 +1438,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 846299715}
+  - component: {fileID: 846299716}
   - component: {fileID: 846299714}
   m_Layer: 0
   m_Name: AmbientManager
@@ -1461,7 +1462,6 @@ MonoBehaviour:
   TriggerEffect:
     m_PersistentCalls:
       m_Calls: []
-  Frequency: 3
   PrimaryObject: {fileID: 2050375016984687699}
   SecondaryObject: {fileID: 7731249915330992031}
 --- !u!4 &846299715
@@ -1479,6 +1479,21 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &846299716
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 846299713}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23cde7a72eb68364f8bcbd5bb85ca90c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Effects:
+  - {fileID: 846299714}
+  Frequency: 3
 --- !u!1 &897492568
 GameObject:
   m_ObjectHideFlags: 0

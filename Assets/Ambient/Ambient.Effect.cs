@@ -9,19 +9,21 @@ namespace Ambient
     public abstract class Effect : MonoBehaviour
     {
         // We trigger an internally used UnityEvent so that we can separate out calling the effect and the implementation of the effect
+        // This is hidden in the Inspector because we need the Manager to see it but it shouldn't be set in the Inspector
+        [HideInInspector]
         public UnityEvent TriggerEffect = new();
 
         // Basic Timer
-        public float Frequency;
-        private float _timer = 0;
-        public void Update()
-        {
-            _timer += Time.deltaTime;
-            if (_timer >= Frequency)
-            {
-                TriggerEffect.Invoke();
-            }
-        }
+        //public float Frequency;
+        //private float _timer = 0;
+        //public void Update()
+        //{
+        //    _timer += Time.deltaTime;
+        //    if (_timer >= Frequency)
+        //    {
+        //        TriggerEffect.Invoke();
+        //    }
+        //}
 
         // By making an abstract method, we guarantee that all child classes will have an OnTriggerEffect method
         public abstract void OnTriggerEffect();
