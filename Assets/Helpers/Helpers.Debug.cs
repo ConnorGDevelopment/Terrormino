@@ -63,6 +63,13 @@ namespace Helpers
                 UnityEngine.Debug.Log($"{name} in {gameObject} not set in Inspector", gameObject);
             }
         }
+        public static void CheckIfSetInInspector(object toCheck, string name)
+        {
+            if (toCheck == null)
+            {
+                UnityEngine.Debug.Log($"{name} not set in Inspector");
+            }
+        }
 
         public static T TryFindComponentInChildren<T>(GameObject sourceObject) where T : Component
         {
