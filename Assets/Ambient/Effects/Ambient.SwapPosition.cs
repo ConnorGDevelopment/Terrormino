@@ -16,11 +16,25 @@ namespace Ambient
 
         public override void OnTriggerEffect()
         {
-            var primaryOldPosition = PrimaryObject.transform.position;
-            var secondaryOldPosition = SecondaryObject.transform.position;
+            var primaryOldPosition = new Vector3(
+                PrimaryObject.transform.position.x,
+                PrimaryObject.transform.position.y,
+                PrimaryObject.transform.position.z
+            );
+
+
+            var secondaryOldPosition = new Vector3(
+                SecondaryObject.transform.position.x,
+                SecondaryObject.transform.position.y,
+                SecondaryObject.transform.position.z
+            );
+
+
 
             PrimaryObject.transform.position = secondaryOldPosition;
             SecondaryObject.transform.position = primaryOldPosition;
+
+            Debug.Log("Test");
         }
     }
 }

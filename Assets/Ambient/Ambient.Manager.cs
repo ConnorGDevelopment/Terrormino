@@ -16,6 +16,7 @@ namespace Ambient
             {
                 var randomIndex = UnityEngine.Random.Range(0, Effects.Count);
                 Effects[randomIndex].TriggerEffect.Invoke();
+                _timer = 0;
             }
         }
 
