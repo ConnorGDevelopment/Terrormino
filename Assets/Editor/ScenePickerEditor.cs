@@ -1,12 +1,12 @@
 using UnityEditor;
 
-[CustomEditor(typeof(ScenePicker), true)]
+[CustomEditor(typeof(TitleScreen), true)]
 public class ScenePickerEditor : Editor
 {
     public override void OnInspectorGUI()
     {
-        var picker = target as ScenePicker;
-        var oldScene = AssetDatabase.LoadAssetAtPath<SceneAsset>(picker.scenePath);
+        var picker = target as TitleScreen;
+        var oldScene = AssetDatabase.LoadAssetAtPath<SceneAsset>(picker.ScenePath);
 
         serializedObject.Update();
 
@@ -16,7 +16,7 @@ public class ScenePickerEditor : Editor
         if (EditorGUI.EndChangeCheck())
         {
             var newPath = AssetDatabase.GetAssetPath(newScene);
-            var scenePathProperty = serializedObject.FindProperty("scenePath");
+            var scenePathProperty = serializedObject.FindProperty(nameof(picker.ScenePath));
             scenePathProperty.stringValue = newPath;
         }
         serializedObject.ApplyModifiedProperties();
