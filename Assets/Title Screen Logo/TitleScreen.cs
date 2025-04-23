@@ -75,6 +75,7 @@ public class TitleScreen : MonoBehaviour
 
     public void BeginGame()
     {
+        
         SceneManager.LoadScene("Expo");
     }
 
