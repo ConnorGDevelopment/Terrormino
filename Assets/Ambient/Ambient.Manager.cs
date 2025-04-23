@@ -1,5 +1,5 @@
 using System.Collections.Generic;
-using System.Linq;
+using System.Threading;
 using UnityEngine;
 
 namespace Ambient
@@ -10,40 +10,30 @@ namespace Ambient
         public List<GameObject> TrackedObjects;
         public Collider PlayerVision;
 
-        private float _timer = 0f;
-
-        public List<GameObject> ValidObjects
-        {
-            get
-            {
-                return TrackedObjects
-                    // Where returns all items of a list *where* a condition is true
-                    .Where(
-                        // param =>  
-                        trackedObject =>
-                            !PlayerVision
-                            .bounds
-                            .Intersects(
-                                trackedObject
-                                .GetComponent<Collider>()
-                                .bounds
-                                )
-                            )
-                    .ToList();
-            }
-        }
-
-        public Dictionary<>
-
+        private float timer = 0f; //this is a timer to check how frequently we can do effect stuff
+                                  //without this, the effect stuff happens every frame if the logic is kept in update
+        //public float Frequency;
+        //private float _timer = 0;
+        //public void Update()
+        //{
+        //    _timer += Time.deltaTime;
+        //    if (_timer >= Frequency)
+        //    {
+        //        var randomIndex = UnityEngine.Random.Range(0, Effects.Count);
+        //        Effects[randomIndex].TriggerEffect.Invoke();
+        //        _timer = 0;
+        //    }
+        //}
         public void Update()
         {
-            _timer += Time.deltaTime;
+            timer += Time.deltaTime;
 
-            if (_timer >= 5f)
+            if (timer >= 5f)
             {
                 TriggerEffects();
-                _timer = 0f;
+                timer = 0f;
             }
+
         }
 
         public void Start()
@@ -51,11 +41,22 @@ namespace Ambient
             Effects.AddRange(gameObject.GetComponents<Effect>());
         }
 
-        public void TriggerEffects()
+
+        void TriggerEffects()
         {
+            List<GameObject> validObjects = new List<GameObject>();
+
+            foreach (GameObject trackedObject in TrackedObjects)
+            {
+                if (!PlayerVision.bounds.Intersects(trackedObject.GetComponent<Collider>().bounds))
+                {
+                    validObjects.Add(trackedObject); 
+                }
+            }
+
             foreach (Effect effect in Effects)
             {
-                effect.TriggerEffect.Invoke(ValidObjects);
+                effect.TriggerEffect.Invoke(validObjects);
             }
         }
 
