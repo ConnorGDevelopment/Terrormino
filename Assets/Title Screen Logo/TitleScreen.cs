@@ -7,10 +7,9 @@ using UnityEngine.XR.Interaction.Toolkit;
 
 
 
-public class TitleScreen : MonoBehaviour // This class name is referenced in Assets/Editor/ScenePickerEditor, use F2 or Right Click > Rename to change
+
+public class TitleScreen : MonoBehaviour
 {
-    [SerializeField]
-    public string ScenePath;    // This property name is referenced in Assets/Editor/ScenePickerEditor, use F2 or Right Click > Rename to change
 
     private float _transitionTime = 10;
     private bool _beginTransition = false;
@@ -76,8 +75,8 @@ public class TitleScreen : MonoBehaviour // This class name is referenced in Ass
 
     public void BeginGame()
     {
-
-        SceneManager.LoadScene(ScenePath);
+        
+        SceneManager.LoadScene("Expo");
     }
 
 
