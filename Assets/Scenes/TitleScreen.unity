@@ -1285,72 +1285,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &961348667
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 961348669}
-  - component: {fileID: 961348668}
-  m_Layer: 0
-  m_Name: CinemachineBrain
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &961348668
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 961348667}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 72ece51f2901e7445ab60da3685d6b5f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_ShowDebugText: 0
-  m_ShowCameraFrustum: 1
-  m_IgnoreTimeScale: 0
-  m_WorldUpOverride: {fileID: 0}
-  m_UpdateMethod: 2
-  m_BlendUpdateMethod: 1
-  m_DefaultBlend:
-    m_Style: 1
-    m_Time: 2
-    m_CustomCurve:
-      serializedVersion: 2
-      m_Curve: []
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-  m_CustomBlends: {fileID: 0}
-  m_CameraCutEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_CameraActivatedEvent:
-    m_PersistentCalls:
-      m_Calls: []
---- !u!4 &961348669
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 961348667}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0.36975002, y: -0.38835108, z: 0.17384608, w: 0.82598186}
-  m_LocalPosition: {x: 4.709827, y: 7.4584026, z: -4.249368}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1018937629
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2669,7 +2603,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1598019448027757845, guid: fe31b760e7462c94cbba93a8f5b257e0, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -61.81
+      value: -58.119
       objectReference: {fileID: 0}
     - target: {fileID: 1598019448027757845, guid: fe31b760e7462c94cbba93a8f5b257e0, type: 3}
       propertyPath: m_LocalRotation.w
@@ -2754,6 +2688,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4073ad0c7ba07004f9dd0249b14431e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ScenePath: Assets/Scenes/Living Room.unity
   LightSource: {fileID: 841920375}
   Fog: {fileID: 541619927}
   FogBlock: {fileID: 777781383}
@@ -3127,6 +3062,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4073ad0c7ba07004f9dd0249b14431e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ScenePath: 
   LightSource: {fileID: 841920375}
   Fog: {fileID: 541619927}
   FogBlock: {fileID: 777781383}
@@ -3438,7 +3374,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6216883518316296960, guid: 7f62e6a60070c114abccc2f7acad2c4c, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -62.391003
+      value: -58.7
       objectReference: {fileID: 0}
     - target: {fileID: 6216883518316296960, guid: 7f62e6a60070c114abccc2f7acad2c4c, type: 3}
       propertyPath: m_LocalRotation.w
@@ -3486,7 +3422,6 @@ SceneRoots:
   - {fileID: 1399497392}
   - {fileID: 841920376}
   - {fileID: 2066387846}
-  - {fileID: 961348669}
   - {fileID: 534128988}
   - {fileID: 4803974548303150335}
   - {fileID: 1294885647}

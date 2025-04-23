@@ -11,10 +11,15 @@ using UnityEngine.XR.Interaction.Toolkit;
 public class LivingRoomTransition : MonoBehaviour
 {
 
+    [SerializeField]
+    public string ScenePath;    // This property name is referenced in Assets/Editor/ScenePickerEditor, use F2 or Right Click > Rename to change
+
     private float _transitionTime = 10;
     private bool _beginTransition = false;
 
     public Light LightSource;
+
+    
     
 
 
@@ -72,7 +77,7 @@ public class LivingRoomTransition : MonoBehaviour
     public void BeginGame()
     {
 
-        SceneManager.LoadScene("Expo");
+        SceneManager.LoadScene(ScenePath);
     }
 
 

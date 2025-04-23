@@ -686,14 +686,14 @@ PrefabInstance:
     - target: {fileID: 3613670900767447395, guid: fe31b760e7462c94cbba93a8f5b257e0, type: 3}
       propertyPath: m_SelectEntered.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 695731647}
     - target: {fileID: 3613670900767447395, guid: fe31b760e7462c94cbba93a8f5b257e0, type: 3}
       propertyPath: m_SelectEntered.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: TitleToGameplayTransition
       objectReference: {fileID: 0}
     - target: {fileID: 3613670900767447395, guid: fe31b760e7462c94cbba93a8f5b257e0, type: 3}
       propertyPath: m_SelectEntered.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: TitleScreen, Assembly-CSharp
+      value: LivingRoomTransition, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 8083020662612939420, guid: fe31b760e7462c94cbba93a8f5b257e0, type: 3}
       propertyPath: m_Name
@@ -726,6 +726,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43f1e4d6b9032cd4e8a5759151d7bfb1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ScenePath: 
   LightSource: {fileID: 882638064}
   materials:
   - {fileID: 2100000, guid: 1d0789e3975c8b642b59edde32d698a3, type: 2}
