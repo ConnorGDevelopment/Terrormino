@@ -8,16 +8,14 @@ using UnityEngine.XR.Interaction.Toolkit;
 
 
 
-public class TitleScreen : MonoBehaviour
+public class LivingRoomTransition : MonoBehaviour
 {
 
     private float _transitionTime = 10;
     private bool _beginTransition = false;
 
     public Light LightSource;
-    public ParticleSystem Fog;
-
-    public GameObject FogBlock;   //Temp fix for fog staying
+    
 
 
     //Shader stuff
@@ -53,9 +51,7 @@ public class TitleScreen : MonoBehaviour
 
             LightSource.intensity -= Time.deltaTime * 0.75f;
 
-            var emission = Fog.emission;
-            emission.rateOverTime = Mathf.Max(0, emission.rateOverTime.constant - Time.deltaTime * 15f);
-
+            
             _transitionTime -= Time.deltaTime;
 
             if (_transitionTime <= 0)
@@ -75,8 +71,8 @@ public class TitleScreen : MonoBehaviour
 
     public void BeginGame()
     {
-        
-        SceneManager.LoadScene("Living Room");
+
+        SceneManager.LoadScene("Expo");
     }
 
 
@@ -93,7 +89,7 @@ public class TitleScreen : MonoBehaviour
 
         grabInteractable.interactionManager.SelectExit(grabInteractable.interactorsSelecting[0], grabInteractable);
 
-        FogBlock.SetActive(true);
+        
 
     }
 

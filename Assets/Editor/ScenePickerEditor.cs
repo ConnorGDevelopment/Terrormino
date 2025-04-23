@@ -6,7 +6,7 @@ public class ScenePickerEditor : Editor
     public override void OnInspectorGUI()
     {
         var picker = target as ScenePicker;
-        var oldScene = AssetDatabase.LoadAssetAtPath<SceneAsset>(picker.scenePath);
+        var oldScene = AssetDatabase.LoadAssetAtPath<SceneAsset>(picker.ScenePath);
 
         serializedObject.Update();
 
@@ -16,7 +16,7 @@ public class ScenePickerEditor : Editor
         if (EditorGUI.EndChangeCheck())
         {
             var newPath = AssetDatabase.GetAssetPath(newScene);
-            var scenePathProperty = serializedObject.FindProperty("scenePath");
+            var scenePathProperty = serializedObject.FindProperty("ScenePath");
             scenePathProperty.stringValue = newPath;
         }
         serializedObject.ApplyModifiedProperties();
