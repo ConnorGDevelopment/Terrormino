@@ -10,17 +10,10 @@ namespace Ambient
         public List<GameObject> TrackedObjects;
         public Collider PlayerVision;
 
-        private float _timer = 0f;
 
         public void Update()
         {
-            _timer += Time.deltaTime;
-
-            if (_timer >= 5f)
-            {
-                TriggerEffects();
-                _timer = 0f;
-            }
+            TriggerEffects();
         }
 
         public void Start()
@@ -29,19 +22,25 @@ namespace Ambient
         }
 
 
-        public List<GameObject> ValidObjects
+        public List<GameObject> UnwatchedObjects
         {
             get
             {
-                return TrackedObjects.Where(trackedObject => !PlayerVision.bounds.Intersects(trackedObject.GetComponent<Collider>().bounds)).ToList();
+                var camera = Camera.main;
+                var planes = GeometryUtility.CalculateFrustumPlanes(camera);
+
+                return TrackedObjects.Where(trackedObject =>
+                    !GeometryUtility.TestPlanesAABB(planes, trackedObject.GetComponent<Collider>().bounds)
+                ).ToList();
             }
         }
+
 
         void TriggerEffects()
         {
             foreach (Effect effect in Effects)
             {
-                effect.TriggerEffect.Invoke(ValidObjects);
+                effect.TriggerEffect.Invoke(UnwatchedObjects);
             }
         }
     }
