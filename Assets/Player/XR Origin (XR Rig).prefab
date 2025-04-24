@@ -116,7 +116,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1abd902e681f1e4b91f0b7211229abb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ScenePath: Assets/Scenes/TitleScreen.unity
+  ScenePath: Assets/Scenes/Between Night Transitions/MainMenu.unity
 --- !u!1 &1299925027629439928
 GameObject:
   m_ObjectHideFlags: 0

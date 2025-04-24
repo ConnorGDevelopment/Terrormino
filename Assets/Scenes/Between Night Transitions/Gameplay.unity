@@ -390,6 +390,11 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!1 &396538619 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5935996274055977873, guid: d8df0d5072a6c74488121235de2de84c, type: 3}
+  m_PrefabInstance: {fileID: 514697544}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &405653046 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1781627870742316383, guid: fe31b760e7462c94cbba93a8f5b257e0, type: 3}
@@ -521,7 +526,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6294659389825907892, guid: d8df0d5072a6c74488121235de2de84c, type: 3}
       propertyPath: m_VoxelSize
-      value: 0.375
+      value: 0.33333334
       objectReference: {fileID: 0}
     - target: {fileID: 6294659389825907892, guid: d8df0d5072a6c74488121235de2de84c, type: 3}
       propertyPath: m_NavMeshData
@@ -606,6 +611,10 @@ PrefabInstance:
     - target: {fileID: 1639019113142411417, guid: 92e9f691b9fcb664db7b35b85c35a792, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6123610354167082256, guid: 92e9f691b9fcb664db7b35b85c35a792, type: 3}
+      propertyPath: ScenePath
+      value: Assets/Scenes/Between Night Transitions/MainMenu.unity
       objectReference: {fileID: 0}
     - target: {fileID: 8801927424839476258, guid: 92e9f691b9fcb664db7b35b85c35a792, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2003,6 +2012,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6895114623293856483, guid: 17281565544023545950892dc554decd, type: 3}
+      propertyPath: ScenePath
+      value: Assets/Scenes/Between Night Transitions/MainMenu.unity
+      objectReference: {fileID: 0}
     - target: {fileID: 7703141734801215184, guid: 17281565544023545950892dc554decd, type: 3}
       propertyPath: m_TagString
       value: RightHand
@@ -2173,7 +2186,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Scream: {fileID: 1551607256}
   JumpscareDemon: {fileID: 582314895}
-  Room: {fileID: 0}
+  Room: {fileID: 396538619}
   MoonLight: {fileID: 0}
   Jumpscare:
     m_PersistentCalls:
