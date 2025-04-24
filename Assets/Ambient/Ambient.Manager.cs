@@ -1,5 +1,5 @@
 using System.Collections.Generic;
-using System.Threading;
+using System.Linq;
 using UnityEngine;
 
 namespace Ambient
@@ -10,30 +10,17 @@ namespace Ambient
         public List<GameObject> TrackedObjects;
         public Collider PlayerVision;
 
-        private float timer = 0f; //this is a timer to check how frequently we can do effect stuff
-                                  //without this, the effect stuff happens every frame if the logic is kept in update
-        //public float Frequency;
-        //private float _timer = 0;
-        //public void Update()
-        //{
-        //    _timer += Time.deltaTime;
-        //    if (_timer >= Frequency)
-        //    {
-        //        var randomIndex = UnityEngine.Random.Range(0, Effects.Count);
-        //        Effects[randomIndex].TriggerEffect.Invoke();
-        //        _timer = 0;
-        //    }
-        //}
+        private float _timer = 0f;
+
         public void Update()
         {
-            timer += Time.deltaTime;
+            _timer += Time.deltaTime;
 
-            if (timer >= 5f)
+            if (_timer >= 5f)
             {
                 TriggerEffects();
-                timer = 0f;
+                _timer = 0f;
             }
-
         }
 
         public void Start()
@@ -42,25 +29,20 @@ namespace Ambient
         }
 
 
-        void TriggerEffects()
+        public List<GameObject> ValidObjects
         {
-            List<GameObject> validObjects = new List<GameObject>();
-
-            foreach (GameObject trackedObject in TrackedObjects)
+            get
             {
-                if (!PlayerVision.bounds.Intersects(trackedObject.GetComponent<Collider>().bounds))
-                {
-                    validObjects.Add(trackedObject); 
-                }
-            }
-
-            foreach (Effect effect in Effects)
-            {
-                effect.TriggerEffect.Invoke(validObjects);
+                return TrackedObjects.Where(trackedObject => !PlayerVision.bounds.Intersects(trackedObject.GetComponent<Collider>().bounds)).ToList();
             }
         }
 
-
-
+        void TriggerEffects()
+        {
+            foreach (Effect effect in Effects)
+            {
+                effect.TriggerEffect.Invoke(ValidObjects);
+            }
+        }
     }
 }

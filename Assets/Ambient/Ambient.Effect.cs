@@ -14,18 +14,6 @@ namespace Ambient
         [HideInInspector]
         public UnityEvent<List<GameObject>> TriggerEffect = new();
 
-        // Basic Timer
-        // public float Frequency;
-        // private float _timer = 0;
-        // public void Update()
-        // {
-        //    _timer += Time.deltaTime;
-        //    if (_timer >= Frequency)
-        //    {
-        //        TriggerEffect.Invoke();
-        //    }
-        // }
-
         // By making an abstract method, we guarantee that all child classes will have an OnTriggerEffect method
         public abstract void OnTriggerEffect(List<GameObject> gameObjects);
 
