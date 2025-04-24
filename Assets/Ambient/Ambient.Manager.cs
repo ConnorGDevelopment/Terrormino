@@ -30,8 +30,18 @@ namespace Ambient
                 var planes = GeometryUtility.CalculateFrustumPlanes(camera);
 
                 return TrackedObjects.Where(trackedObject =>
-                    !GeometryUtility.TestPlanesAABB(planes, trackedObject.GetComponent<Collider>().bounds)
-                ).ToList();
+                {
+                    if (trackedObject.TryGetComponent<Collider>(out Collider collider))
+                    {
+                        return !GeometryUtility.TestPlanesAABB(planes, collider.bounds);
+                    }
+                    else
+                    {
+                        Debug.Log($"No Collider Component found on {trackedObject.name}", trackedObject);
+                        return false;
+                    }
+
+                }).ToList();
             }
         }
 
