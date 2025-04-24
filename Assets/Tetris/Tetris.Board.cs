@@ -67,7 +67,7 @@ namespace Tetris
                 Debug.Log("You suck! Tetris");
                 //EditorApplication.isPaused = true;
                 BoardTilemap.ClearAllTiles();
-                if (SceneManager.GetActiveScene().name == "Expo")
+                if (SceneManager.GetActiveScene().name == "Gameplay")
                 {
                     PlayerManager.GameOver.Invoke();
                 }

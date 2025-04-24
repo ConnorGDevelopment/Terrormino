@@ -772,6 +772,7 @@ MonoBehaviour:
   OnTitleTransitionGrab:
     m_PersistentCalls:
       m_Calls: []
+  IsDirty: 0
 --- !u!114 &695731648
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1727,7 +1728,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6474948037252516002, guid: 17281565544023545950892dc554decd, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 5.69
+      value: 6.79
       objectReference: {fileID: 0}
     - target: {fileID: 6474948037252516002, guid: 17281565544023545950892dc554decd, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1787,7 +1788,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9097980497856990277, guid: 17281565544023545950892dc554decd, type: 3}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9097980497856990277, guid: 17281565544023545950892dc554decd, type: 3}
       propertyPath: PlayerInput
@@ -2119,7 +2120,7 @@ MonoBehaviour:
   m_MatchAttachPosition: 1
   m_MatchAttachRotation: 0
   m_SnapToColliderVolume: 1
-  m_ReinitializeDynamicAttachEverySingleGrab: 1
+  m_ReinitializeDynamicAttachEverySingleGrab: 0
   m_AttachEaseInTime: 0.15
   m_MovementType: 2
   m_VelocityDamping: 1
