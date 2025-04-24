@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 namespace Helpers
 {
@@ -52,6 +53,26 @@ namespace Helpers
             {
                 return min + (input - min) % (max - min);
             }
+        }
+
+        public static List<T> PickTwo<T>(List<T> pool)
+        {
+            var chosen = new List<T>();
+
+            if (pool.Count >= 2)
+            {
+                var choices = pool;
+
+                var chooseA = choices[Random.Range(0, pool.Count - 1)];
+                chosen.Add(chooseA);
+                choices.Remove(chooseA);
+
+                var chooseB = choices[Random.Range(0, pool.Count - 1)];
+                chosen.Add(chooseB);
+            }
+
+
+            return chosen;
         }
     }
 }
