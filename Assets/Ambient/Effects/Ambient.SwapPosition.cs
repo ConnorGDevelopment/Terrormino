@@ -36,7 +36,10 @@ namespace Ambient
             public TimerEntry(GameObject gameObject, float minDelay, float maxDelay)
             {
                 GameObject = gameObject;
+                MinDelay = minDelay;
+                MaxDelay = maxDelay;
                 Timer = Random.Range(minDelay, maxDelay);
+
             }
         }
 

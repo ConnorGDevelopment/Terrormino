@@ -714,6 +714,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ff91181f5561ac42a1f7d86ad7030ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _lightFear: {fileID: 0}
+  _animator: {fileID: 0}
+  _scream: {fileID: 0}
+  _playerManager: {fileID: 0}
 --- !u!95 &5590108660715602710
 Animator:
   serializedVersion: 5
@@ -754,8 +758,8 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 1.229492
-  m_Height: 5.916256
+  m_Radius: 1.6
+  m_Height: 6
   m_Direction: 1
   m_Center: {x: -0.08159372, y: 2.4581325, z: 0.10631415}
 --- !u!54 &3080856364966203831
@@ -819,6 +823,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c44384ae5b05e5a4994d13460dd41a8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SlowZoneSpeed: 1
+  SlowZoneAcceleration: 0.075
 --- !u!82 &-987652530778114799
 AudioSource:
   m_ObjectHideFlags: 0

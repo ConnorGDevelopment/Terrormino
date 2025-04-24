@@ -8,7 +8,6 @@ namespace Ambient
     {
         public List<Effect> Effects;
         public List<GameObject> TrackedObjects;
-        public Collider PlayerVision;
 
 
         public void Update()
