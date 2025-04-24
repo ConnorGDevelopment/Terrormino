@@ -19,7 +19,7 @@ public class TitleScreen : MonoBehaviour
 
     public GameObject FogBlock;   //Temp fix for fog staying
 
-    private ScenePicker _scenePicker;
+    private string _sceneName;
 
     //Shader stuff
     public List<Material> materials = new List<Material>();
@@ -36,7 +36,15 @@ public class TitleScreen : MonoBehaviour
     public void Start()
     {
         _skinnedMeshRenderers = Helpers.Debug.TryFindComponentsInChildren<SkinnedMeshRenderer>(gameObject);
-        _scenePicker = Helpers.Debug.TryFindComponent<ScenePicker>(gameObject);
+        _meshRenderers = Helpers.Debug.TryFindComponentsInChildren<MeshRenderer>(gameObject);
+        if (gameObject.TryGetComponent(out ScenePicker scenePicker))
+        {
+            _sceneName = scenePicker.ScenePath;
+        }
+        else
+        {
+            Debug.Log($"No ScenePicker component found on {gameObject.name}", gameObject);
+        }
     }
 
 
@@ -77,29 +85,33 @@ public class TitleScreen : MonoBehaviour
     public void BeginGame()
     {
 
-        SceneManager.LoadScene(_scenePicker.ScenePath);
+        SceneManager.LoadScene(_sceneName);
     }
 
 
     public UnityEvent<InputAction> OnTitleTransitionGrab = new();
 
+    public bool IsDirty = false;
     public void TitleToGameplayTransition(SelectEnterEventArgs context)
     {
-        _beginTransition = true;
-        _isDissolving = true;
-
-
         XRGrabInteractable grabInteractable = gameObject.GetComponent<XRGrabInteractable>();
-
-
         grabInteractable.interactionManager.SelectExit(grabInteractable.interactorsSelecting[0], grabInteractable);
 
-        FogBlock.SetActive(true);
-
+        if (IsDirty)
+        {
+            _beginTransition = true;
+            _isDissolving = true;
+            FogBlock.SetActive(true);
+        }
+        else
+        {
+            IsDirty = true;
+        }
     }
 
 
     private SkinnedMeshRenderer[] _skinnedMeshRenderers;
+    private MeshRenderer[] _meshRenderers;
 
     public void DissolveConsole()
     {
@@ -112,6 +124,10 @@ public class TitleScreen : MonoBehaviour
             skinnedMeshRenderer.material.SetFloat("_DissolveValue", _dissolveValue);
         }
 
+        foreach (var meshRenderer in _meshRenderers)
+        {
+            meshRenderer.material.SetFloat("_DissolveValue", _dissolveValue);
+        }
 
         if (_dissolveValue >= 1)
         {

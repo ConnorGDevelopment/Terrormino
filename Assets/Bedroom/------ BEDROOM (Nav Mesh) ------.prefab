@@ -321,6 +321,7 @@ GameObject:
   - component: {fileID: 6494761693940484219}
   - component: {fileID: 6434916538690068778}
   - component: {fileID: 5024512233130299229}
+  - component: {fileID: 6285940404290829746}
   m_Layer: 0
   m_Name: Toy_Bear_Red
   m_TagString: Untagged
@@ -393,6 +394,28 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &6285940404290829746
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 574573249706003215}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 5841012198210337018, guid: 334fcafe5463cf34b97f078d28f53aae, type: 3}
 --- !u!1 &655868890628613212
 GameObject:
   m_ObjectHideFlags: 0
@@ -404,6 +427,7 @@ GameObject:
   - component: {fileID: 527894603892965524}
   - component: {fileID: 4488708988180241819}
   - component: {fileID: 8715395345697522702}
+  - component: {fileID: 7942699231333769976}
   m_Layer: 0
   m_Name: Toy_Bear_Blue
   m_TagString: Untagged
@@ -476,6 +500,28 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &7942699231333769976
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 655868890628613212}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -7284260066728878179, guid: 334fcafe5463cf34b97f078d28f53aae, type: 3}
 --- !u!1 &809842811808628984
 GameObject:
   m_ObjectHideFlags: 0
@@ -1002,6 +1048,7 @@ GameObject:
   - component: {fileID: 1234767942839178848}
   - component: {fileID: 1578567298135885939}
   - component: {fileID: 1505021470501086951}
+  - component: {fileID: 5185390007077925784}
   m_Layer: 0
   m_Name: Toy_Bear_Orange
   m_TagString: Untagged
@@ -1074,6 +1121,28 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &5185390007077925784
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1201381097958090480}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -4664025921724101485, guid: 334fcafe5463cf34b97f078d28f53aae, type: 3}
 --- !u!1 &1442468313357346016
 GameObject:
   m_ObjectHideFlags: 0
@@ -1085,6 +1154,7 @@ GameObject:
   - component: {fileID: 4269100772503308544}
   - component: {fileID: 2213615151799794835}
   - component: {fileID: 6063060820166356476}
+  - component: {fileID: 3685547425095123835}
   m_Layer: 0
   m_Name: Pirate Ship
   m_TagString: Untagged
@@ -1157,6 +1227,28 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &3685547425095123835
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1442468313357346016}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 7972503198504514121, guid: 334fcafe5463cf34b97f078d28f53aae, type: 3}
 --- !u!1 &1667017834574208477
 GameObject:
   m_ObjectHideFlags: 0
@@ -1748,12 +1840,12 @@ Transform:
   - {fileID: 6039721504342968144}
   - {fileID: 5960200061669348239}
   - {fileID: 515463733454213475}
-  - {fileID: 527894603892965524}
-  - {fileID: 6472036826062954675}
   - {fileID: 408090127706381989}
-  - {fileID: 4269100772503308544}
   - {fileID: 6954247445830682517}
   - {fileID: 1130603046019945004}
+  - {fileID: 4269100772503308544}
+  - {fileID: 527894603892965524}
+  - {fileID: 6472036826062954675}
   - {fileID: 1234767942839178848}
   - {fileID: 8371246707795271291}
   - {fileID: 6494761693940484219}
@@ -4920,6 +5012,7 @@ GameObject:
   - component: {fileID: 8371246707795271291}
   - component: {fileID: 7266298585950903224}
   - component: {fileID: 3323472165068776365}
+  - component: {fileID: 8612929624119813685}
   m_Layer: 0
   m_Name: Toy_Bear_Pink
   m_TagString: Untagged
@@ -4992,6 +5085,28 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &8612929624119813685
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7252271616682721771}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -161954035086284397, guid: 334fcafe5463cf34b97f078d28f53aae, type: 3}
 --- !u!1 &7512562465941430354
 GameObject:
   m_ObjectHideFlags: 0
@@ -5336,6 +5451,7 @@ GameObject:
   - component: {fileID: 6472036826062954675}
   - component: {fileID: 1236030302214739244}
   - component: {fileID: 359043497634235196}
+  - component: {fileID: 9178103390673425836}
   m_Layer: 0
   m_Name: Toy_Bear_Green
   m_TagString: Untagged
@@ -5408,6 +5524,28 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &9178103390673425836
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8034720120493293007}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -8106624689316791683, guid: 334fcafe5463cf34b97f078d28f53aae, type: 3}
 --- !u!1 &8322467941840744226
 GameObject:
   m_ObjectHideFlags: 0
@@ -5769,6 +5907,7 @@ GameObject:
   - component: {fileID: 2866379441701041064}
   - component: {fileID: 8184109982613376851}
   - component: {fileID: 6943015748698569817}
+  - component: {fileID: 28068794218286684}
   m_Layer: 0
   m_Name: Toy_Bear_Yellow
   m_TagString: Untagged
@@ -5841,6 +5980,28 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &28068794218286684
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8897576410929386990}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 1014264161741104198, guid: 334fcafe5463cf34b97f078d28f53aae, type: 3}
 --- !u!1001 &3233799728921367487
 PrefabInstance:
   m_ObjectHideFlags: 0

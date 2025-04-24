@@ -11,7 +11,7 @@ using UnityEngine.XR.Interaction.Toolkit;
 public class LivingRoomTransition : MonoBehaviour
 {
 
-      
+
 
     private float _transitionTime = 10;
     private bool _beginTransition = false;
@@ -19,7 +19,7 @@ public class LivingRoomTransition : MonoBehaviour
     public Light LightSource;
 
     private ScenePicker _scenePicker;
-    
+
 
 
     //Shader stuff
@@ -55,7 +55,7 @@ public class LivingRoomTransition : MonoBehaviour
 
             LightSource.intensity -= Time.deltaTime * 0.75f;
 
-            
+
             _transitionTime -= Time.deltaTime;
 
             if (_transitionTime <= 0)
@@ -82,18 +82,21 @@ public class LivingRoomTransition : MonoBehaviour
 
     public UnityEvent<InputAction> OnTitleTransitionGrab = new();
 
+    public bool IsDirty = false;
     public void TitleToGameplayTransition(SelectEnterEventArgs context)
     {
-        _beginTransition = true;
-        _isDissolving = true;
-
-
         XRGrabInteractable grabInteractable = gameObject.GetComponent<XRGrabInteractable>();
-
-
         grabInteractable.interactionManager.SelectExit(grabInteractable.interactorsSelecting[0], grabInteractable);
+        if (IsDirty)
+        {
+            _beginTransition = true;
+            _isDissolving = true;
+        }
+        else
+        {
+            IsDirty = true;
+        }
 
-        
 
     }
 

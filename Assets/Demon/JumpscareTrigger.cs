@@ -16,26 +16,6 @@ public class JumpscareTrigger : MonoBehaviour
 
     public Light MoonLight;
 
-
-    private void Start()
-    {
-
-
-
-
-    }
-
-    //private void OnTriggerEnter(Collider other)
-    //{
-    //    if (other.CompareTag("Enemy"))
-    //    {
-    //        Jumpscare.Invoke();
-    //        other.gameObject.SetActive(false);
-    //    }
-    //}
-
-
-
     public UnityEvent Jumpscare;
     public void OnJumpscare()
     {
@@ -54,7 +34,7 @@ public class JumpscareTrigger : MonoBehaviour
         yield return new WaitForSeconds(1.5f);
         Scream.Stop();
         JumpscareDemon.SetActive(false);
-        SceneManager.LoadScene("TitleScreen");
+        SceneManager.LoadScene(_sceneName);
     }
 
 
@@ -67,6 +47,7 @@ public class JumpscareTrigger : MonoBehaviour
 
     //}
 
+    private string _sceneName;
 
     public void Awake()
     {
@@ -76,6 +57,14 @@ public class JumpscareTrigger : MonoBehaviour
             _playerManager.GameOver.AddListener(OnJumpscare);
         }
         _demonManager = Helpers.Debug.TryFindByTag("DemonManager").GetComponent<Demon.Manager>();
+        if (gameObject.TryGetComponent(out ScenePicker scenePicker))
+        {
+            _sceneName = scenePicker.ScenePath;
+        }
+        else
+        {
+            Debug.Log($"No ScenePicker component found on {gameObject.name}", gameObject);
+        }
     }
 
 

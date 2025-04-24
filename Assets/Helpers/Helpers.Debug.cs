@@ -19,6 +19,26 @@ namespace Helpers
             return foundComponent;
         }
 
+        public static V TryFindPropertyInComponent<T, V>(GameObject sourceObject, string propertyName) where T : Component
+        {
+            T foundComponent = sourceObject.GetComponent<T>();
+            if (foundComponent == null)
+            {
+                UnityEngine.Debug.Log($"Could not find {typeof(T).Name} on {sourceObject.name}", sourceObject);
+            }
+
+            if (foundComponent.GetType().GetProperty(propertyName) == null)
+            {
+                UnityEngine.Debug.Log($"Could not find a property named {propertyName} on {sourceObject.name}", sourceObject);
+                // This makes it so the code relying on it never fails, but results in false positives
+                return default;
+            }
+            else
+            {
+                return (V)foundComponent.GetType().GetProperty(propertyName).GetValue(foundComponent);
+            }
+        }
+
         public static GameObject TryFindGameObjectByName(string name)
         {
             GameObject foundGameObject = GameObject.Find(name);

@@ -1,6 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -15,18 +12,18 @@ public class SceneTransition : ScriptableObject
     {
 
         SceneManager.LoadScene(LivingRoom.name);
-        
+
     }
 
     public void TransitionToGameplay()
     {
         SceneManager.LoadScene(Gameplay.name);
-    }    
+    }
 
     public void TransitionToMainMenu()
     {
         SceneManager.LoadScene(MainMenu.name);
     }
 
-    
+
 }

@@ -6,6 +6,9 @@ namespace Ambient
 {
     public class SwapPosition : Effect
     {
+        public float MinDelay = 5f;
+        public float MaxDelay = 10f;
+
         public static void SwapPositions(GameObject a, GameObject b)
         {
             a.transform.GetPositionAndRotation(out var oldPositionA, out var oldRotationA);
@@ -17,21 +20,20 @@ namespace Ambient
 
         public class TimerEntry
         {
-            public float minDelay = 5f;
-            public float maxDelay = 10f;
-
             public GameObject GameObject;
             public float Timer;
+            public float MinDelay;
+            public float MaxDelay;
             public void Tick(float deltaTime)
             {
                 Timer -= deltaTime;
             }
             public void ResetTimer()
             {
-                Timer = Random.Range(minDelay, maxDelay);
+                Timer = Random.Range(MinDelay, MaxDelay);
             }
 
-            public TimerEntry(GameObject gameObject)
+            public TimerEntry(GameObject gameObject, float minDelay, float maxDelay)
             {
                 GameObject = gameObject;
                 Timer = Random.Range(minDelay, maxDelay);
@@ -54,7 +56,7 @@ namespace Ambient
                 {
                     _timers.Add(
                         unwatchedObject.GetInstanceID(),
-                        new TimerEntry(unwatchedObject)
+                        new TimerEntry(unwatchedObject, MinDelay, MaxDelay)
                         );
                 }
             }
