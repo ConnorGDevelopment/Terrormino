@@ -2630,7 +2630,7 @@ MeshCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 5
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!23 &1493151282
@@ -2858,7 +2858,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1abd902e681f1e4b91f0b7211229abb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ScenePath: Assets/Scenes/Living Room.unity
+  ScenePath: Assets/Scenes/Between Night Transitions/Living Room.unity
 --- !u!4 &1530854203 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1598019448027757845, guid: fe31b760e7462c94cbba93a8f5b257e0, type: 3}
