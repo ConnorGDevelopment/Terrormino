@@ -11,15 +11,14 @@ using UnityEngine.XR.Interaction.Toolkit;
 public class LivingRoomTransition : MonoBehaviour
 {
 
-    [SerializeField]
-    public string ScenePath;    // This property name is referenced in Assets/Editor/ScenePickerEditor, use F2 or Right Click > Rename to change
+      
 
     private float _transitionTime = 10;
     private bool _beginTransition = false;
 
     public Light LightSource;
 
-    
+    private ScenePicker _scenePicker;
     
 
 
@@ -38,7 +37,7 @@ public class LivingRoomTransition : MonoBehaviour
     public void Start()
     {
         _skinnedMeshRenderers = Helpers.Debug.TryFindComponentsInChildren<SkinnedMeshRenderer>(gameObject);
-
+        _scenePicker = Helpers.Debug.TryFindComponent<ScenePicker>(gameObject);
     }
 
 
@@ -77,7 +76,7 @@ public class LivingRoomTransition : MonoBehaviour
     public void BeginGame()
     {
 
-        SceneManager.LoadScene(ScenePath);
+        SceneManager.LoadScene(_scenePicker.ScenePath);
     }
 
 

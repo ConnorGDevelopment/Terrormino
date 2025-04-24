@@ -19,6 +19,7 @@ public class TitleScreen : MonoBehaviour
 
     public GameObject FogBlock;   //Temp fix for fog staying
 
+    private ScenePicker _scenePicker;
 
     //Shader stuff
     public List<Material> materials = new List<Material>();
@@ -35,7 +36,7 @@ public class TitleScreen : MonoBehaviour
     public void Start()
     {
         _skinnedMeshRenderers = Helpers.Debug.TryFindComponentsInChildren<SkinnedMeshRenderer>(gameObject);
-
+        _scenePicker = Helpers.Debug.TryFindComponent<ScenePicker>(gameObject);
     }
 
 
@@ -75,8 +76,8 @@ public class TitleScreen : MonoBehaviour
 
     public void BeginGame()
     {
-        
-        SceneManager.LoadScene("Expo");
+
+        SceneManager.LoadScene(_scenePicker.ScenePath);
     }
 
 
