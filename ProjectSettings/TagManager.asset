@@ -12,7 +12,6 @@ TagManager:
   - Moonlight
   - LeftHand
   - RightHand
-  - DropWatch
   - Ambient
   layers:
   - Default

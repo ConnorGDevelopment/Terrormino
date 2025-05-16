@@ -9,74 +9,88 @@ namespace Flashlight
     {
         public Light LightSource;
         public Collider LightCollider;
+        public AudioSource ShakingSound;
+        public AudioSource NoChargeSound;
         public XRGrabInteractable GrabInteractable;
-        public bool Active = false;
 
-        public float BatteryMax = 5f;
-        private float _battery = 5f;
-        public float Battery
+        // Changed name to avoid confusion with gameObject.Active
+        public bool IsOn = false;
+
+        // Made a simple helper class just to enforce a Mathf.Clamp() setter
+        public Helpers.ClampedFloat Battery = new(5f, 5f);
+
+        // Pulled out any constants so they are modifiable in the editor
+        public float SmoothingFactor = 0.2f;
+        public float MinThreshold = 2.5f;
+        public float ChargeMultiplier = 6f;
+
+
+        private Vector3 _cachedVelocity = Vector3.zero;
+
+        public void Charge(Vector3 currentVelocity)
         {
-            get { return _battery; }
-            set
+            // Originally there was an if statement to make sure that cachedMagnitude was not an abysmally small number
+            // Instead of doing an if statement, just truncate the float to the precision you want, then its never a problem
+            float cachedMagnitude = Helpers.Math.RoundFloatToDecimalPlaces(_cachedVelocity.magnitude, 2);
+            _cachedVelocity = Vector3.Lerp(_cachedVelocity, currentVelocity, SmoothingFactor);
+
+            float percentageIncrease = Mathf.Abs((currentVelocity.magnitude - _cachedVelocity.magnitude) / cachedMagnitude) * 100;
+
+            if (percentageIncrease >= MinThreshold)
             {
-                _battery = Mathf.Clamp(value, 0, 5f);
+                Battery.Value += Time.deltaTime * 6f;
+                ShakingSound.Play();
             }
+            else
+            {
+                ShakingSound.Stop();
+            }
+
+            _cachedVelocity = currentVelocity;
         }
 
+        public void OnShake(InputAction inputAction)
+        {
+            Charge(inputAction.ReadValue<Vector3>());
+        }
+        public void OnShake(Vector3 velocity)
+        {
+            Charge(velocity);
+        }
+
+
+        // The reason to do something like this instead of just flipping a boolean is to manage side effects
+        // This ensures every time the flashlight is toggle off, the light source also always turns off
         public UnityEvent<InputAction> TogglePower = new();
+        // For when power is toggled off by the player via InputRouter
         public void OnTogglePower(InputAction _)
         {
-            Active = !Active;
-            LightSource.enabled = Active;
+            IsOn = !IsOn;
+            LightSource.enabled = IsOn;
         }
+        // For when power is toggled off by the game
         public void OnTogglePower(bool value)
         {
-            Active = value;
-            LightSource.enabled = Active;
+            IsOn = value;
+            LightSource.enabled = IsOn;
         }
-
-        private Vector3 _cachedPosition = Vector3.zero;
-        private Vector3 _cachedVelocity = Vector3.zero;
-        public void Charge(Vector3 position, float deltaTime)
-        {
-            if (GrabInteractable.isSelected && !Active)
-            {
-                var velocity = (position - _cachedPosition) / deltaTime;
-
-                // Signed Angle basically draws angle using a third reference point
-                // The angle between the previous velocity and the current velocity is the change in direction
-                // We know the device is being shaken if the velocity is changing direction from the reference point of the player
-                if (Vector3.SignedAngle(velocity, _cachedVelocity, gameObject.transform.position) > 0)
-                {
-                    Battery += deltaTime * 2;
-                }
-
-                _cachedVelocity = velocity;
-                _cachedPosition = position;
-            }
-        }
-
-
-
         public void Start()
         {
             LightSource = Helpers.Debug.TryFindComponentInChildren<Light>(gameObject);
-            
             GrabInteractable = Helpers.Debug.TryFindComponent<XRGrabInteractable>(gameObject);
             TogglePower.AddListener(OnTogglePower);
             OnTogglePower(false);
         }
 
+
         public void Update()
         {
-            Charge(gameObject.transform.position, Time.deltaTime);
-
-            if (Active)
+            if (IsOn)
             {
-                Battery -= Time.deltaTime;
+                Battery.Value -= Time.deltaTime;
             }
 
-            if (Battery <= 0)
+            if (Battery.Value <= 0)
             {
                 OnTogglePower(false);
             }

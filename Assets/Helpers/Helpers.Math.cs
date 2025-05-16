@@ -63,16 +63,21 @@ namespace Helpers
             {
                 var choices = pool;
 
-                var chooseA = choices[Random.Range(0, pool.Count - 1)];
+                var chooseA = choices[UnityEngine.Random.Range(0, pool.Count - 1)];
                 chosen.Add(chooseA);
                 choices.Remove(chooseA);
 
-                var chooseB = choices[Random.Range(0, pool.Count - 1)];
+                var chooseB = choices[UnityEngine.Random.Range(0, pool.Count - 1)];
                 chosen.Add(chooseB);
             }
 
 
             return chosen;
+        }
+
+        public static float RoundFloatToDecimalPlaces(float value, int decimals)
+        {
+            return Mathf.Round(value * 10 * decimals) / (10 * decimals);
         }
     }
 }
