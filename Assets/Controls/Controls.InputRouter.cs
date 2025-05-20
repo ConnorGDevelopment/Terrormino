@@ -7,8 +7,6 @@ using UnityEngine.XR.Interaction.Toolkit;
 
 namespace Controls
 {
-
-
     public class InputRouter : MonoBehaviour
     {
         [Serializable]
@@ -17,6 +15,7 @@ namespace Controls
             public InputActionReference ActionRef;
             public List<UnityEvent<InputAction>> Outputs = new();
         }
+
         public List<Route> Routes = new();
         private Dictionary<Guid, List<UnityEvent<InputAction>>> _aggregatedOutputs
         {
@@ -43,20 +42,29 @@ namespace Controls
             }
         }
 
-
         // When the GameObject is grabbed, the thing that grabbed it adds its ActionMap (based on the Select Action AKA Grab) to this list
         // This is because we only want to route inputs of actions of a grabbing controller
         private readonly List<InputActionMap> _grabbedActionMaps = new();
+
         public void OnSelectEnter(SelectEnterEventArgs context)
         {
-            if (context.interactorObject.transform.gameObject.TryGetComponent(out ActionBasedController controller))
+            if (
+                context.interactorObject.transform.gameObject.TryGetComponent(
+                    out ActionBasedController controller
+                )
+            )
             {
                 _grabbedActionMaps.Add(controller.selectAction.action.actionMap);
             }
         }
+
         public void OnSelectExit(SelectExitEventArgs context)
         {
-            if (context.interactorObject.transform.gameObject.TryGetComponent(out ActionBasedController controller))
+            if (
+                context.interactorObject.transform.gameObject.TryGetComponent(
+                    out ActionBasedController controller
+                )
+            )
             {
                 _grabbedActionMaps.Remove(controller.selectAction.action.actionMap);
             }
@@ -95,7 +103,6 @@ namespace Controls
                     _aggregatedOutputs[action.id].ForEach(output => output.Invoke(action));
                 }
             });
-
         }
     }
 }

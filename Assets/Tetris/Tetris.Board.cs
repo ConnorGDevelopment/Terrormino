@@ -14,7 +14,7 @@ namespace Tetris
         {
             GravityDelay = 1f,
             MoveDelay = 0.1f,
-            LockDelay = 0.5f
+            LockDelay = 0.5f,
         };
         public Vector2Int BoardSize = new(10, 14);
         public RectInt BoardBounds
@@ -35,15 +35,17 @@ namespace Tetris
             }
         }
 
-
         public void Start()
         {
-            BoardTilemap = Helpers.Debug.TryFindComponentOnGameObjectByName<Tilemap>("BoardTilemap");
+            BoardTilemap = Helpers.Debug.TryFindComponentOnGameObjectByName<Tilemap>(
+                "BoardTilemap"
+            );
             ActivePiece = Helpers.Debug.TryFindComponent<ActivePieceController>(gameObject);
-            PlayerManager = Helpers.Debug.TryFindComponentOnGameObjectByTag<Player.Manager>("Player");
+            PlayerManager = Helpers.Debug.TryFindComponentOnGameObjectByTag<Player.Manager>(
+                "Player"
+            );
             SpawnPiece();
         }
-
 
         public void SpawnPiece()
         {
@@ -61,8 +63,6 @@ namespace Tetris
             }
             else
             {
-
-
                 Debug.Log(ActivePiece.Shape.ShapeKey);
                 Debug.Log("You suck! Tetris");
                 //EditorApplication.isPaused = true;
@@ -82,6 +82,7 @@ namespace Tetris
                 BoardTilemap.SetTile(tilePosition, tetromino.Shape.Tile);
             }
         }
+
         public void UnpaintTiles(ActivePieceController tetromino)
         {
             for (int i = 0; i < tetromino.Cells.Length; i++)
@@ -90,7 +91,6 @@ namespace Tetris
                 BoardTilemap.SetTile(tilePosition, null);
             }
         }
-
 
         public bool IsValidPosition(Vector3Int[] cells, Vector3Int position)
         {
@@ -103,7 +103,6 @@ namespace Tetris
                 {
                     return false;
                 }
-
 
                 if (BoardTilemap.HasTile(tilePosition))
                 {

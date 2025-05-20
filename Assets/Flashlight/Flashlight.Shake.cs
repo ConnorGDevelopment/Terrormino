@@ -24,17 +24,21 @@ namespace Flashlight
         public float MinThreshold = 2.5f;
         public float ChargeMultiplier = 6f;
 
-
         private Vector3 _cachedVelocity = Vector3.zero;
 
         public void Charge(Vector3 currentVelocity)
         {
             // Originally there was an if statement to make sure that cachedMagnitude was not an abysmally small number
             // Instead of doing an if statement, just truncate the float to the precision you want, then its never a problem
-            float cachedMagnitude = Helpers.Math.RoundFloatToDecimalPlaces(_cachedVelocity.magnitude, 2);
+            float cachedMagnitude = Helpers.Math.RoundFloatToDecimalPlaces(
+                _cachedVelocity.magnitude,
+                2
+            );
             _cachedVelocity = Vector3.Lerp(_cachedVelocity, currentVelocity, SmoothingFactor);
 
-            float percentageIncrease = Mathf.Abs((currentVelocity.magnitude - _cachedVelocity.magnitude) / cachedMagnitude) * 100;
+            float percentageIncrease =
+                Mathf.Abs((currentVelocity.magnitude - _cachedVelocity.magnitude) / cachedMagnitude)
+                * 100;
 
             if (percentageIncrease >= MinThreshold)
             {
@@ -53,27 +57,30 @@ namespace Flashlight
         {
             Charge(inputAction.ReadValue<Vector3>());
         }
+
         public void OnShake(Vector3 velocity)
         {
             Charge(velocity);
         }
 
-
         // The reason to do something like this instead of just flipping a boolean is to manage side effects
         // This ensures every time the flashlight is toggle off, the light source also always turns off
         public UnityEvent<InputAction> TogglePower = new();
+
         // For when power is toggled off by the player via InputRouter
         public void OnTogglePower(InputAction _)
         {
             IsOn = !IsOn;
             LightSource.enabled = IsOn;
         }
+
         // For when power is toggled off by the game
         public void OnTogglePower(bool value)
         {
             IsOn = value;
             LightSource.enabled = IsOn;
         }
+
         public void Start()
         {
             LightSource = Helpers.Debug.TryFindComponentInChildren<Light>(gameObject);
@@ -81,7 +88,6 @@ namespace Flashlight
             TogglePower.AddListener(OnTogglePower);
             OnTogglePower(false);
         }
-
 
         public void Update()
         {
@@ -95,8 +101,5 @@ namespace Flashlight
                 OnTogglePower(false);
             }
         }
-
-
     }
 }
-

@@ -11,7 +11,8 @@ public class ScenePickerEditor : Editor
         serializedObject.Update();
 
         EditorGUI.BeginChangeCheck();
-        var newScene = EditorGUILayout.ObjectField("scene", oldScene, typeof(SceneAsset), false) as SceneAsset;
+        var newScene =
+            EditorGUILayout.ObjectField("scene", oldScene, typeof(SceneAsset), false) as SceneAsset;
 
         if (EditorGUI.EndChangeCheck())
         {

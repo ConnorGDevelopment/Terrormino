@@ -13,7 +13,6 @@ namespace Player
         public float CameraVerticalRotation = 0f;
         public bool LockedCursor = true;
 
-
         public InputActionReference MousePositionActionRef;
 
         public void Start()
@@ -25,7 +24,6 @@ namespace Player
                 Cursor.lockState = CursorLockMode.Locked;
             }
         }
-
 
         void Update()
         {
@@ -41,7 +39,6 @@ namespace Player
                 CameraVerticalRotation -= inputY;
                 CameraVerticalRotation = Mathf.Clamp(CameraVerticalRotation, -90f, 90f);
                 transform.localEulerAngles = Vector3.right * CameraVerticalRotation;
-
 
                 // Rotate the Player Object and the Camera around its Y axis
                 PlayerPosition.Rotate(Vector3.up * inputX);

@@ -10,13 +10,15 @@ public class SimpleDissolve
     public void Init(GameObject gameObject)
     {
         _materials.AddRange(
-            Helpers.Debug.TryFindComponentsInChildren<SkinnedMeshRenderer>(gameObject)
-            .Select(renderer => renderer.material)
+            Helpers
+                .Debug.TryFindComponentsInChildren<SkinnedMeshRenderer>(gameObject)
+                .Select(renderer => renderer.material)
         );
 
         _materials.AddRange(
-            Helpers.Debug.TryFindComponentsInChildren<MeshRenderer>(gameObject)
-            .Select(renderer => renderer.material)
+            Helpers
+                .Debug.TryFindComponentsInChildren<MeshRenderer>(gameObject)
+                .Select(renderer => renderer.material)
         );
     }
 

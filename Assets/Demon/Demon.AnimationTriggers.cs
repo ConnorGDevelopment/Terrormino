@@ -6,12 +6,9 @@ namespace Demon
 {
     public class AnimationController : MonoBehaviour
     {
-
         public GameObject Room;
         public Light Moonlight;
         public AudioSource Scream;
-
-
 
         private string _sceneName; // 1
         private Animator _animator; // 2
@@ -37,7 +34,9 @@ namespace Demon
             }
 
             // 4
-            _demonManager = Helpers.Debug.TryFindByTag("DemonManager").GetComponent<Demon.Manager>();
+            _demonManager = Helpers
+                .Debug.TryFindByTag("DemonManager")
+                .GetComponent<Demon.Manager>();
 
             // 5
             _playerManager = Helpers.Debug.TryFindByTag("Player").GetComponent<Player.Manager>();
@@ -59,7 +58,7 @@ namespace Demon
         {
             _animator.SetBool("IsIlluminated", value);
 
-            if ((_lightFear.Health / _lightFear.MaxHealth) <= 1f / 8)
+            if ((_lightFear.Health.Value / _lightFear.Health.Max) <= 1f / 8)
             {
                 _simpleDissolve.Dissolve(Time.deltaTime);
             }
@@ -80,7 +79,5 @@ namespace Demon
             Scream.Stop();
             SceneManager.LoadScene(_sceneName);
         }
-
-
     }
 }

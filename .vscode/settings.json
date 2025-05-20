@@ -1,0 +1,38 @@
+{
+    "dotnet.preferCSharpExtension": true,
+    "files.exclude": {
+        ".vs/": true,
+        ".vsconfig": true,
+        "**/*.asset": true,
+        "**/*.blend": true,
+        "**/*.controller": true,
+        "**/*.drawio.bkp": true,
+        "**/*.fbx": true,
+        "**/*.inputactions": true,
+        "**/*.mat": true,
+        "**/*.meta": true,
+        "**/*.mp3": true,
+        "**/*.prefab": true,
+        "**/*.RenderTexture": true,
+        "**/*.rpp": true,
+        "**/*.rpp-bak": true,
+        "**/*.tif": true,
+        "**/*.unity": true,
+        "**/Nebula Skyboxes/": true,
+        "**/Oculus Hands/": true,
+        "**/Settings/": true,
+        "**/TextMesh Pro/": true,
+        "Builds/": true,
+        "Library/": true,
+        "Logs/": true,
+        "obj/": true,
+        "Packages/": true,
+        "ProjectSettings/": true,
+        "Temp/": true,
+        "UserSettings/": true
+    },
+    "dotnet.defaultSolution": "Terrormino.sln",
+    "[csharp]": {
+        "editor.defaultFormatter": "csharpier.csharpier-vscode"
+    },
+}

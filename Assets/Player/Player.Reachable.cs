@@ -22,6 +22,4 @@ public class Reachable : MonoBehaviour
             gameObject.transform.rotation = _startingRotation;
         }
     }
-
-
 }

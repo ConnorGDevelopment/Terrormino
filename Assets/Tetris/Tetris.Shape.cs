@@ -7,28 +7,34 @@ namespace Tetris
     public enum ShapeKeys
     {
         I,
+
         /*   []
              []
              []
              []   */
         J,
+
         /*   []
              []
            [][]   */
         L,
+
         /*   []
-             [] 
+             []
              [][] */
         O,
+
         /* [][]
            [][]   */
         S,
+
         /*   [][]
            [][]   */
         T,
+
         /* [][][]
              []   */
-        Z
+        Z,
         /* [][]
              [][] */
     }
@@ -41,39 +47,208 @@ namespace Tetris
         public static readonly float sin = Mathf.Sin(Mathf.PI / 2f);
         public static readonly float[] RotationMatrix = new float[] { cos, sin, -sin, cos };
 
-        public static readonly Dictionary<ShapeKeys, Vector2Int[]> Cells = new Dictionary<ShapeKeys, Vector2Int[]>() {
-            { ShapeKeys.I, new Vector2Int[] { new Vector2Int(-1, 1), new Vector2Int( 0, 1), new Vector2Int( 1, 1), new Vector2Int( 2, 1) } },
-            { ShapeKeys.J, new Vector2Int[] { new Vector2Int(-1, 1), new Vector2Int(-1, 0), new Vector2Int( 0, 0), new Vector2Int( 1, 0) } },
-            { ShapeKeys.L, new Vector2Int[] { new Vector2Int( 1, 1), new Vector2Int(-1, 0), new Vector2Int( 0, 0), new Vector2Int( 1, 0) } },
-            { ShapeKeys.O, new Vector2Int[] { new Vector2Int( 0, 1), new Vector2Int( 1, 1), new Vector2Int( 0, 0), new Vector2Int( 1, 0) } },
-            { ShapeKeys.S, new Vector2Int[] { new Vector2Int( 0, 1), new Vector2Int( 1, 1), new Vector2Int(-1, 0), new Vector2Int( 0, 0) } },
-            { ShapeKeys.T, new Vector2Int[] { new Vector2Int( 0, 1), new Vector2Int(-1, 0), new Vector2Int( 0, 0), new Vector2Int( 1, 0) } },
-            { ShapeKeys.Z, new Vector2Int[] { new Vector2Int(-1, 1), new Vector2Int( 0, 1), new Vector2Int( 0, 0), new Vector2Int( 1, 0) } },
+        public static readonly Dictionary<ShapeKeys, Vector2Int[]> Cells = new Dictionary<
+            ShapeKeys,
+            Vector2Int[]
+        >()
+        {
+            {
+                ShapeKeys.I,
+                new Vector2Int[]
+                {
+                    new Vector2Int(-1, 1),
+                    new Vector2Int(0, 1),
+                    new Vector2Int(1, 1),
+                    new Vector2Int(2, 1),
+                }
+            },
+            {
+                ShapeKeys.J,
+                new Vector2Int[]
+                {
+                    new Vector2Int(-1, 1),
+                    new Vector2Int(-1, 0),
+                    new Vector2Int(0, 0),
+                    new Vector2Int(1, 0),
+                }
+            },
+            {
+                ShapeKeys.L,
+                new Vector2Int[]
+                {
+                    new Vector2Int(1, 1),
+                    new Vector2Int(-1, 0),
+                    new Vector2Int(0, 0),
+                    new Vector2Int(1, 0),
+                }
+            },
+            {
+                ShapeKeys.O,
+                new Vector2Int[]
+                {
+                    new Vector2Int(0, 1),
+                    new Vector2Int(1, 1),
+                    new Vector2Int(0, 0),
+                    new Vector2Int(1, 0),
+                }
+            },
+            {
+                ShapeKeys.S,
+                new Vector2Int[]
+                {
+                    new Vector2Int(0, 1),
+                    new Vector2Int(1, 1),
+                    new Vector2Int(-1, 0),
+                    new Vector2Int(0, 0),
+                }
+            },
+            {
+                ShapeKeys.T,
+                new Vector2Int[]
+                {
+                    new Vector2Int(0, 1),
+                    new Vector2Int(-1, 0),
+                    new Vector2Int(0, 0),
+                    new Vector2Int(1, 0),
+                }
+            },
+            {
+                ShapeKeys.Z,
+                new Vector2Int[]
+                {
+                    new Vector2Int(-1, 1),
+                    new Vector2Int(0, 1),
+                    new Vector2Int(0, 0),
+                    new Vector2Int(1, 0),
+                }
+            },
         };
 
-        private static readonly Vector2Int[,] _wallKicksI = new Vector2Int[,] {
-            { new Vector2Int(0, 0), new Vector2Int(-2, 0), new Vector2Int( 1, 0), new Vector2Int(-2,-1), new Vector2Int( 1, 2) },
-            { new Vector2Int(0, 0), new Vector2Int( 2, 0), new Vector2Int(-1, 0), new Vector2Int( 2, 1), new Vector2Int(-1,-2) },
-            { new Vector2Int(0, 0), new Vector2Int(-1, 0), new Vector2Int( 2, 0), new Vector2Int(-1, 2), new Vector2Int( 2,-1) },
-            { new Vector2Int(0, 0), new Vector2Int( 1, 0), new Vector2Int(-2, 0), new Vector2Int( 1,-2), new Vector2Int(-2, 1) },
-            { new Vector2Int(0, 0), new Vector2Int( 2, 0), new Vector2Int(-1, 0), new Vector2Int( 2, 1), new Vector2Int(-1,-2) },
-            { new Vector2Int(0, 0), new Vector2Int(-2, 0), new Vector2Int( 1, 0), new Vector2Int(-2,-1), new Vector2Int( 1, 2) },
-            { new Vector2Int(0, 0), new Vector2Int( 1, 0), new Vector2Int(-2, 0), new Vector2Int( 1,-2), new Vector2Int(-2, 1) },
-            { new Vector2Int(0, 0), new Vector2Int(-1, 0), new Vector2Int( 2, 0), new Vector2Int(-1, 2), new Vector2Int( 2,-1) },
+        private static readonly Vector2Int[,] _wallKicksI = new Vector2Int[,]
+        {
+            {
+                new Vector2Int(0, 0),
+                new Vector2Int(-2, 0),
+                new Vector2Int(1, 0),
+                new Vector2Int(-2, -1),
+                new Vector2Int(1, 2),
+            },
+            {
+                new Vector2Int(0, 0),
+                new Vector2Int(2, 0),
+                new Vector2Int(-1, 0),
+                new Vector2Int(2, 1),
+                new Vector2Int(-1, -2),
+            },
+            {
+                new Vector2Int(0, 0),
+                new Vector2Int(-1, 0),
+                new Vector2Int(2, 0),
+                new Vector2Int(-1, 2),
+                new Vector2Int(2, -1),
+            },
+            {
+                new Vector2Int(0, 0),
+                new Vector2Int(1, 0),
+                new Vector2Int(-2, 0),
+                new Vector2Int(1, -2),
+                new Vector2Int(-2, 1),
+            },
+            {
+                new Vector2Int(0, 0),
+                new Vector2Int(2, 0),
+                new Vector2Int(-1, 0),
+                new Vector2Int(2, 1),
+                new Vector2Int(-1, -2),
+            },
+            {
+                new Vector2Int(0, 0),
+                new Vector2Int(-2, 0),
+                new Vector2Int(1, 0),
+                new Vector2Int(-2, -1),
+                new Vector2Int(1, 2),
+            },
+            {
+                new Vector2Int(0, 0),
+                new Vector2Int(1, 0),
+                new Vector2Int(-2, 0),
+                new Vector2Int(1, -2),
+                new Vector2Int(-2, 1),
+            },
+            {
+                new Vector2Int(0, 0),
+                new Vector2Int(-1, 0),
+                new Vector2Int(2, 0),
+                new Vector2Int(-1, 2),
+                new Vector2Int(2, -1),
+            },
         };
 
-        private static readonly Vector2Int[,] _wallKicksJLOSTZ = new Vector2Int[,] {
-            { new Vector2Int(0, 0), new Vector2Int(-1, 0), new Vector2Int(-1, 1), new Vector2Int(0,-2), new Vector2Int(-1,-2) },
-            { new Vector2Int(0, 0), new Vector2Int( 1, 0), new Vector2Int( 1,-1), new Vector2Int(0, 2), new Vector2Int( 1, 2) },
-            { new Vector2Int(0, 0), new Vector2Int( 1, 0), new Vector2Int( 1,-1), new Vector2Int(0, 2), new Vector2Int( 1, 2) },
-            { new Vector2Int(0, 0), new Vector2Int(-1, 0), new Vector2Int(-1, 1), new Vector2Int(0,-2), new Vector2Int(-1,-2) },
-            { new Vector2Int(0, 0), new Vector2Int( 1, 0), new Vector2Int( 1, 1), new Vector2Int(0,-2), new Vector2Int( 1,-2) },
-            { new Vector2Int(0, 0), new Vector2Int(-1, 0), new Vector2Int(-1,-1), new Vector2Int(0, 2), new Vector2Int(-1, 2) },
-            { new Vector2Int(0, 0), new Vector2Int(-1, 0), new Vector2Int(-1,-1), new Vector2Int(0, 2), new Vector2Int(-1, 2) },
-            { new Vector2Int(0, 0), new Vector2Int( 1, 0), new Vector2Int( 1, 1), new Vector2Int(0,-2), new Vector2Int( 1,-2) },
+        private static readonly Vector2Int[,] _wallKicksJLOSTZ = new Vector2Int[,]
+        {
+            {
+                new Vector2Int(0, 0),
+                new Vector2Int(-1, 0),
+                new Vector2Int(-1, 1),
+                new Vector2Int(0, -2),
+                new Vector2Int(-1, -2),
+            },
+            {
+                new Vector2Int(0, 0),
+                new Vector2Int(1, 0),
+                new Vector2Int(1, -1),
+                new Vector2Int(0, 2),
+                new Vector2Int(1, 2),
+            },
+            {
+                new Vector2Int(0, 0),
+                new Vector2Int(1, 0),
+                new Vector2Int(1, -1),
+                new Vector2Int(0, 2),
+                new Vector2Int(1, 2),
+            },
+            {
+                new Vector2Int(0, 0),
+                new Vector2Int(-1, 0),
+                new Vector2Int(-1, 1),
+                new Vector2Int(0, -2),
+                new Vector2Int(-1, -2),
+            },
+            {
+                new Vector2Int(0, 0),
+                new Vector2Int(1, 0),
+                new Vector2Int(1, 1),
+                new Vector2Int(0, -2),
+                new Vector2Int(1, -2),
+            },
+            {
+                new Vector2Int(0, 0),
+                new Vector2Int(-1, 0),
+                new Vector2Int(-1, -1),
+                new Vector2Int(0, 2),
+                new Vector2Int(-1, 2),
+            },
+            {
+                new Vector2Int(0, 0),
+                new Vector2Int(-1, 0),
+                new Vector2Int(-1, -1),
+                new Vector2Int(0, 2),
+                new Vector2Int(-1, 2),
+            },
+            {
+                new Vector2Int(0, 0),
+                new Vector2Int(1, 0),
+                new Vector2Int(1, 1),
+                new Vector2Int(0, -2),
+                new Vector2Int(1, -2),
+            },
         };
 
-        public static readonly Dictionary<ShapeKeys, Vector2Int[,]> WallKicks = new Dictionary<ShapeKeys, Vector2Int[,]>(){
+        public static readonly Dictionary<ShapeKeys, Vector2Int[,]> WallKicks = new Dictionary<
+            ShapeKeys,
+            Vector2Int[,]
+        >()
+        {
             { ShapeKeys.I, _wallKicksI },
             { ShapeKeys.J, _wallKicksJLOSTZ },
             { ShapeKeys.L, _wallKicksJLOSTZ },
@@ -99,6 +274,7 @@ namespace Tetris
             Cells = ShapeVecs.Cells[ShapeKey];
             WallKicks = ShapeVecs.WallKicks[ShapeKey];
         }
+
         public Vector3Int[] GetCellsAsVec3
         {
             get

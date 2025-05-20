@@ -13,10 +13,10 @@ public class JumpscareTrigger : MonoBehaviour
     private Player.Manager _playerManager;
     private Demon.Manager _demonManager;
 
-
     public Light MoonLight;
 
     public UnityEvent Jumpscare;
+
     public void OnJumpscare()
     {
         //AdjustingMoonlight();
@@ -28,7 +28,6 @@ public class JumpscareTrigger : MonoBehaviour
         StartCoroutine(EndJumpscare());
     }
 
-
     IEnumerator EndJumpscare()
     {
         yield return new WaitForSeconds(1.5f);
@@ -37,13 +36,10 @@ public class JumpscareTrigger : MonoBehaviour
         SceneManager.LoadScene(_sceneName);
     }
 
-
     //public void AdjustingMoonlight()
     //{
 
-
     //    MoonLight.enabled = false;
-
 
     //}
 
@@ -66,7 +62,4 @@ public class JumpscareTrigger : MonoBehaviour
             Debug.Log($"No ScenePicker component found on {gameObject.name}", gameObject);
         }
     }
-
-
-
 }

@@ -1,0 +1,8 @@
+# .gitignore
+
+Unity.XR.Interaction.Toolkit.Samples.DeviceSimulator.csproj
+Unity.XR.Interaction.Toolkit.Samples.StarterAssets.csproj
+Unity.XR.Interaction.Toolkit.Samples.StarterAssets.Editor.csproj
+Builds/
+Library/
+Packages/

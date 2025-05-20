@@ -1,7 +1,9 @@
+using System;
 using UnityEngine;
 
 namespace Helpers
 {
+    [Serializable]
     public class ClampedFloat
     {
         public float Max = 1f;

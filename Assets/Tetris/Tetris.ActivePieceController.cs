@@ -14,6 +14,7 @@ namespace Tetris
         public int RotationIndex;
 
         public float _gravityTime;
+
         // TODO: Reimplement repeated movement handling, potentially use hold action on action map
         private float _moveTime;
         public float _lockTime;
@@ -33,7 +34,11 @@ namespace Tetris
         {
             Vector2Int moveInput = new(
                 Helpers.Math.RoundNearestNonZeroInt(inputAction.ReadValue<Vector2>().x, 0.5f),
-                Mathf.Clamp(Helpers.Math.RoundNearestNonZeroInt(inputAction.ReadValue<Vector2>().y, 0.5f),-1,0)
+                Mathf.Clamp(
+                    Helpers.Math.RoundNearestNonZeroInt(inputAction.ReadValue<Vector2>().y, 0.5f),
+                    -1,
+                    0
+                )
             );
 
             Board.UnpaintTiles(this);
@@ -45,6 +50,7 @@ namespace Tetris
             }
             Board.PaintTiles(this);
         }
+
         public void OnMove(Vector2Int moveInput)
         {
             Board.UnpaintTiles(this);
@@ -56,7 +62,6 @@ namespace Tetris
             }
             Board.PaintTiles(this);
         }
-
 
         public void OnRotate(InputAction inputAction)
         {
@@ -74,7 +79,6 @@ namespace Tetris
             }
             Board.PaintTiles(this);
         }
-
 
         private Vector3Int? TryMove(Vector2Int moveInput, Vector3Int[] cells)
         {
@@ -101,7 +105,6 @@ namespace Tetris
                 Shape.WallKicks.GetLength(0)
             );
 
-
             for (int i = 0; i < Shape.WallKicks.GetLength(1); i++)
             {
                 Vector2Int wallKickMoveInput = Shape.WallKicks[wallKickIndex, i];
@@ -114,6 +117,7 @@ namespace Tetris
 
             return null;
         }
+
         private Vector3Int[] GenerateRotationCells(int rotateInput)
         {
             // Makes an non-reference copy of the array
@@ -135,12 +139,20 @@ namespace Tetris
                         // "I" and "O" are rotated from an offset center point
                         cell.x -= 0.5f;
                         cell.y -= 0.5f;
-                        x = Mathf.CeilToInt((cell.x * matrix[0] * rotateInput) + (cell.y * matrix[1] * rotateInput));
-                        y = Mathf.CeilToInt((cell.x * matrix[2] * rotateInput) + (cell.y * matrix[3] * rotateInput));
+                        x = Mathf.CeilToInt(
+                            (cell.x * matrix[0] * rotateInput) + (cell.y * matrix[1] * rotateInput)
+                        );
+                        y = Mathf.CeilToInt(
+                            (cell.x * matrix[2] * rotateInput) + (cell.y * matrix[3] * rotateInput)
+                        );
                         break;
                     default:
-                        x = Mathf.RoundToInt((cell.x * matrix[0] * rotateInput) + (cell.y * matrix[1] * rotateInput));
-                        y = Mathf.RoundToInt((cell.x * matrix[2] * rotateInput) + (cell.y * matrix[3] * rotateInput));
+                        x = Mathf.RoundToInt(
+                            (cell.x * matrix[0] * rotateInput) + (cell.y * matrix[1] * rotateInput)
+                        );
+                        y = Mathf.RoundToInt(
+                            (cell.x * matrix[2] * rotateInput) + (cell.y * matrix[3] * rotateInput)
+                        );
                         break;
                 }
 
@@ -198,8 +210,6 @@ namespace Tetris
             }
 
             Board.PaintTiles(this);
-
-
         }
 
         private void LockMovement()

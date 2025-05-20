@@ -8,37 +8,20 @@ using UnityEngine.InputSystem;
 
 public class TutorialGuide : MonoBehaviour
 {
-
-    [SerializeField] private TextMeshProUGUI TutorialText;
+    [SerializeField]
+    private TextMeshProUGUI TutorialText;
     private float _textChangeTimer = 8;
 
     public UnityEvent<InputAction> ObjectGrabbed = new();
 
-
-    private void Start()
-    {
-        
-    }
-
+    private void Start() { }
 
     private void Update()
     {
-
         TextManager();
-        
-
-
-
     }
 
-
-
-    public void OnGrabbed(InputAction action)
-    {
-
-    }
-
-
+    public void OnGrabbed(InputAction action) { }
 
     private void TextManager()
     {
@@ -51,11 +34,5 @@ public class TutorialGuide : MonoBehaviour
 
         //TODO: When the game console is grabbed with BOTH hands have the text change. Eventually try adding text
         //      that makes the player try controlling the Tetris with only one hand and show flashlight
-
-
-
     }
-
-
-
 }

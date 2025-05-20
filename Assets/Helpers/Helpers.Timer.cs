@@ -1,77 +1,66 @@
+using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
 namespace Helpers
 {
+    [Serializable]
     public class Timer
-
     {
-        public float Time => _time;
-        private float _time = 0;
+        private float _currentAlarmTime;
+        public float CurrentAlarmTime => _currentAlarmTime;
 
-        public struct SAlarm
+        private bool _ringing = false;
+        public bool Ringing => _ringing;
+        public float BaseAlarmTime = 1f;
+        public float AlarmVarianceLowerBound = 0f;
+        public float AlarmVarianceUpperBound = 0f;
+
+        private IEnumerator Tick()
         {
-            public float BaseTime;
-            public (float, float) Variance;
-            public float Value;
-
-            public SAlarm(float baseTime, float minVariance = 0, float maxVariance = 0) : this()
-            {
-                BaseTime = baseTime;
-                Variance = (minVariance, maxVariance);
-            }
-
-            public void Generate()
-            {
-                Value = BaseTime + Random.Range(Variance.Item1, Variance.Item2);
-            }
+            yield return new WaitForSeconds(CurrentAlarmTime);
+            _ringing = true;
         }
-        public SAlarm Alarm = new();
 
-        public bool Paused = false;
-
-
-        public enum TimerState
+        public void GenerateAlarmTime()
         {
-            Paused,
-            Running,
-            Ringing,
+            _currentAlarmTime =
+                BaseAlarmTime
+                + UnityEngine.Random.Range(AlarmVarianceLowerBound, AlarmVarianceUpperBound);
         }
-        public TimerState CurrentState
+
+        public void StartTimer()
         {
-            get
-            {
-                if (Paused)
-                {
-                    return TimerState.Paused;
-                }
-                else if (Time >= Alarm.Value)
-                {
-                    return TimerState.Ringing;
-                }
-                else
-                {
-                    return TimerState.Running;
-                }
-            }
+            GenerateAlarmTime();
+            Tick();
         }
-        public void Tick(float deltaTime)
+
+        public void RestartTimer()
         {
-            if (CurrentState == TimerState.Running)
-            {
-                _time += deltaTime;
-            }
+            StartTimer();
         }
+
         public void ResetTimer()
         {
-            _time = 0;
-            Alarm.Generate();
+            GenerateAlarmTime();
         }
 
-        public static List<Timer> FilterByState(List<Timer> timers, TimerState timerState)
+        public static List<Timer> FilterRinging(List<Timer> timers)
         {
-            return timers.Where(timer => timer.CurrentState == timerState).ToList();
+            return timers.Where(timer => timer.Ringing).ToList();
+        }
+
+        public Timer(
+            float baseAlarmTime = 1f,
+            float alarmVarianceLowerBound = 0f,
+            float alarmVarianceUpperBound = 0f
+        )
+        {
+            BaseAlarmTime = baseAlarmTime;
+            AlarmVarianceLowerBound = alarmVarianceLowerBound;
+            AlarmVarianceUpperBound = alarmVarianceUpperBound;
         }
     }
 }

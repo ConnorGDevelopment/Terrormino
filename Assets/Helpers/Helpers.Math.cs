@@ -21,10 +21,8 @@ namespace Helpers
             }
         }
 
-
         public static int RoundNearestNonZeroInt(float val, float floor)
         {
-
             if (val > floor)
             {
                 return Mathf.CeilToInt(val);
@@ -38,8 +36,6 @@ namespace Helpers
                 return 0;
             }
         }
-
-
 
         // If value is greater than max, cap it at max
         // If value is less than min, cap it at min
@@ -70,7 +66,6 @@ namespace Helpers
                 var chooseB = choices[UnityEngine.Random.Range(0, pool.Count - 1)];
                 chosen.Add(chooseB);
             }
-
 
             return chosen;
         }
